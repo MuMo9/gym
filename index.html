@@ -266,6 +266,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .ytchip.on{border-color:var(--brass);color:var(--brass)}
 .ytchip b{font-weight:700}
 .ytchip i{font-style:normal;color:#C08585;font-size:12px}
+#ytzone{max-width:560px;margin:0 auto;width:100%;padding:0 14px}
 .ytwrap iframe{display:block;width:100%;height:190px;border:0}
 .ytfall{display:block;text-align:center;font-size:11.5px;color:var(--dim);text-decoration:none;padding:6px 0 2px}
 .ytfall:hover{color:var(--brass)}
@@ -373,6 +374,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
     <button class="icobtn info" id="fg">؟</button>
   </div>
   <div class="fdots" id="fdots"></div>
+  <div id="ytzone"></div>
   <div class="fbody" id="fbody"></div>
 </div>
 <div class="frest" id="frest">
@@ -2108,6 +2110,77 @@ function ytWatch(p){
   return p.kind==="l" ? "https://www.youtube.com/playlist?list="+p.id
                       : "https://www.youtube.com/watch?v="+p.id;
 }
+/* ---- youtube panel ----
+   the iframe sits in #ytzone, outside the part of the screen that gets redrawn on every tap,
+   and it is recreated ONLY when the video itself changes. rebuilding it restarts playback,
+   and reparenting an existing iframe reloads it too — so neither may happen on a lock tap. */
+var ytLoaded="";
+function drawYt(){
+  var zone=$("ytzone"); if(!zone) return;
+  if(!zone.firstChild)
+    zone.innerHTML='<div id="ytctl"></div><div class="ytwrap" id="ytwrap" style="display:none"></div>'+
+      '<a class="ytfall" id="ytfall" target="_blank" rel="noopener" style="display:none">ما ظهر المقطع؟ افتحه في يوتيوب</a>';
+  var cu=ytParse(cfg.yt||""),c='';
+  if(cfg.ytShow){
+    c+='<div class="ytbar">'+
+       '<button id="ytpaste" style="flex:1">📋 لصق رابط منسوخ</button>'+
+       '<button id="ytopen">🔎 افتح يوتيوب</button>'+
+       '<button id="ythide">إخفاء</button></div>';
+    var lst=cfg.ytList||[];
+    if(lst.length) c+='<div class="ytchips">'+lst.map(function(v,i){
+      return '<span class="ytchip '+(cfg.yt===v.u?"on":"")+'" data-ytp="'+i+'"><b>'+esc(v.t)+'</b>'+
+             '<i data-ytd="'+i+'">✕</i></span>';}).join("")+'</div>';
+    if(cu.src&&isFileUrl()) c+='<div class="warn" style="margin:8px 0 2px">'+
+      'المشغّل المدمج ما يشتغل والملف مفتوح مباشرة من جهازك — يوتيوب يرفض التضمين بدون رابط موقع '+
+      '(الخطأ ١٥٣). ارفع التطبيق على GitHub Pages وافتحه من رابطه، وبيشتغل المقطع هنا داخل الشاشة.'+
+      '<br><a class="ytb" style="margin-top:10px" target="_blank" rel="noopener" href="'+esc(ytWatch(cu))+'">▶ افتح المقطع في يوتيوب الآن</a></div>';
+    else if(!cu.src) c+='<div class="note" style="margin:6px 2px">افتح يوتيوب، انسخ رابط المقطع أو قائمة التشغيل، وارجع واضغط «لصق رابط منسوخ».</div>';
+  }else c+='<div class="frow"><button id="ytshow">▶ افتح مشغّل يوتيوب داخل الشاشة</button></div>';
+  $("ytctl").innerHTML=c;
+
+  var want=(cfg.ytShow&&cu.src&&!isFileUrl())?cu.src:"";
+  var wrap=$("ytwrap");
+  if(want!==ytLoaded){
+    ytLoaded=want;
+    if(!want){ wrap.innerHTML=""; wrap.style.display="none"; }
+    else{
+      wrap.style.display="";
+      wrap.innerHTML='<button class="ytlockb" id="ytlock"></button>'+
+        '<iframe src="'+want+'" referrerpolicy="strict-origin-when-cross-origin" '+
+        'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'+
+        '<div class="ytshield" id="ytshield"></div>';
+    }
+  }
+  paintLock();
+  var fall=$("ytfall");
+  if(want){ fall.style.display=""; fall.href=ytWatch(cu); } else fall.style.display="none";
+  bindYt();
+}
+/* the lock repaints two elements and nothing else — the video keeps playing through it */
+function paintLock(){
+  var b=$("ytlock"),sh=$("ytshield"); if(!b||!sh) return;
+  b.className="ytlockb"+(cfg.ytLock?" on":"");
+  b.textContent=cfg.ytLock?"🔒 مقفل":"🔓 قفل";
+  sh.className="ytshield"+(cfg.ytLock?" on":"");
+}
+function bindYt(){
+  var z=$("ytzone");
+  if($("ytshow")) $("ytshow").onclick=function(){ cfg.ytShow=true; saveC(); drawYt(); };
+  if($("ythide")) $("ythide").onclick=function(){ cfg.ytShow=false; saveC(); drawYt(); };
+  if($("ytopen")) $("ytopen").onclick=function(){ window.open("https://m.youtube.com/","_blank","noopener"); };
+  if($("ytpaste")) $("ytpaste").onclick=ytPaste;
+  if($("ytlock")) $("ytlock").onclick=function(){ cfg.ytLock=!cfg.ytLock; saveC(); paintLock(); };
+  z.querySelectorAll("[data-ytp]").forEach(function(b){
+    b.onclick=function(ev){
+      if(ev.target&&ev.target.getAttribute("data-ytd")!=null) return;
+      cfg.yt=(cfg.ytList||[])[+b.getAttribute("data-ytp")].u; saveC(); drawYt(); };});
+  z.querySelectorAll("[data-ytd]").forEach(function(b){
+    b.onclick=function(ev){ ev.stopPropagation();
+      var i=+b.getAttribute("data-ytd"),l=cfg.ytList||[];
+      if(!confirm("حذف «"+l[i].t+"» من قائمتك؟")) return;
+      if(cfg.yt===l[i].u) cfg.yt="";
+      l.splice(i,1); cfg.ytList=l; saveC(); drawYt(); };});
+}
 function ytSave(url){
   var p=ytParse(url);
   if(!p.src){ alert("ما عرفت أقرأ الرابط. تأكد إنه رابط مقطع أو قائمة تشغيل من يوتيوب."); return; }
@@ -2120,7 +2193,7 @@ function ytSave(url){
     l.unshift({t:nm.slice(0,24)||"مقطع",u:url});
     cfg.ytList=l.slice(0,8);
   }
-  cfg.ytLock=false; saveC(); drawFocus();
+  cfg.ytLock=false; saveC(); drawYt();
 }
 function ytPaste(){
   function manual(){ var v=prompt("الصق رابط يوتيوب هنا:"); if(v) ytSave(v); }
@@ -2183,31 +2256,8 @@ function drawFocus(){
   else if(sg&&sg.big&&p) t+='<br>أكملت النطاق بجهد مريح — تقدر تقفز قفزة أكبر';
   else if(sg&&sg.up&&p) t+='<br>أكملت النطاق آخر مرة — زد الوزن لو الأداء نظيف';
 
-  var cu=ytParse(cfg.yt||"");
-  var h='';
-  if(cfg.ytShow){
-    h+='<div class="ytbar">'+
-       '<button id="ytpaste" style="flex:1">📋 لصق رابط منسوخ</button>'+
-       '<button id="ytopen">🔎 افتح يوتيوب</button>'+
-       '<button id="ythide">إخفاء</button></div>';
-    var lst=cfg.ytList||[];
-    if(lst.length) h+='<div class="ytchips">'+lst.map(function(v,i){
-      return '<span class="ytchip '+(cfg.yt===v.u?"on":"")+'" data-ytp="'+i+'"><b>'+esc(v.t)+'</b>'+
-             '<i data-ytd="'+i+'">✕</i></span>';}).join("")+'</div>';
-    if(cu.src&&isFileUrl()) h+='<div class="warn" style="margin:8px 0 2px">'+
-      'المشغّل المدمج ما يشتغل والملف مفتوح مباشرة من جهازك — يوتيوب يرفض التضمين بدون رابط موقع '+
-      '(الخطأ ١٥٣). ارفع التطبيق على GitHub Pages وافتحه من رابطه، وبيشتغل المقطع هنا داخل الشاشة.'+
-      '<br><a class="ytb" style="margin-top:10px" target="_blank" rel="noopener" href="'+esc(ytWatch(cu))+'">▶ افتح المقطع في يوتيوب الآن</a></div>';
-    else if(cu.src) h+='<div class="ytwrap">'+
-      '<button class="ytlockb '+(cfg.ytLock?"on":"")+'" id="ytlock">'+(cfg.ytLock?"🔒 مقفل":"🔓 قفل")+'</button>'+
-      '<iframe src="'+cu.src+'" referrerpolicy="strict-origin-when-cross-origin" '+
-      'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'+
-      '<div class="ytshield '+(cfg.ytLock?"on":"")+'"></div></div>'+
-      '<a class="ytfall" target="_blank" rel="noopener" href="'+esc(ytWatch(cu))+'">ما ظهر المقطع؟ افتحه في يوتيوب</a>';
-    else h+='<div class="note" style="margin:6px 2px">افتح يوتيوب، انسخ رابط المقطع أو قائمة التشغيل، وارجع واضغط «لصق رابط منسوخ».</div>';
-  }else h+='<div class="frow"><button id="ytshow">▶ افتح مشغّل يوتيوب داخل الشاشة</button></div>';
-
-  h+='<div class="ftarget">'+t+'</div>';
+  drawYt();
+  var h='<div class="ftarget">'+t+'</div>';
   /* the ladder belongs before the first working set only */
   if(F.si===0){
     var fw=warmHtml(ex,"fwarm");
@@ -2262,22 +2312,6 @@ function drawFocus(){
   $("fauto").onclick=function(){ cfg.autoNext=!cfg.autoNext; saveC(); drawFocus(); };
   $("frestlen").onclick=function(){ var v=prompt("مدة الراحة بالثواني؟",cfg.rest);
     if(v!==null&&parseInt(v,10)>0){ cfg.rest=parseInt(v,10); saveC(); drawFocus(); } };
-  if($("ytshow")) $("ytshow").onclick=function(){ cfg.ytShow=true; saveC(); drawFocus(); };
-  if($("ythide")) $("ythide").onclick=function(){ cfg.ytShow=false; saveC(); drawFocus(); };
-  if($("ytopen")) $("ytopen").onclick=function(){
-    window.open("https://m.youtube.com/","_blank","noopener"); };
-  if($("ytpaste")) $("ytpaste").onclick=ytPaste;
-  if($("ytlock")) $("ytlock").onclick=function(){ cfg.ytLock=!cfg.ytLock; saveC(); drawFocus(); };
-  $("fbody").querySelectorAll("[data-ytp]").forEach(function(b){
-    b.onclick=function(ev){
-      if(ev.target&&ev.target.getAttribute("data-ytd")!=null) return;
-      cfg.yt=(cfg.ytList||[])[+b.getAttribute("data-ytp")].u; saveC(); drawFocus(); };});
-  $("fbody").querySelectorAll("[data-ytd]").forEach(function(b){
-    b.onclick=function(ev){ ev.stopPropagation();
-      var i=+b.getAttribute("data-ytd"),l=cfg.ytList||[];
-      if(!confirm("حذف «"+l[i].t+"» من قائمتك؟")) return;
-      if(cfg.yt===l[i].u) cfg.yt="";
-      l.splice(i,1); cfg.ytList=l; saveC(); drawFocus(); };});
 }
 function logFocusSet(){
   var d=day(),ex=d.ex[F.xi],ss=cur();
