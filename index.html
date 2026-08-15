@@ -16,7 +16,9 @@
 <link rel="icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet"
+      media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --ink:#11151B; --panel:#191F28; --panel2:#1F2733; --line:#2B3542;
@@ -318,6 +320,30 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .eqh{font-size:11px;color:#6F7A8C;margin:10px 0 0}
 .pick.off{opacity:.5}
 .pick .no{font-size:10.5px;color:#C08585;font-family:var(--ar)}
+/* install guide */
+#inst{position:fixed;inset:0;z-index:90;background:rgba(6,9,13,.78);display:none;align-items:flex-end;justify-content:center}
+#inst.on{display:flex}
+#inst .sheet{background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:20px 20px 0 0;
+  width:100%;max-width:560px;max-height:92vh;overflow-y:auto;padding:0 0 26px;animation:up .24s ease}
+#inst .ihead{display:flex;align-items:center;gap:10px;padding:16px 16px 6px}
+#inst .ihead .t{font-weight:900;font-size:17px}
+#inst .ihead .x{margin-inline-end:auto;background:var(--panel2);border:1px solid var(--line);color:var(--chalk);
+  border-radius:9px;width:30px;height:30px;font-size:15px;cursor:pointer}
+#inst .ibody{padding:4px 16px 0}
+#inst .lead{font-size:13px;color:var(--dim);line-height:1.8;margin-bottom:14px}
+.istep{display:flex;gap:11px;align-items:flex-start;margin:0 0 13px}
+.istep .num{flex:0 0 26px;height:26px;border-radius:99px;background:rgba(214,163,68,.16);border:1px solid var(--brass);
+  color:var(--brass);font-family:var(--num);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.istep .tx{font-size:14px;line-height:1.7;padding-top:2px}
+.istep .tx b{color:var(--brass)}
+.ishare{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;vertical-align:-6px;
+  background:var(--panel2);border:1px solid var(--line);border-radius:6px;margin:0 3px}
+.iwarn{background:rgba(214,163,68,.08);border:1px solid rgba(214,163,68,.3);border-radius:11px;
+  padding:11px 12px;font-size:12.5px;color:#D9C79C;line-height:1.8;margin:6px 0 4px}
+.ibig{width:100%;background:var(--brass);border:0;color:#171208;border-radius:14px;padding:15px;
+  font-size:15px;font-weight:900;cursor:pointer;margin:12px 0 4px}
+.ighost{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--dim);
+  border-radius:12px;padding:11px;font-size:12.5px;cursor:pointer;margin-top:8px}
 .showall{width:100%;background:none;border:1px dashed var(--line);color:var(--dim);
   border-radius:10px;padding:9px;font-size:12px;cursor:pointer;margin-top:6px}
 
@@ -365,6 +391,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 </div></div></div>
 
 <div id="modal"></div>
+<div id="inst"></div>
 <div id="report"></div>
 <div id="focus">
   <div class="fbar">
@@ -430,6 +457,26 @@ function storageLabel(){
 }
 
 var UI={
+"<div class=\"lead\">التطبيق مثبّت عندك أصلاً — أنت تستخدمه الآن من أيقونته. 👍</div>":["<div class=\"lead\">It is already installed — you are using it from its own icon right now. 👍</div>",1],
+"<div class=\"iwarn\">أنت فاتح الرابط داخل تطبيق ثاني (واتساب أو انستقرام مثلاً)، وخيار التثبيت ما يظهر هنا.</div>":["<div class=\"iwarn\">You opened this link inside another app (WhatsApp or Instagram, say), and the install option does not appear there.</div>",1],
+"اضغط زر <b>المشاركة</b> أو النقاط الثلاث في الأسفل.":["Tap the <b>Share</b> button or the three dots at the bottom.",1],
+"اختر <b>فتح في Safari</b>.":["Choose <b>Open in Safari</b>.",1],
+"من Safari، ارجع لهذي الشاشة وكمّل الخطوات.":["Back in Safari, return to this screen and finish the steps.",1],
+"اضغط النقاط الثلاث في الأعلى.":["Tap the three dots at the top.",1],
+"اختر <b>فتح في Chrome</b> ثم ثبّت التطبيق من هناك.":["Choose <b>Open in Chrome</b>, then install from there.",1],
+"<div class=\"lead\">آيفون ما يسمح بتثبيت التطبيق بضغطة واحدة — لكن هاتين خطوتان وخلصت، وبعدها يفتح بأيقونته مثل أي تطبيق ويشتغل بدون إنترنت.</div>":["<div class=\"lead\">iPhone will not install a web app in one tap — but it is two steps and you are done. After that it opens from its own icon like any app and works offline.</div>",1],
+"اضغط زر المشاركة ":["Tap the Share button ",1],
+" في شريط Safari بالأسفل.":[" in the Safari bar at the bottom.",1],
+"مرّر للأسفل واختر <b>إضافة إلى الشاشة الرئيسية</b>.":["Scroll down and choose <b>Add to Home Screen</b>.",1],
+"اضغط <b>إضافة</b> — بيطلع لك بأيقونته على الشاشة.":["Tap <b>Add</b> — it appears on your screen with its own icon.",1],
+"<div class=\"iwarn\">لازم يكون الرابط مفتوحاً في <b>Safari</b> تحديداً. Chrome على الآيفون ما فيه هذا الخيار.</div>":["<div class=\"iwarn\">The link has to be open in <b>Safari</b> specifically. Chrome on iPhone does not offer this option.</div>",1],
+"<div class=\"lead\">اضغط الزر وبينضاف التطبيق لشاشتك الرئيسية مباشرة، ويشتغل بدون إنترنت.</div>":["<div class=\"lead\">Tap the button and it is added to your home screen straight away, working offline.</div>",1],
+"⬇ ثبّت الآن":"⬇ Install now",
+"<div class=\"lead\">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>":["<div class=\"lead\">Add it to your home screen so it opens with its own icon, full screen, and works offline.</div>",1],
+"افتح قائمة المتصفح (النقاط الثلاث).":["Open the browser menu (the three dots).",1],
+"اختر <b>تثبيت التطبيق</b> أو <b>إضافة إلى الشاشة الرئيسية</b>.":["Choose <b>Install app</b> or <b>Add to Home Screen</b>.",1],
+"تثبيت التطبيق":"Install the app",
+"لاحقاً":"Later",
 "يوم التمرين":"Day",
 "اسم التمرين":"Exercise",
 "<h2 class=\"sec\">اللغة</h2>":"<h2 class=\"sec\">Language</h2>",
@@ -2432,11 +2479,11 @@ function renderSet(){
        }).join("")+
        '<div class="note" style="margin-top:0">'+eqCount()+T(' تمرين من ')+LIB.length+T(' متاح بالأجهزة المختارة. تمارين وزن الجسم متاحة دائماً.</div>')
      : '')+
-   (window.canInstall&&window.canInstall()
-     ? T('<h2 class="sec">تثبيت التطبيق</h2>')+
+   (isStandalone() ? '' :
+       T('<h2 class="sec">تثبيت التطبيق</h2>')+
        T('<div class="note" style="margin-top:0">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>')+
        T('<button class="btn" id="binst">⬇ تثبيت على الشاشة الرئيسية</button>')
-     : '')+
+   )+
    T('<h2 class="sec">تصدير السجل</h2>')+
    T('<button class="btn" id="bxls">📊 ملف Excel</button>')+
    T('<button class="btn" id="bpdf">📄 PDF / طباعة</button>')+
@@ -2459,7 +2506,7 @@ function renderSet(){
    }).join("");
   $("main").innerHTML=h;
 
-  if($("binst")) $("binst").onclick=function(){ window.doInstall(); };
+  if($("binst")) $("binst").onclick=showInst;
   $("bxls").onclick=exportXls;
   $("bpdf").onclick=exportPdf;
   $("crest").onchange=function(){ cfg.rest=Math.max(15,parseInt($("crest").value,10)||90); saveC(); renderSet(); };
@@ -2933,6 +2980,74 @@ $("n3").onclick=function(){view="body";render();window.scrollTo(0,0);};
 $("n4").onclick=function(){view="set";render();window.scrollTo(0,0);};
 
 boot();
+maybeOfferInstall();
+
+/* ============ install guide ============ */
+/* iPhone cannot install a web app from a tap — Apple only allows Safari's
+   Share ▸ Add to Home Screen. So the link opens the app and the app explains
+   the two taps, instead of leaving the person hunting for the option. */
+function isIOS(){
+  var u=navigator.userAgent;
+  return /iPad|iPhone|iPod/.test(u) || (navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+}
+function isStandalone(){
+  return window.navigator.standalone===true ||
+    (window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches);
+}
+/* in-app browsers (WhatsApp, Instagram, Telegram…) have no Add to Home Screen */
+function inApp(){
+  var u=navigator.userAgent;
+  if(/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|OKApp|Snapchat/i.test(u)) return true;
+  if(isIOS()&&/CriOS|FxiOS|EdgiOS|OPiOS|YaBrowser/i.test(u)) return true;
+  return false;
+}
+var SHARE_SVG='<span class="ishare"><svg width="13" height="16" viewBox="0 0 14 18" fill="none">'+
+  '<path d="M7 1.5v9M7 1.5 4 4.6M7 1.5l3 3.1" stroke="#D6A344" stroke-width="1.6" stroke-linecap="round"/>'+
+  '<path d="M3 7.5H1.8v8.7h10.4V7.5H11" stroke="#D6A344" stroke-width="1.6" stroke-linecap="round"/></svg></span>';
+function instStep(n,html){ return '<div class="istep"><div class="num">'+n+'</div><div class="tx">'+html+'</div></div>'; }
+function closeInst(){ $("inst").classList.remove("on"); $("inst").innerHTML=""; }
+function showInst(){
+  var h='',ios=isIOS(),body='';
+  if(isStandalone()){
+    body=T('<div class="lead">التطبيق مثبّت عندك أصلاً — أنت تستخدمه الآن من أيقونته. 👍</div>');
+  }else if(inApp()){
+    body=T('<div class="iwarn">أنت فاتح الرابط داخل تطبيق ثاني (واتساب أو انستقرام مثلاً)، وخيار التثبيت ما يظهر هنا.</div>')+
+      (ios? instStep(1,T('اضغط زر <b>المشاركة</b> أو النقاط الثلاث في الأسفل.'))+
+            instStep(2,T('اختر <b>فتح في Safari</b>.'))+
+            instStep(3,T('من Safari، ارجع لهذي الشاشة وكمّل الخطوات.'))
+          : instStep(1,T('اضغط النقاط الثلاث في الأعلى.'))+
+            instStep(2,T('اختر <b>فتح في Chrome</b> ثم ثبّت التطبيق من هناك.')));
+  }else if(ios){
+    body=T('<div class="lead">آيفون ما يسمح بتثبيت التطبيق بضغطة واحدة — لكن هاتين خطوتان وخلصت، وبعدها يفتح بأيقونته مثل أي تطبيق ويشتغل بدون إنترنت.</div>')+
+      instStep(1,T('اضغط زر المشاركة ')+SHARE_SVG+T(' في شريط Safari بالأسفل.'))+
+      instStep(2,T('مرّر للأسفل واختر <b>إضافة إلى الشاشة الرئيسية</b>.'))+
+      instStep(3,T('اضغط <b>إضافة</b> — بيطلع لك بأيقونته على الشاشة.'))+
+      T('<div class="iwarn">لازم يكون الرابط مفتوحاً في <b>Safari</b> تحديداً. Chrome على الآيفون ما فيه هذا الخيار.</div>');
+  }else if(window.canInstall&&window.canInstall()){
+    body=T('<div class="lead">اضغط الزر وبينضاف التطبيق لشاشتك الرئيسية مباشرة، ويشتغل بدون إنترنت.</div>')+
+      '<button class="ibig" id="idoit">'+T('⬇ ثبّت الآن')+'</button>';
+  }else{
+    body=T('<div class="lead">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>')+
+      instStep(1,T('افتح قائمة المتصفح (النقاط الثلاث).'))+
+      instStep(2,T('اختر <b>تثبيت التطبيق</b> أو <b>إضافة إلى الشاشة الرئيسية</b>.'));
+  }
+  h='<div class="sheet"><div class="ihead"><div class="t">'+T("تثبيت التطبيق")+'</div>'+
+    '<button class="x" id="ix">✕</button></div><div class="ibody">'+body+
+    '<button class="ighost" id="ilater">'+T("لاحقاً")+'</button></div></div>';
+  $("inst").innerHTML=h; $("inst").classList.add("on");
+  $("ix").onclick=function(){ lsSet("instSeen","1"); closeInst(); };
+  $("ilater").onclick=function(){ lsSet("instSeen","1"); closeInst(); };
+  $("inst").onclick=function(e){ if(e.target.id==="inst"){ lsSet("instSeen","1"); closeInst(); } };
+  if($("idoit")) $("idoit").onclick=function(){ closeInst(); window.doInstall(); };
+}
+/* offer it once, unprompted, on the first visit from a phone */
+function maybeOfferInstall(){
+  if(isStandalone()) return;
+  if(lsGet("instSeen")) return;
+  var phone=isIOS()||/Android/i.test(navigator.userAgent);
+  if(!phone) return;
+  setTimeout(function(){ if(!isStandalone()&&!lsGet("instSeen")) showInst(); },1600);
+}
 
 /* ============ PWA ============ */
 if("serviceWorker" in navigator){
