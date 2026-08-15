@@ -34,7 +34,7 @@ button{font-family:var(--ar)}
 
 header{position:sticky;top:0;z-index:20;background:rgba(17,21,27,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .htop{display:flex;align-items:center;gap:10px;padding:12px 0 10px}
-.brand{font-weight:900;font-size:19px;margin-left:auto}
+.brand{font-weight:900;font-size:19px;margin-inline-start:auto}
 .brand span{color:var(--brass)}
 .saved{font-size:11px;color:var(--up);opacity:0;transition:opacity .3s}
 .saved.on{opacity:1}
@@ -49,14 +49,14 @@ header{position:sticky;top:0;z-index:20;background:rgba(17,21,27,.94);backdrop-f
 .strip{display:flex;align-items:baseline;gap:8px;padding:14px 0 2px}
 .strip .big{font-family:var(--num);font-size:34px;font-weight:700;letter-spacing:-1px}
 .strip .lbl{font-size:12px;color:var(--dim)}
-.strip .delta{margin-right:auto;font-size:12px;font-weight:700;color:var(--dim)}
+.strip .delta{margin-inline-end:auto;font-size:12px;font-weight:700;color:var(--dim)}
 .delta.up{color:var(--up)} .delta.down{color:var(--down)}
 
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);margin:12px 0;overflow:hidden}
 .chead{display:flex;align-items:center;gap:7px;padding:11px 12px 8px}
 .cname{font-weight:700;font-size:15px}
 .ctag{font-size:11px;color:var(--dim);font-family:var(--num)}
-.chead .sp{margin-right:auto}
+.chead .sp{margin-inline-end:auto}
 .icobtn{background:none;border:1px solid var(--line);color:var(--dim);font-size:13px;cursor:pointer;
   padding:4px 8px;border-radius:9px;line-height:1.4}
 .icobtn:hover{background:var(--panel2);color:var(--chalk)}
@@ -72,11 +72,11 @@ header{position:sticky;top:0;z-index:20;background:rgba(17,21,27,.94);backdrop-f
 .row:first-child{border-top:0}
 .fld{position:relative}
 .fld input{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:10px;color:var(--chalk);
-  font-family:var(--num);font-size:17px;font-weight:700;padding:9px 8px 9px 30px;text-align:right;outline:none;min-width:0}
+  font-family:var(--num);font-size:17px;font-weight:700;padding:9px 8px 9px 30px;text-align:start;outline:none;min-width:0}
 .fld input:focus{border-color:var(--brass);background:#232C38}
 .fld input::placeholder{color:#4E5A6B;font-weight:400}
-.fld .unit{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--dim);pointer-events:none}
-.ghost{font-size:10.5px;color:#6F7A8C;font-family:var(--num);white-space:nowrap;min-width:54px;text-align:left}
+.fld .unit{position:absolute;inset-inline-end:8px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--dim);pointer-events:none}
+.ghost{font-size:10.5px;color:#6F7A8C;font-family:var(--num);white-space:nowrap;min-width:54px;text-align:end}
 .ghost b{color:#A9B3C2;font-weight:700}
 .badge{color:var(--up);font-weight:700;font-family:var(--ar)}
 input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
@@ -97,10 +97,10 @@ input[type=number]{-moz-appearance:textfield}
 #rest .in{max-width:700px;margin:0 auto;padding:0 14px 8px}
 #rest .bar{background:var(--panel2);border:1px solid var(--brass);border-radius:12px;
   display:flex;align-items:center;gap:10px;padding:9px 12px;position:relative;overflow:hidden}
-#rest .prog{position:absolute;top:0;right:0;bottom:0;background:rgba(214,163,68,.14);transition:width 1s linear}
+#rest .prog{position:absolute;top:0;inset-inline-start:0;bottom:0;background:rgba(214,163,68,.14);transition:width 1s linear}
 #rest .t{font-family:var(--num);font-size:22px;font-weight:700;position:relative}
 #rest .lb{font-size:12px;color:var(--dim);position:relative}
-#rest .acts{margin-right:auto;display:flex;gap:6px;position:relative}
+#rest .acts{margin-inline-end:auto;display:flex;gap:6px;position:relative}
 #rest .acts button{background:var(--panel);border:1px solid var(--line);color:var(--chalk);
   border-radius:9px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer}
 
@@ -109,7 +109,7 @@ input[type=number]{-moz-appearance:textfield}
 .pbar .nm{font-size:12px;color:var(--dim);min-width:44px;font-family:var(--num)}
 .pbar .track{flex:1;height:9px;background:var(--panel2);border-radius:99px;overflow:hidden}
 .pbar .fill{height:100%;background:linear-gradient(90deg,#8A6A21,var(--brass));border-radius:99px}
-.pbar .v{font-family:var(--num);font-size:12px;color:var(--dim);min-width:56px;text-align:left}
+.pbar .v{font-family:var(--num);font-size:12px;color:var(--dim);min-width:56px;text-align:end}
 .sel,.ta{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--chalk);
   font-family:var(--ar);font-size:14px;padding:10px;margin:6px 0 14px}
 .ta{font-family:var(--num);font-size:11px;height:130px}
@@ -121,10 +121,10 @@ h2.sec{font-size:13px;color:var(--dim);font-weight:700;margin:20px 0 4px;letter-
 .setrow{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
   border-radius:12px;padding:11px 13px;margin:8px 0}
 .setrow .l{font-size:13.5px}
-.setrow .c{margin-right:auto}
+.setrow .c{margin-inline-end:auto}
 .sw{width:46px;height:26px;border-radius:99px;background:var(--line);border:0;position:relative;cursor:pointer}
-.sw i{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:99px;background:var(--dim);transition:.18s}
-.sw.on{background:rgba(214,163,68,.35)} .sw.on i{right:23px;background:var(--brass)}
+.sw i{position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:99px;background:var(--dim);transition:.18s}
+.sw.on{background:rgba(214,163,68,.35)} .sw.on i{inset-inline-start:23px;background:var(--brass)}
 .num-s{width:74px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--chalk);
   font-family:var(--num);font-size:15px;font-weight:700;padding:7px;text-align:center;outline:none}
 
@@ -136,7 +136,7 @@ h2.sec{font-size:13px;color:var(--dim);font-weight:700;margin:20px 0 4px;letter-
 .shead{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:10px;padding:14px 15px;z-index:2}
 .shead .t{font-weight:900;font-size:16px}
-.shead .x{margin-right:auto;background:var(--panel2);border:1px solid var(--line);color:var(--chalk);
+.shead .x{margin-inline-end:auto;background:var(--panel2);border:1px solid var(--line);color:var(--chalk);
   border-radius:9px;width:30px;height:30px;font-size:15px;cursor:pointer}
 .sbody{padding:14px 15px}
 .figs{display:flex;justify-content:center;gap:18px;background:var(--panel2);border-radius:12px;padding:12px 0;margin-bottom:14px}
@@ -146,20 +146,20 @@ h2.sec{font-size:13px;color:var(--dim);font-weight:700;margin:20px 0 4px;letter-
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:5px 11px;font-size:11.5px;color:var(--dim)}
 .chip b{color:var(--chalk);font-weight:700}
 .gh{font-size:12px;color:var(--brass);font-weight:700;margin:14px 0 6px;letter-spacing:.3px}
-ol.steps{margin:0;padding-right:20px;font-size:13.5px}
+ol.steps{margin:0;padding-inline-start:20px;font-size:13.5px}
 ol.steps li{margin-bottom:7px}
 ul.mis{margin:0;padding:0;list-style:none;font-size:13px}
-ul.mis li{position:relative;padding-right:20px;margin-bottom:7px;color:#DCC7C7}
-ul.mis li:before{content:"✕";position:absolute;right:0;color:var(--down);font-size:11px;top:2px}
+ul.mis li{position:relative;padding-inline-start:20px;margin-bottom:7px;color:#DCC7C7}
+ul.mis li:before{content:"✕";position:absolute;inset-inline-start:0;color:var(--down);font-size:11px;top:2px}
 .ytb{display:block;text-align:center;background:var(--panel2);border:1px solid var(--line);border-radius:11px;
   padding:11px;color:var(--chalk);text-decoration:none;font-size:13px;font-weight:700;margin-top:16px}
 .search{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:11px;color:var(--chalk);
   font-family:var(--ar);font-size:14px;padding:11px;outline:none;margin-bottom:10px}
 .pick{display:flex;align-items:center;gap:9px;width:100%;background:var(--panel2);border:1px solid var(--line);
-  border-radius:11px;padding:11px;margin-bottom:7px;cursor:pointer;text-align:right;color:var(--chalk)}
+  border-radius:11px;padding:11px;margin-bottom:7px;cursor:pointer;text-align:start;color:var(--chalk)}
 .pick:hover{border-color:var(--brass)}
 .pick .n{font-size:13.5px;font-weight:700}
-.pick .e{font-size:11px;color:var(--dim);margin-right:auto;font-family:var(--num)}
+.pick .e{font-size:11px;color:var(--dim);margin-inline-end:auto;font-family:var(--num)}
 
 .chk{width:27px;height:27px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);
   color:var(--dim);font-family:var(--num);font-size:12px;cursor:pointer;padding:0;line-height:1}
@@ -169,17 +169,17 @@ ul.mis li:before{content:"✕";position:absolute;right:0;color:var(--down);font-
 .repeat:hover{background:rgba(214,163,68,.18)}
 .stall{display:block;width:calc(100% - 18px);margin:0 9px 8px;background:rgba(201,112,112,.1);
   border:1px solid rgba(201,112,112,.35);color:#E0A6A6;border-radius:10px;padding:8px 10px;
-  font-size:11.5px;line-height:1.6;text-align:right}
+  font-size:11.5px;line-height:1.6;text-align:start}
 .noteBox{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;
   color:var(--chalk);font-family:var(--ar);font-size:13px;padding:11px;outline:none;
   min-height:62px;margin:4px 0 10px;resize:vertical}
 .noteBox:focus{border-color:var(--brass)}
 .hrow{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
-  border-radius:12px;padding:10px 12px;margin:7px 0;cursor:pointer;width:100%;text-align:right;color:var(--chalk)}
+  border-radius:12px;padding:10px 12px;margin:7px 0;cursor:pointer;width:100%;text-align:start;color:var(--chalk)}
 .hrow:hover{border-color:var(--brass)}
 .hrow .d{font-family:var(--num);font-size:12px;color:var(--dim);min-width:52px}
 .hrow .n{font-size:13px;font-weight:700}
-.hrow .v{margin-right:auto;font-family:var(--num);font-size:11.5px;color:var(--dim)}
+.hrow .v{margin-inline-end:auto;font-family:var(--num);font-size:11.5px;color:var(--dim)}
 .seg{display:flex;gap:6px;margin:6px 0 14px}
 .seg button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--dim);
   border-radius:10px;padding:9px 4px;font-size:12.5px;font-weight:700;cursor:pointer}
@@ -218,7 +218,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
   position:sticky;top:0;background:var(--ink);z-index:3}
 .fbar .nm{font-weight:900;font-size:16px;line-height:1.3}
 .fbar .st{font-size:11px;color:var(--dim);font-family:var(--num)}
-.fbar .sp{margin-right:auto}
+.fbar .sp{margin-inline-end:auto}
 .fdots{display:flex;gap:4px;padding:10px 14px 4px;flex-wrap:wrap}
 .fdot{height:5px;flex:1;min-width:8px;border-radius:99px;background:var(--line)}
 .fdot.done{background:var(--up)} .fdot.now{background:var(--brass)}
@@ -257,7 +257,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .ytwrap{margin:10px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000;position:relative}
 .ytshield{position:absolute;inset:0;background:transparent;display:none}
 .ytshield.on{display:block}
-.ytlockb{position:absolute;top:6px;left:6px;z-index:3;background:rgba(17,21,27,.85);border:1px solid var(--line);
+.ytlockb{position:absolute;top:6px;inset-inline-end:6px;z-index:3;background:rgba(17,21,27,.85);border:1px solid var(--line);
   color:var(--chalk);border-radius:9px;padding:5px 9px;font-size:11px;font-weight:700;cursor:pointer}
 .ytlockb.on{border-color:var(--brass);color:var(--brass)}
 .ytchips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px}
@@ -290,7 +290,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .warmrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 9px 8px;
   padding:7px 9px;background:rgba(139,148,165,.07);border:1px dashed var(--line);border-radius:10px}
 .warmrow .wl,.fwarm .wl{font-size:11px;color:var(--dim);font-weight:700}
-.warmrow .wl2,.fwarm .wl2{font-size:10px;color:#6F7A8C;margin-right:auto}
+.warmrow .wl2,.fwarm .wl2{font-size:10px;color:#6F7A8C;margin-inline-end:auto}
 .wchip{background:var(--panel2);border:1px solid var(--line);color:#A9B3C2;border-radius:99px;
   padding:4px 10px;font-family:var(--num);font-size:11.5px;font-weight:700;cursor:pointer}
 .wchip.on{background:rgba(87,192,140,.16);border-color:var(--up);color:var(--up)}
@@ -330,7 +330,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
   #report .sub{font-size:11px;color:#666;margin-bottom:14px}
   #report h2{font-size:14px;margin:16px 0 6px;border-bottom:2px solid #D6A344;padding-bottom:3px}
   #report table{width:100%;border-collapse:collapse;font-size:10.5px;margin-bottom:8px}
-  #report th,#report td{border:1px solid #ccc;padding:4px 6px;text-align:right}
+  #report th,#report td{border:1px solid #ccc;padding:4px 6px;text-align:start}
   #report th{background:#f2f2f2}
   #report .ses{margin-bottom:12px;page-break-inside:avoid}
   #report .sh{font-size:12px;font-weight:700;margin-bottom:3px}
@@ -344,23 +344,23 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 <header>
   <div class="wrap">
     <div class="htop">
-      <div class="brand">دفتر <span>التمرين</span></div>
-      <div class="saved" id="saved">محفوظ</div>
+      <div class="brand" id="brand"></div>
+      <div class="saved" id="saved"></div>
       <div class="dateBox"><input type="date" id="date"></div>
     </div>
     <div class="tabs" id="tabs"></div>
   </div>
 </header>
 
-<main class="wrap" id="main"><div class="empty">جاري الفتح…</div></main>
+<main class="wrap" id="main"><div class="empty">…</div></main>
 
 <div id="rest"><div class="in"><div class="bar">
   <div class="prog" id="rprog"></div>
   <div class="t" id="rtime">1:30</div>
-  <div class="lb">راحة</div>
+  <div class="lb" id="rlb1"></div>
   <div class="acts">
-    <button id="rplus">+٣٠ ث</button>
-    <button id="rskip">تخطي</button>
+    <button id="rplus"></button>
+    <button id="rskip"></button>
   </div>
 </div></div></div>
 
@@ -371,31 +371,30 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
     <button class="icobtn" id="fx">✕</button>
     <div><div class="nm" id="fname">—</div><div class="st" id="fst">—</div></div>
     <div class="sp"></div>
-    <button class="icobtn info" id="fg">؟</button>
+    <button class="icobtn info" id="fg"></button>
   </div>
   <div class="fdots" id="fdots"></div>
   <div id="ytzone"></div>
   <div class="fbody" id="fbody"></div>
 </div>
 <div class="frest" id="frest">
-  <div class="lb">راحة</div>
+  <div class="lb" id="rlb2"></div>
   <div class="big" id="fbig">1:30</div>
   <div class="nx" id="fnx"></div>
   <div class="acts">
-    <button id="fp30">+٣٠ ث</button>
-    <button class="pri" id="fskip">جاهز الآن</button>
+    <button id="fp30"></button>
+    <button class="pri" id="fskip"></button>
   </div>
 </div>
 
 <nav><div class="in">
-  <button id="n1" class="on">التمرين</button>
-  <button id="n2">تطوري</button>
-  <button id="n3">جسمي</button>
-  <button id="n4">إعدادات</button>
+  <button id="n1" class="on"></button>
+  <button id="n2"></button>
+  <button id="n3"></button>
+  <button id="n4"></button>
 </div></nav>
 
-<script>
-(function(){
+<script>(function(){
 "use strict";
 
 /* ============ storage ============ */
@@ -424,296 +423,847 @@ var store={
   }
 };
 function storageLabel(){
-  if(LS&&HOST) return "على جهازك + داخل تطبيق Claude";
-  if(LS) return "على هذا الجهاز (تخزين المتصفح)";
-  if(HOST) return "داخل تطبيق Claude فقط";
-  return "مؤقت — تروح لو أغلقت الصفحة";
+  if(LS&&HOST) return T("على جهازك + داخل تطبيق Claude");
+  if(LS) return T("على هذا الجهاز (تخزين المتصفح)");
+  if(HOST) return T("داخل تطبيق Claude فقط");
+  return T("مؤقت — تروح لو أغلقت الصفحة");
+}
+
+var UI={
+"يوم التمرين":"Day",
+"اسم التمرين":"Exercise",
+"<h2 class=\"sec\">اللغة</h2>":"<h2 class=\"sec\">Language</h2>",
+"<div class=\"note\" style=\"margin-top:0\">«EN + عربي» يعرض الأسماء والأزرار بالإنجليزي ويبقي الشرح وخطوات الحركة بالعربي.</div>":["<div class=\"note\" style=\"margin-top:0\">\"EN + عربي\" shows names and buttons in English and keeps explanations and form cues in Arabic.</div>",1],
+"محفوظ":"Saved",
+"تطوري":"Progress",
+"جسمي":"Body",
+"إعدادات":"Settings",
+"راحة":"Rest",
+"+٣٠ ث":"+30s",
+"تخطي":"Skip",
+"جاهز الآن":"Ready now",
+"على جهازك + داخل تطبيق Claude":"On your device + in the Claude app",
+"على هذا الجهاز (تخزين المتصفح)":"On this device (browser storage)",
+"داخل تطبيق Claude فقط":"Inside the Claude app only",
+"مؤقت — تروح لو أغلقت الصفحة":"Temporary — gone if you close the page",
+"الصدر":"Chest",
+"الأكتاف":"Shoulders",
+"الترايسبس":"Triceps",
+"البايسبس":"Biceps",
+"الساعد":"Forearms",
+"البطن":"Abs",
+"الجانبية":"Obliques",
+"الفخذ الأمامي":"Quads",
+"الفخذ الخلفي":"Hamstrings",
+"المؤخرة":"Glutes",
+"السمانة":"Calves",
+"العضلة الجناحية":"Lats",
+"الترابيس":"Traps",
+"أسفل الظهر":"Lower back",
+"بار حديد وأوزان":"Barbell & plates",
+"بار EZ":"EZ bar",
+"قفص سكوات":"Squat rack",
+"جهاز سميث":"Smith machine",
+"مقعد مستوي":"Flat bench",
+"مقعد مائل":"Incline bench",
+"مقعد سفلي":"Decline bench",
+"مقعد بريتشر":"Preacher bench",
+"دمبلات":"Dumbbells",
+"كيتل بل":"Kettlebell",
+"أجهزة كيبل":"Cable machines",
+"بار عقلة":"Pull-up bar",
+"متوازي":"Dip bars",
+"عقلة بمساعدة":"Assisted pull-up",
+"عجلة بطن":"Ab wheel",
+"جهاز ضغط الصدر":"Chest press machine",
+"جهاز ضغط الكتف":"Shoulder press machine",
+"جهاز الفراشة":"Pec deck",
+"جهاز السحب العلوي":"Lat pulldown machine",
+"جهاز التجديف":"Row machine",
+"جهاز ضغط الأرجل":"Leg press",
+"جهاز الهاك":"Hack squat machine",
+"تمديد الأرجل":"Leg extension",
+"ثني الأرجل":"Leg curl",
+"جهاز السمانة":"Calf machine",
+"الأبداكتور":"Abductor machine",
+"هايبر إكستنشن":"Hyperextension bench",
+"حديد حر":"Free weights",
+"مقاعد ومعلّقات":"Benches & bars",
+"كيبل وأجهزة":"Cables & machines",
+"نادي كامل":"Full gym",
+"كل شيء متوفر":"Everything available",
+"نادي بسيط":"Basic gym",
+"حديد حر وكيبل وأجهزة أساسية":["Free weights, cables and basic machines",1],
+"بيت — دمبلات":"Home — dumbbells",
+"دمبلات ومقعد وعقلة":"Dumbbells, bench, pull-up bar",
+"وزن الجسم فقط":"Bodyweight only",
+"بدون أي معدات":["No equipment at all",1],
+" أو ":" or ",
+"مبتدئ":"Beginner",
+"متوسط":"Intermediate",
+"متقدم":"Advanced",
+"صدر + ترايسبس":"Chest + Triceps",
+"ظهر + بايسبس":"Back + Biceps",
+"أرجل":"Legs",
+"أكتاف + ذراع":"Shoulders + Arms",
+"تقسيم ٤ أيام (الافتراضي)":"4-day split (default)",
+"صدر · ظهر · أرجل · أكتاف":"Chest · Back · Legs · Shoulders",
+"فل بدي — ٣ أيام":"Full body — 3 days",
+"كل الجسم في كل جلسة. الأفضل للمبتدئ ولمن وقته ضيق.":["Full body every session. Best for beginners and anyone short on time.",1],
+"جلسة A":"Session A",
+"جلسة B":"Session B",
+"جلسة C":"Session C",
+"بُش · بُل · ليقز — ٣ أيام":"Push · Pull · Legs — 3 days",
+"دفع، سحب، أرجل. تقدر تعيدها مرتين بالأسبوع.":["Push, pull, legs. You can run it twice a week.",1],
+"دفع (Push)":"Push",
+"سحب (Pull)":"Pull",
+"أرجل (Legs)":"Legs",
+"بُش · بُل · ليقز — ٦ أيام":"Push · Pull · Legs — 6 days",
+"نفس التقسيم مرتين بالأسبوع بتمارين مختلفة. حجم تدريب عالي.":["Same split twice a week with different exercises. High training volume.",1],
+"دفع A":"Push A",
+"سحب A":"Pull A",
+"أرجل A":"Legs A",
+"دفع B":"Push B",
+"سحب B":"Pull B",
+"أرجل B":"Legs B",
+"علوي · سفلي — ٤ أيام":"Upper · Lower — 4 days",
+"نصف علوي ونصف سفلي مرتين بالأسبوع. توازن ممتاز بين التكرار والراحة.":["Upper half and lower half twice a week. Great balance of frequency and rest.",1],
+"علوي A":"Upper A",
+"سفلي A":"Lower A",
+"علوي B":"Upper B",
+"سفلي B":"Lower B",
+"تقسيم عضلي — ٥ أيام":"Bro split — 5 days",
+"عضلة لكل يوم. الأشهر بين الهواة، ومناسب لمن يتمرن ٥ أيام.":["One muscle per day. The most popular split among gym-goers, and good if you train 5 days.",1],
+"صدر":"Chest",
+"ظهر":"Back",
+"أكتاف":"Shoulders",
+"ذراع":"Arms",
+"تقسيم أرنولد — ٦ أيام":"Arnold split — 6 days",
+"صدر وظهر معاً، ثم أكتاف وذراع، ثم أرجل — مكررة مرتين. للمتقدمين.":["Chest and back together, then shoulders and arms, then legs — repeated twice. For advanced lifters.",1],
+"صدر + ظهر A":"Chest + Back A",
+"أكتاف + ذراع A":"Shoulders + arms A",
+"صدر + ظهر B":"Chest + back B",
+"أكتاف + ذراع B":"Shoulders + Arms B",
+"تمرين":"Exercise",
+"نسبة الدهون":"body fat %",
+"كتلة العضلات":"muscle mass",
+"الوزن فقط (تقديري)":"weight only (estimate)",
+"سهل":"Easy",
+"باقي ٣ عدات":"3 reps left",
+"باقي عدتين":"2 reps left",
+"باقي عدة":"1 rep left",
+"باقي نصف عدة":"Half a rep left",
+"أقصى جهد":"Max effort",
+"\"><span class=\"wl\">تسخين</span>":"\"><span class=\"wl\">Warm-up</span>",
+"<span class=\"wl2\">لا تُحسب في الحمل</span></div>":["<span class=\"wl2\">Not counted in volume</span></div>",1],
+"<button class=\"tab\" id=\"mgd\" title=\"إدارة الأيام\">⚙ الأيام</button>":"<button class=\"tab\" id=\"mgd\" title=\"Manage days\">⚙ Days</button>",
+"<div class=\"lbl\">كجم إجمالي حمل اليوم</div>":"<div class=\"lbl\">kg total volume today</div>",
+"٪ عن آخر مرة</div>":"% vs last time</div>",
+"<button class=\"startf\" id=\"startf\">▶ وضع التركيز — سجّل بضغطتين وأنت تتمرن</button>":"<button class=\"startf\" id=\"startf\">▶ Focus mode — log in two taps while you train</button>",
+"<button class=\"repeat\" id=\"rep\">↺ كرر آخر جلسة — عبّي كل الأوزان وعدّل اللي تغيّر</button>":"<button class=\"repeat\" id=\"rep\">↺ Repeat last session — fills every weight, just change what moved</button>",
+"\" title=\"الجهد\">":"\" title=\"Effort\">",
+"جهد":"RPE",
+"\" title=\"علّم المجموعة\">":"\" title=\"Mark set\">",
+"\" data-f=\"w\"><span class=\"unit\">كجم</span></div>":"\" data-f=\"w\"><span class=\"unit\">kg</span></div>",
+"\" data-f=\"r\"><span class=\"unit\">عدة</span></div>":"\" data-f=\"r\"><span class=\"unit\">reps</span></div>",
+"<span class=\"badge\">▲ تقدم</span>":"<span class=\"badge\">▲ Progress</span>",
+"سابق <b>":"Prev <b>",
+"<div class=\"stall\">ثابت على ":["<div class=\"stall\">Stuck at ",1],
+" كجم من ٣ جلسات. جرّب تنزل ١٠٪ وترجع تبني، أو زد مجموعة، أو بدّل التمرين ببديل من قائمة \"؟\".</div>":[" kg for 3 sessions. Try dropping 10% and building back up, or add a set, or swap the exercise for an alternative from the \"?\" list.</div>",1],
+"<button class=\"sugg\" style=\"cursor:default\">تمرين بوزن الجسم — سجّل العدات فقط</button>":["<button class=\"sugg\" style=\"cursor:default\">Bodyweight move — just log the reps</button>",1],
+"بداية مقترحة من تحليل جسمك":"Suggested start from your body stats",
+" (قياس قديم)":" (old measurement)",
+"أكملت النطاق لكن بجهد أقصى — ثبّت على ":["You hit the rep range but at max effort — stay at ",1],
+"أكملت النطاق بجهد مريح — اقفز إلى ":["Hit the range at an easy effort — jump to ",1],
+"أكملت النطاق آخر مرة — جرّب ":["Hit the rep range last time — try ",1],
+"استمر على ":["stay at ",1],
+" كجم":" kg",
+" للدمبل الواحد":[" per dumbbell",1],
+" · اضغط للتعبئة</button>":" · tap to fill</button>",
+"\" title=\"أعلى\"":"\" title=\"Move up\"",
+"\" title=\"أسفل\"":"\" title=\"Down\"",
+"\" title=\"بدّل التمرين\">⇄</button>":"\" title=\"Swap exercise\">⇄</button>",
+"\" title=\"حذف التمرين\" style=\"color:#C08585\">✕</button>":"\" title=\"Delete exercise\" style=\"color:#C08585\">✕</button>",
+"\" title=\"الطريقة الصحيحة\">؟</button>":"\" title=\"How to do it\">?</button>",
+"<button class=\"icobtn\" data-t=\"1\" title=\"مؤقت راحة\">⏱</button>":"<button class=\"icobtn\" data-t=\"1\" title=\"Rest timer\">⏱</button>",
+"\">+ مجموعة</button>":"\">+ Set</button>",
+"\">− حذف آخر مجموعة</button>":"\">− Remove last set</button>",
+"<button class=\"addex\" id=\"addex\">+ إضافة تمرين لهذا اليوم</button>":"<button class=\"addex\" id=\"addex\">+ Add an exercise to this day</button>",
+"<h2 class=\"sec\">ملاحظة على الجلسة</h2>":"<h2 class=\"sec\">Session note</h2>",
+"<textarea class=\"noteBox\" id=\"note\" placeholder=\"كيف كان إحساسك؟ نومك، طاقتك، أي ألم أو ملاحظة تنفعك بعدين…\">":["<textarea class=\"noteBox\" id=\"note\" placeholder=\"How did it feel? Sleep, energy, any pain or note that helps you later…\">",1],
+"✓ تم — إغلاق التعديل":"✓ Done — close editing",
+"✎ تعديل التمارين — إضافة وحذف وترتيب":"✎ Edit exercises — add, remove, reorder",
+"حذف ":["Delete ",1],
+" من هذا اليوم؟":[" from this day?",1],
+"كم مجموعة؟":["How many sets?",1],
+"نطاق التكرارات؟":"Rep range?",
+"لازم تبقى مجموعة واحدة على الأقل.":["You need at least one set.",1],
+"حذف المجموعة ":["Delete set ",1],
+"؟ فيها ":["? It has ",1],
+"٪ عن آخر مرة":"% vs last time",
+"<div class=\"note\" style=\"margin-top:0\">كم كان الجهد في هذي المجموعة؟ الرقم يقيس كم عدة بقيت عندك، ":["<div class=\"note\" style=\"margin-top:0\">How hard was this set? The number is how many reps you had left, ",1],
+"ويدخل في قرار زيادة الوزن المرة الجاية.</div>":["and it feeds the call on going heavier next time.</div>",1],
+"<button class=\"btn ghostb\" id=\"rclr\" style=\"width:100%;margin-top:14px\">امسح الجهد</button>":"<button class=\"btn ghostb\" id=\"rclr\" style=\"width:100%;margin-top:14px\">Clear effort</button>",
+"جهد المجموعة ":"Effort for set ",
+"<figcaption>أمامي</figcaption></figure>":"<figcaption>Front</figcaption></figure>",
+"<figcaption>خلفي</figcaption></figure></div>":"<figcaption>Back</figcaption></figure></div>",
+"<div class=\"meta\"><div class=\"chip\">الجهاز: <b>":"<div class=\"meta\"><div class=\"chip\">Equipment: <b>",
+"<div class=\"gh\">الطريقة الصحيحة</div><ol class=\"steps\">":"<div class=\"gh\">How to do it</div><ol class=\"steps\">",
+"<div class=\"gh\">أخطاء شائعة</div><ul class=\"mis\">":"<div class=\"gh\">Common mistakes</div><ul class=\"mis\">",
+"<div class=\"gh\">بدائل — لو الجهاز مشغول أو ما يناسبك</div>":"<div class=\"gh\">Alternatives — if the machine is taken or not for you</div>",
+"<div class=\"note\" style=\"margin:0 0 8px\">اضغط أي بديل ليحل محل التمرين في برنامج هذا اليوم.</div>":["<div class=\"note\" style=\"margin:0 0 8px\">Tap any alternative to put it in place of this exercise in today's plan.</div>",1],
+"<div class=\"no\">غير متوفر عندك: ":"<div class=\"no\">Missing: ",
+"<button class=\"addex\" id=\"more\" style=\"margin-top:4px\">أو اختر بديلاً آخر بنفس العضلة…</button>":"<button class=\"addex\" id=\"more\" style=\"margin-top:4px\">Or choose another swap for the same muscle…</button>",
+" تمرين طريقة صحيحة":" exercise proper form",
+"\">▶ شوف الحركة بالفيديو</a>":"\">▶ Watch the movement on video</a>",
+"استبدال «":["Replace '",1],
+"» بـ «":["' with '",1],
+"» في هذا اليوم؟":["' in this day?",1],
+"<input class=\"search\" id=\"sq\" placeholder=\"ابحث…\"><div id=\"sres\"></div>":"<input class=\"search\" id=\"sq\" placeholder=\"Search…\"><div id=\"sres\"></div>",
+"بديل لـ ":"Alternative to ",
+"<div class=\"no\">غير متوفر: ":"<div class=\"no\">Not available: ",
+"<div class=\"empty\">ما فيه نتيجة بالأجهزة المتوفرة عندك.</div>":["<div class=\"empty\">No results with the gear you have.</div>",1],
+"أخفِ غير المتوفر":"Hide unavailable",
+" تمرين مخفي — جهازه غير متوفر عندك · أظهرها":" exercises hidden — you don't have the equipment · show them",
+"<input class=\"search\" id=\"q\" placeholder=\"ابحث بالاسم أو الجهاز أو العضلة…\"><div id=\"res\"></div>":"<input class=\"search\" id=\"q\" placeholder=\"Search by name, equipment or muscle…\"><div id=\"res\"></div>",
+"<button class=\"btn ghostb\" id=\"custom\" style=\"width:100%;margin-top:8px\">تمرين مخصص (اكتب اسمه بنفسك)</button>":"<button class=\"btn ghostb\" id=\"custom\" style=\"width:100%;margin-top:8px\">Custom exercise (type the name yourself)</button>",
+"إضافة تمرين":"Add exercise",
+"اسم التمرين؟":"Exercise name?",
+" تمارين</div></div><div class=\"c\"></div>":" exercises</div></div><div class=\"c\"></div>",
+"\">نسخ</button>":"\">Copy</button>",
+"<button class=\"addex\" id=\"newday\" style=\"margin-top:14px\">+ إضافة يوم تمرين جديد</button>":"<button class=\"addex\" id=\"newday\" style=\"margin-top:14px\">+ Add a new workout day</button>",
+"<div class=\"note\">ترتيب الأيام هنا هو نفسه ترتيبها في الشريط العلوي. حذف يوم يشيله من البرنامج، وسجلاته القديمة تبقى محفوظة لو رجعته باسم جديد لاحقاً ما بتظهر.</div>":["<div class=\"note\">The order here is the same order you see in the top bar. Deleting a day removes it from the plan; its old records stay saved, but adding the day back later under a new name will not bring them back.</div>",1],
+"أيام البرنامج":"Program days",
+"اسم اليوم؟":"Day name?",
+"اسم النسخة؟":["Name for the copy?",1],
+" ٢":" 2",
+"لازم يبقى يوم واحد على الأقل.":["You need at least one day.",1],
+"حذف يوم «":["Delete day '",1],
+"» من البرنامج؟":["' from the program?",1],
+"اسم اليوم؟ (مثلاً: بطن وكارديو)":["Day name? (e.g. Abs & cardio)",1],
+"<div class=\"empty\">ما فيه تمارين.</div>":["<div class=\"empty\">No exercises yet.</div>",1],
+"<h2 class=\"sec\">تطور التمرين</h2><select class=\"sel\" id=\"ps\">":"<h2 class=\"sec\">Exercise progress</h2><select class=\"sel\" id=\"ps\">",
+" — سابق":" — past",
+"\">أثقل وزن</button>":"\">Top weight</button>",
+"\">أقصى قوة تقديرية</button></div>":"\">Estimated 1RM</button></div>",
+"<div class=\"empty\">ما فيه بيانات لهذا التمرين بعد.</div>":["<div class=\"empty\">No data for this exercise yet.</div>",1],
+"</div><div class=\"lbl\">كجم — ":"</div><div class=\"lbl\">kg — ",
+"أعلى رقم وصلته":"best you've hit",
+"أقصى قوة تقديرية (١ عدة)":"Estimated 1RM (1 rep)",
+"<div class=\"note\">تقدير رياضي من الوزن والعدات (معادلة إيبلي). يفيد لمقارنة جلساتك ببعض حتى لو تغيّر عدد التكرارات — لكنه تقدير، لا تختبر رقم عدة واحدة بناءً عليه بدون مساعد.</div>":["<div class=\"note\">A math estimate from weight and reps (Epley formula). Good for comparing your sessions even if the rep count changes — but it is an estimate, so don’t test a true 1-rep max off it without a spotter.</div>",1],
+"آخر ٧ أيام":"Last 7 days",
+"آخر ٣٠ يوم":"Last 30 days",
+"آخر ٣ شهور":"Last 3 months",
+"كل السجل":"All time",
+"<h2 class=\"sec\">مجموعات كل عضلة — ":"<h2 class=\"sec\">Sets per muscle — ",
+"٧ أيام":"7 days",
+"٣٠ يوم":"30 days",
+"٣ شهور":"3 months",
+"الكل":"All",
+"<div class=\"empty\">سجّل جلسة وبيبان لك توزيع الحمل على العضلات.</div>":["<div class=\"empty\">Log a session and see how your volume is split across muscles.</div>",1],
+"/أسبوع":"/week",
+" مجموعة":" sets",
+"الرقم الأول إجمالي المجموعات خلال ":["First number is total sets over ",1],
+"، والثاني معدلها الأسبوعي على مدى ":[", the second is the weekly average over ",1],
+" أسبوع — وهو الرقم اللي تقارنه بالمرجع. ":[" weeks — the number you compare against the benchmark. ",1],
+"المدى المعتاد للنمو تقريباً ١٠–٢٠ مجموعة فعّالة للعضلة أسبوعياً. الرمادي = أقل من ٨ (عضلة مهملة)، الأحمر = فوق ٢٢ (حمل زائد قد يعيق الاستشفاء). التمرين يحسب مجموعة كاملة لعضلته الأساسية ونص مجموعة للمساعدة.</div>":["The usual growth range is about 10–20 effective sets per muscle per week. Grey = under 8 (muscle being neglected), red = over 22 (too much volume, can slow recovery). An exercise counts as a full set for its main muscle and half a set for the helpers.</div>",1],
+"<h2 class=\"sec\">سجل الجلسات</h2>":"<h2 class=\"sec\">Session log</h2>",
+"<div class=\"empty\">ما فيه جلسات محفوظة بعد.</div>":["<div class=\"empty\">No sessions saved yet.</div>",1],
+" مجموعة · ":" sets · ",
+" كجم</span></button>":" kg</span></button>",
+"\" title=\"حذف الجلسة\" style=\"color:#C08585;margin-right:8px\">✕</button></div>":"\" title=\"Delete session\" style=\"color:#C08585;margin-right:8px\">✕</button></div>",
+"حذف جلسة ":["Delete session ",1],
+" بالكامل؟ ما يمكن التراجع.":[" entirely? This cannot be undone.",1],
+"اليوم":"Today",
+"أمس":"Yesterday",
+"قبل ":"",
+" يوم":" days ago",
+" أسابيع":" weeks ago",
+" شهور":" months ago",
+"<div class=\"note\">قراءة واحدة فقط — يحتاج قراءتين على الأقل لرسم الاتجاه.</div>":["<div class=\"note\">Only one reading — needs at least two to draw a trend.</div>",1],
+" يوم</span><span>":" days</span><span>",
+"<h2 class=\"sec\">قياس اليوم — ":"<h2 class=\"sec\">Today’s measurement — ",
+"<button class=\"scan\" id=\"scan\">📷 ارفع صورة تقرير InBody أو ملف — يقرأه ويعبّي الخانات</button>":"<button class=\"scan\" id=\"scan\">📷 Upload an InBody report photo or file — it reads it and fills the fields</button>",
+"<div class=\"note\" id=\"scanNote\">يشتغل داخل تطبيق Claude. لو ركّبت الملف على جوالك كتطبيق مستقل، عبّي الخانات يدوياً.</div>":["<div class=\"note\" id=\"scanNote\">Works inside the Claude app. If you installed the file on your phone as a standalone app, fill the fields in by hand.</div>",1],
+"<div class=\"f\"><label>الوزن (كجم)</label><input type=\"number\" inputmode=\"decimal\" step=\"0.1\" id=\"bw_w\" placeholder=\"—\" value=\"":"<div class=\"f\"><label>Weight (kg)</label><input type=\"number\" inputmode=\"decimal\" step=\"0.1\" id=\"bw_w\" placeholder=\"—\" value=\"",
+"<div class=\"f\"><label>نسبة الدهون ٪</label><input type=\"number\" inputmode=\"decimal\" step=\"0.1\" id=\"bw_f\" placeholder=\"—\" value=\"":"<div class=\"f\"><label>Body fat %</label><input type=\"number\" inputmode=\"decimal\" step=\"0.1\" id=\"bw_f\" placeholder=\"—\" value=\"",
+"<div class=\"f\"><label>كتلة العضلات (كجم)</label><input type=\"number\" inputmode=\"decimal\" step=\"0.1\" id=\"bw_m\" placeholder=\"—\" value=\"":"<div class=\"f\"><label>Muscle mass (kg)</label><input type=\"number\" inputmode=\"decimal\" step=\"0.1\" id=\"bw_m\" placeholder=\"—\" value=\"",
+"<div class=\"f\"><label>محيط الخصر (سم)</label><input type=\"number\" inputmode=\"decimal\" step=\"0.5\" id=\"bw_c\" placeholder=\"—\" value=\"":"<div class=\"f\"><label>Waist (cm)</label><input type=\"number\" inputmode=\"decimal\" step=\"0.5\" id=\"bw_c\" placeholder=\"—\" value=\"",
+"<div class=\"f calc\"><label>كتلة الدهون</label><div class=\"v\" id=\"cFat\">":"<div class=\"f calc\"><label>Fat mass</label><div class=\"v\" id=\"cFat\">",
+"<div class=\"f calc\"><label>الكتلة الخالية من الدهون</label><div class=\"v\" id=\"cLean\">":"<div class=\"f calc\"><label>Lean mass</label><div class=\"v\" id=\"cLean\">",
+"<button class=\"btn\" id=\"bwsave\">حفظ القياس</button>":"<button class=\"btn\" id=\"bwsave\">Save measurement</button>",
+"<button class=\"btn ghostb\" id=\"bwdel\">مسح قياس اليوم</button>":"<button class=\"btn ghostb\" id=\"bwdel\">Clear the measurement for today</button>",
+"<h2 class=\"sec\">مستواك في التمرين</h2><div class=\"seg\" id=\"lvl\">":"<h2 class=\"sec\">Your training level</h2><div class=\"seg\" id=\"lvl\">",
+"\">ذكر</button>":"\">Male</button>",
+"\">أنثى</button></div>":"\">Female</button></div>",
+"<div class=\"warn\">الكتلة الخالية من الدهون: <b>":"<div class=\"warn\">Lean mass: <b>",
+" كجم</b> (محسوبة من ":[" kg</b> (calculated from ",1],
+" · آخر قياس ":[" · last measured ",1],
+"<br><b style=\"color:#E0A6A6\">القياس قديم — أعد القياس قبل ما تعتمد على وزن البداية المقترح.</b>":["<br><b style=\"color:#E0A6A6\">This measurement is old — measure again before you rely on the suggested starting weight.</b>",1],
+"<br>منها يُشتق وزن البداية المقترح لكل تمرين في صفحة التمرين. هذا تقدير مبدئي — سخّن أولاً، وابدأ أخف من المقترح لو حسيت الحركة غير مضبوطة. المرجع الحقيقي هو أن تكمل النطاق بأداء نظيف.</div>":["<br>Your suggested starting weight for each exercise comes from it, over on the Workout tab. This is a rough estimate — warm up first, and start lighter than suggested if the movement feels off. The real gauge is finishing the rep range with clean form.</div>",1],
+"<div class=\"note\">سجّل وزنك ونسبة الدهون عشان يحسب لك وزن البداية المقترح لكل تمرين.</div>":["<div class=\"note\">Log your weight and body fat % so it can work out a suggested starting weight for each exercise.</div>",1],
+"<h2 class=\"sec\">التطور مع الوقت</h2><div class=\"mini\" id=\"mm\">":"<h2 class=\"sec\">Progress over time</h2><div class=\"mini\" id=\"mm\">",
+"\">الوزن</button>":"\">Weight</button>",
+"\">كتلة الدهون</button>":"\">Fat mass</button>",
+"\">العضلات</button></div>":"\">Muscle</button></div>",
+"<div class=\"empty\">ما فيه قراءات لهذا المؤشر بعد.</div>":["<div class=\"empty\">No readings for this metric yet.</div>",1],
+"</div><div class=\"lbl\">كجم — آخر قراءة</div>":"</div><div class=\"lbl\">kg — last reading</div>",
+"بلا تغيير":"no change",
+"<div class=\"warn\">المعدل العام: <b>":["<div class=\"warn\">Overall rate: <b>",1],
+" كجم/شهر</b> على مدى ":[" kg/month</b> over ",1],
+" يوم.<br>":[" days.<br>",1],
+"بين آخر قراءتين (بينهما ":["Between the last two readings (",1],
+" يوم): <b>":[" days): <b>",1],
+" كجم/شهر</b>.</div>":[" kg/month</b>.</div>",1],
+"<h2 class=\"sec\">القراءات والفترات بينها</h2>":"<h2 class=\"sec\">Readings and the gaps between them</h2>",
+" كجم</div>":" kg</div>",
+"أول قراءة":"First reading",
+"<div class=\"note\">الرسم يوزّع القراءات حسب تاريخها الحقيقي، فالفجوة الطويلة تبين طويلة. القياس مرة كل ٢–٤ أسابيع كافي — التغير الحقيقي في تكوين الجسم أبطأ من أن يظهر أسبوعياً، والقراءات المتقاربة تعكس الماء والطعام أكثر من الدهون والعضل.</div>":["<div class=\"note\">The chart spaces readings by their real dates, so a long gap looks long. Measuring once every 2–4 weeks is enough — real body-composition change is slower than that, and readings close together mostly show water and food, not fat and muscle.</div>",1],
+"اكتب الوزن على الأقل.":["Enter at least your weight.",1],
+"مسح قياس اليوم؟":["Clear today's measurement?",1],
+"جاري القراءة…":"Reading…",
+"📷 ارفع صورة تقرير InBody أو ملف":"📷 Upload an InBody report photo or file",
+"ما قدرت أقرأ الملف.":["Couldn't read the file.",1],
+"هذا تقرير تحليل تكوين الجسم (InBody أو ميزان ذكي). استخرج القيم وأعد JSON فقط بدون أي نص آخر وبدون علامات كود، بالمفاتيح التالية: ":["This is a body composition report (InBody or a smart scale). Extract the values and return JSON only, with no other text and no code fences, using these keys: ",1],
+"{\"date\":\"YYYY-MM-DD أو null\",\"weight\":رقم كجم أو null,\"fatPercent\":رقم أو null,\"muscleMass\":رقم كجم أو null,\"waist\":رقم سم أو null}. ":["{\"date\":\"YYYY-MM-DD or null\",\"weight\":number kg or null,\"fatPercent\":number or null,\"muscleMass\":number kg or null,\"waist\":number cm or null}. ",1],
+"muscleMass هي كتلة العضلات الهيكلية SMM. حوّل الباوند إلى كيلو. لو القيمة غير موجودة ضع null.":["muscleMass is skeletal muscle mass SMM. Convert pounds to kilos. If the value is missing put null.",1],
+"تمت القراءة — راجع الأرقام واضغط حفظ القياس.":["Done reading — check the numbers and tap Save measurement.",1],
+"ما قدرت أقرأ التقرير هنا. الفحص التلقائي يشتغل داخل تطبيق Claude فقط — عبّي الخانات يدوياً.":["Couldn't read the report here. Auto-scan only works inside the Claude app — fill the fields in by hand.",1],
+"<h2 class=\"sec\">مؤقت الراحة</h2>":"<h2 class=\"sec\">Rest timer</h2>",
+"<div class=\"setrow\"><div class=\"l\">مدة الراحة</div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Rest length</div><div class=\"c\"></div>",
+"\"> <span style=\"font-size:12px;color:var(--dim)\">ثانية</span></div>":"\"> <span style=\"font-size:12px;color:var(--dim)\">sec</span></div>",
+"<div class=\"setrow\"><div class=\"l\">يبدأ تلقائياً بعد تسجيل العدات</div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Start automatically after logging reps</div><div class=\"c\"></div>",
+"<div class=\"setrow\"><div class=\"l\">انتقال تلقائي للمجموعة التالية بعد الراحة<div style=\"font-size:11px;color:var(--dim)\">في وضع التركيز</div></div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Auto-advance to the next set after rest<div style=\"font-size:11px;color:var(--dim)\">In Focus mode</div></div><div class=\"c\"></div>",
+"<div class=\"setrow\"><div class=\"l\">صوت التنبيه</div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Alert sound</div><div class=\"c\"></div>",
+"<h2 class=\"sec\">التسخين والجهد</h2>":"<h2 class=\"sec\">Warm-up and effort</h2>",
+"<div class=\"setrow\"><div class=\"l\">مجموعات التسخين":"<div class=\"setrow\"><div class=\"l\">Warm-up sets",
+"<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">سلّم محسوب من وزن العمل، يظهر قبل المجموعة الأولى. لا يدخل في الحمل ولا في مجموعات العضلة.</div></div>":["<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">A ladder worked out from your working weight, shown before the first set. Does not count toward volume or muscle sets.</div></div>",1],
+"<div class=\"setrow\"><div class=\"l\">تسجيل الجهد (RPE)":"<div class=\"setrow\"><div class=\"l\">Log effort (RPE)",
+"<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">رقم من ٦ إلى ١٠ لكل مجموعة يقيس كم عدة بقيت عندك. لو أكملت النطاق بجهد ٧ أو أقل يقترح قفزة أكبر، ولو ٩.٥ فأعلى ما يقترح زيادة.</div></div>":["<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">A number from 6 to 10 for each set, measuring how many reps you had left. Finish the range at effort 7 or less and it suggests a bigger jump; at 9.5 or more it won't suggest adding weight.</div></div>",1],
+"<h2 class=\"sec\">الأجهزة المتوفرة</h2>":"<h2 class=\"sec\">Available equipment</h2>",
+"<div class=\"setrow\"><div class=\"l\">فلترة التمارين على المتوفر":"<div class=\"setrow\"><div class=\"l\">Filter exercises to available equipment",
+"<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">يخفي من قوائم الإضافة والبدائل كل تمرين يحتاج جهازاً ما عندك. لا يمسّ تمارين برنامجك الحالية.</div></div>":["<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">Hides any exercise that needs gear you don’t have from the add and alternatives lists. Your current plan stays untouched.</div></div>",1],
+"<div class=\"eqh\">جاهز سريع</div><div class=\"eqgrid\">":"<div class=\"eqh\">Quick presets</div><div class=\"eqgrid\">",
+" تمرين من ":[" of ",1],
+" متاح بالأجهزة المختارة. تمارين وزن الجسم متاحة دائماً.</div>":[" available with your selected equipment. Bodyweight exercises are always available.</div>",1],
+"<h2 class=\"sec\">تثبيت التطبيق</h2>":"<h2 class=\"sec\">Install the app</h2>",
+"<div class=\"note\" style=\"margin-top:0\">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>":["<div class=\"note\" style=\"margin-top:0\">Pin it to your home screen and it opens with its own icon, full screen, and works without internet.</div>",1],
+"<button class=\"btn\" id=\"binst\">⬇ تثبيت على الشاشة الرئيسية</button>":"<button class=\"btn\" id=\"binst\">⬇ Add to home screen</button>",
+"<h2 class=\"sec\">تصدير السجل</h2>":"<h2 class=\"sec\">Export log</h2>",
+"<button class=\"btn\" id=\"bxls\">📊 ملف Excel</button>":"<button class=\"btn\" id=\"bxls\">📊 Excel file</button>",
+"<button class=\"btn\" id=\"bpdf\">📄 PDF / طباعة</button>":"<button class=\"btn\" id=\"bpdf\">📄 PDF / Print</button>",
+"<div class=\"note\" style=\"margin-top:2px\">ملف Excel فيه أربع أوراق: الجلسات، قياسات الجسم، الأرقام القياسية، وحجم العضلات. زر PDF يفتح شاشة الطباعة — اختر «حفظ كـ PDF».</div>":["<div class=\"note\" style=\"margin-top:2px\">The Excel file has four sheets: Sessions, Body measurements, Records, and Muscle volume. The PDF button opens the print screen — choose \"Save as PDF\".</div>",1],
+"<h2 class=\"sec\">مكان حفظ بياناتك</h2>":"<h2 class=\"sec\">Where your data is saved</h2>",
+"<div class=\"warn\">بياناتك محفوظة: <b>":["<div class=\"warn\">Your data is stored: <b>",1],
+"</b>.<br>ما تروح لأي خادم ولا يشوفها أحد غيرك. لو مسحت بيانات المتصفح أو غيّرت الجهاز، بتحتاج النسخة الاحتياطية تحت.</div>":["</b>.<br>It never goes to any server and nobody sees it but you. If you clear browser data or switch devices, you'll need the backup below.</div>",1],
+"<h2 class=\"sec\">نسخة احتياطية</h2>":"<h2 class=\"sec\">Backup</h2>",
+"اضغط تصدير، انسخ النص واحفظه في ملاحظاتك أو أرسله لنفسك. للاستعادة الصقه هنا واضغط استيراد.</div>":["Tap Export, copy the text and save it in your notes or send it to yourself. To restore, paste it here and tap Import.</div>",1],
+"<button class=\"btn\" id=\"bexp\">تصدير البيانات</button>":"<button class=\"btn\" id=\"bexp\">Export data</button>",
+"<button class=\"btn ghostb\" id=\"bimp\">استيراد</button>":"<button class=\"btn ghostb\" id=\"bimp\">Import</button>",
+"<button class=\"btn ghostb\" id=\"bcopy\">نسخ</button>":"<button class=\"btn ghostb\" id=\"bcopy\">Copy</button>",
+"<textarea class=\"ta\" id=\"bak\" placeholder=\"بيانات النسخة الاحتياطية تظهر هنا…\"></textarea>":"<textarea class=\"ta\" id=\"bak\" placeholder=\"Your backup data appears here…\"></textarea>",
+"<h2 class=\"sec\">تغيير الجدول</h2>":"<h2 class=\"sec\">Change schedule</h2>",
+"<div class=\"note\" style=\"margin-top:0\">اختيار جدول جاهز يستبدل أيامك وتمارينك الحالية. سجلك القديم يبقى محفوظاً لكن ما يظهر مع الجدول الجديد — صدّر نسخة احتياطية أولاً.</div>":["<div class=\"note\" style=\"margin-top:0\">Picking a ready-made plan replaces your current days and exercises. Your old log stays saved but won't show with the new plan — export a backup first.</div>",1],
+"\" style=\"color:var(--brass);border-color:#4A3B18\">تطبيق</button></div>":"\" style=\"color:var(--brass);border-color:#4A3B18\">Apply</button></div>",
+"تم النسخ":["Copied",1],
+"الصق بيانات النسخة الاحتياطية أولاً.":["Paste your backup data first.",1],
+"النص غير صالح.":["Invalid text.",1],
+"سيستبدل السجل الحالي بالكامل. متأكد؟":["This wipes your whole log and replaces it. Sure?",1],
+"تم الاستيراد.":["Imported.",1],
+"تطبيق «":["Apply '",1],
+"»؟ بيستبدل أيامك وتمارينك الحالية.":["'? It will replace your current days and exercises.",1],
+"نعم":"Yes",
+"الجلسات":"Sessions",
+"قياسات الجسم":"Body measurements",
+"الأرقام القياسية":"Personal records",
+"حجم العضلات":"Muscle volume",
+"التاريخ":"Date",
+"التمرين":"Workout",
+"المجموعة":"Set",
+"الوزن (كجم)":"Weight (kg)",
+"العدات":"Reps",
+"الجهد":"Effort",
+"مكتملة":"Completed",
+"قوة تقديرية":"Est. 1RM",
+"الحمل":"Volume",
+"ملاحظة الجلسة":"Session note",
+"الوزن":"Weight",
+"نسبة الدهون ٪":"Body fat %",
+"محيط الخصر":"Waist",
+"كتلة الدهون":"Fat mass",
+"الكتلة الخالية":"Lean mass",
+"أثقل وزن":"Top weight",
+"أقصى قوة تقديرية":"Estimated 1RM",
+"حجم العضلات (":"Muscle volume (",
+"العضلة":"Muscle",
+"إجمالي المجموعات":"Total sets",
+"معدل أسبوعي":"Weekly average",
+"سجل-التمرين-":"workout-log-",
+"ما قدرت أنزّل الملف هنا. جرّب من متصفح جوالك بعد تركيب التطبيق.":["Couldn't download the file here. Try from your phone browser after installing the app.",1],
+"<h1>سجل التمرين</h1><div class=\"sub\">صادر بتاريخ ":"<h1>Workout log</h1><div class=\"sub\">Exported on ",
+" جلسة مسجلة</div>":" sessions logged</div>",
+"<h2>قياسات الجسم</h2><table><tr><th>التاريخ</th><th>الوزن</th><th>دهون ٪</th>":"<h2>Body measurements</h2><table><tr><th>Date</th><th>Weight</th><th>Fat %</th>",
+"<th>كتلة الدهون</th><th>الكتلة الخالية</th><th>عضلات</th><th>خصر</th></tr>":"<th>Fat mass</th><th>Lean mass</th><th>Muscle</th><th>Waist</th></tr>",
+"<h2>الأرقام القياسية</h2><table><tr><th>التمرين</th><th>أثقل وزن</th><th>العدات</th>":"<h2>Records</h2><table><tr><th>Exercise</th><th>Top weight</th><th>Reps</th>",
+"<th>التاريخ</th><th>قوة تقديرية</th></tr>":"<th>Date</th><th>Est. 1RM</th></tr>",
+"<h2>الجلسات</h2>":"<h2>Sessions</h2>",
+" كجم)</span></div><table>":" kg)</span></div><table>",
+"<tr><th>التمرين</th><th>المجموعات (وزن × عدة)</th></tr>":"<tr><th>Exercise</th><th>Sets (weight × reps)</th></tr>",
+"<a class=\"ytfall\" id=\"ytfall\" target=\"_blank\" rel=\"noopener\" style=\"display:none\">ما ظهر المقطع؟ افتحه في يوتيوب</a>":"<a class=\"ytfall\" id=\"ytfall\" target=\"_blank\" rel=\"noopener\" style=\"display:none\">Video not showing? Open it on YouTube</a>",
+"<button id=\"ytpaste\" style=\"flex:1\">📋 لصق رابط منسوخ</button>":"<button id=\"ytpaste\" style=\"flex:1\">📋 Paste copied link</button>",
+"<button id=\"ytopen\">🔎 افتح يوتيوب</button>":"<button id=\"ytopen\">🔎 Open YouTube</button>",
+"<button id=\"ythide\">إخفاء</button></div>":"<button id=\"ythide\">Hide</button></div>",
+"المشغّل المدمج ما يشتغل والملف مفتوح مباشرة من جهازك — يوتيوب يرفض التضمين بدون رابط موقع ":["The built-in player does not work while the file is opened straight from your device — YouTube blocks embedding without a site link ",1],
+"(الخطأ ١٥٣). ارفع التطبيق على GitHub Pages وافتحه من رابطه، وبيشتغل المقطع هنا داخل الشاشة.":["(error 153). Put the app on GitHub Pages and open it from that link, and the video will play right here inside the app.",1],
+"\">▶ افتح المقطع في يوتيوب الآن</a></div>":"\">▶ Open the video in YouTube now</a></div>",
+"<div class=\"note\" style=\"margin:6px 2px\">افتح يوتيوب، انسخ رابط المقطع أو قائمة التشغيل، وارجع واضغط «لصق رابط منسوخ».</div>":["<div class=\"note\" style=\"margin:6px 2px\">Open YouTube, copy the video or playlist link, come back and tap \"Paste copied link\".</div>",1],
+"<div class=\"frow\"><button id=\"ytshow\">▶ افتح مشغّل يوتيوب داخل الشاشة</button></div>":"<div class=\"frow\"><button id=\"ytshow\">▶ Open the YouTube player here</button></div>",
+"🔒 مقفل":"🔒 Locked",
+"🔓 قفل":"🔓 Lock",
+"حذف «":["Delete '",1],
+"» من قائمتك؟":["' from your list?",1],
+"ما عرفت أقرأ الرابط. تأكد إنه رابط مقطع أو قائمة تشغيل من يوتيوب.":["Couldn’t read that link. Make sure it’s a YouTube video or playlist link.",1],
+"سمِّ هذا المقطع عشان ترجع له بسرعة:":["Name this video so you can get back to it fast:",1],
+"قائمة تشغيل":"Playlist",
+"مقطع ":"Video ",
+"قائمة":"Playlist",
+"مقطع":"Video",
+"الصق رابط يوتيوب هنا:":["Paste the YouTube link here:",1],
+"أضف تمارين لهذا اليوم أولاً.":["Add exercises to this day first.",1],
+"مجموعة ":"Set ",
+" من ":" of ",
+" عدة":" reps",
+"آخر مرة في هذي المجموعة: <b>":"Last time on this set: <b>",
+"بداية مقترحة: ":"Suggested start: ",
+"مقترح: ":"Suggested: ",
+" كجم</b>":" kg</b>",
+"سجّل مجموعتك":"Log your set",
+"<br>أكملت النطاق آخر مرة لكن بجهد أقصى — ثبّت الوزن وحسّن الأداء":["<br>Hit the range last time but at max effort — hold the weight and clean up the reps",1],
+"<br>أكملت النطاق بجهد مريح — تقدر تقفز قفزة أكبر":["<br>Hit the range and it felt easy — you can make a bigger jump",1],
+"<br>أكملت النطاق آخر مرة — زد الوزن لو الأداء نظيف":["<br>You finished the range last time — add weight if the form is clean",1],
+"</div><div class=\"u\">كجم — اضغط للكتابة</div></div>":"</div><div class=\"u\">kg — tap to type</div></div>",
+"</div><div class=\"u\">عدة</div></div>":"</div><div class=\"u\">reps</div></div>",
+"جهد ":"Effort ",
+"الجهد اختياري — اضغط رقماً لو تبي تسجله":["Effort is optional — tap a number if you want to log it",1],
+"<button class=\"fdone\" id=\"fdone\">✓ سجّل المجموعة وابدأ الراحة</button>":"<button class=\"fdone\" id=\"fdone\">✓ Log set and start rest</button>",
+"<div class=\"frow\"><button id=\"fdelset\">حذف هذه المجموعة</button>":"<div class=\"frow\"><button id=\"fdelset\">Delete this set</button>",
+"<button id=\"fskipset\">تخطي المجموعة</button>":"<button id=\"fskipset\">Skip set</button>",
+"<button id=\"fprevx\">التمرين السابق</button><button id=\"fnextx\">التمرين التالي</button></div>":"<button id=\"fprevx\">Previous exercise</button><button id=\"fnextx\">Next exercise</button></div>",
+"انتقال تلقائي بعد الراحة</button>":"Auto-advance after rest</button>",
+"<button id=\"frestlen\">راحة ":"<button id=\"frestlen\">Rest ",
+" ث</button></div>":" sec</button></div>",
+"الوزن بالكجم؟":"Weight in kg?",
+"عدد التكرارات؟":["How many reps?",1],
+"مدة الراحة بالثواني؟":"Rest length in seconds?",
+"التالي: ":"Next: ",
+" — مجموعة ":" — set ",
+"انتهت الراحة — اضغط جاهز":["Rest done — tap Ready",1],
+"خلصت الجلسة":"Session done",
+"<div class=\"fsum\"><div class=\"h\">أحسنت 💪</div>":"<div class=\"fsum\"><div class=\"h\">Nice work 💪</div>",
+"<div style=\"font-size:12px;color:var(--dim);margin-top:4px\">كجم إجمالي الحمل · ":"<div style=\"font-size:12px;color:var(--dim);margin-top:4px\">kg total volume · ",
+" مجموعة</div>":" sets</div>",
+"<button class=\"startf\" id=\"fclose\" style=\"margin-top:24px\">إغلاق ورجوع للسجل</button>":"<button class=\"startf\" id=\"fclose\" style=\"margin-top:24px\">Close and back to log</button>",
+"<button class=\"fdone\" id=\"fagain\" style=\"background:var(--panel);color:var(--chalk);border:1px solid var(--line)\">رجوع للتمارين</button></div>":"<button class=\"fdone\" id=\"fagain\" style=\"background:var(--panel);color:var(--chalk);border:1px solid var(--line)\">Back to exercises</button></div>",
+"من المشاركة":"Shared link"
+};
+
+/* ============ language ============ */
+/* ar = كل شيء عربي · en = everything English · mix = English labels, Arabic explanations.
+   UI values are either "translation" (a label) or ["translation",1] (an explanation).
+   Tables built at load time (MNAMES, EQ, TEMPLATES, DEFAULT, RPETXT…) keep their Arabic
+   text as the key and are translated where they are rendered, never where they are defined. */
+function T(a){
+  var l=cfg.lang||"ar";
+  if(l==="ar"||!a) return a;
+  var e=UI[a]; if(e===undefined) return a;
+  if(typeof e==="string") return e;
+  return (l==="mix"&&e[1])?a:e[0];
+}
+function EN(){ return (cfg.lang||"ar")!=="ar"; }        /* names/labels in English */
+function FULLEN(){ return (cfg.lang||"ar")==="en"; }    /* coaching text in English too */
+function libN(m){ return (EN()&&m&&m.en&&m.en.n)?m.en.n:(m?m.n:""); }
+function libEq(m){ return (EN()&&m&&m.en&&m.en.eq)?m.en.eq:(m?m.eq:""); }
+function libSt(m){ return (FULLEN()&&m&&m.en&&m.en.st)?m.en.st:(m?m.st:[]); }
+function libMi(m){ return (FULLEN()&&m&&m.en&&m.en.mi)?m.en.mi:(m?m.mi:[]); }
+function MN(k){ return T(MNAMES[k]||k); }
+function libMatch(x,f){
+  var q=String(f).toLowerCase();
+  return x.n.indexOf(f)>=0||x.eq.indexOf(f)>=0||
+    (x.en&&(x.en.n.toLowerCase().indexOf(q)>=0||x.en.eq.toLowerCase().indexOf(q)>=0));
+}
+var LANGS=[{k:"ar",n:"عربي"},{k:"en",n:"English"},{k:"mix",n:"EN + عربي"}];
+function applyLang(){
+  var en=FULLEN();
+  document.documentElement.lang = en?"en":"ar";
+  document.documentElement.dir  = en?"ltr":"rtl";
+  /* the few labels that live in static markup rather than inside a render function */
+  var set=function(id,txt){ var e=$(id); if(e) e.textContent=txt; };
+  var b=$("brand");
+  if(b) b.innerHTML = EN() ? 'Gym <span>Log</span>' : 'دفتر <span>التمرين</span>';
+  set("saved",T("محفوظ"));
+  set("n1",T("التمرين")); set("n2",T("تطوري")); set("n3",T("جسمي")); set("n4",T("إعدادات"));
+  set("rlb1",T("راحة")); set("rlb2",T("راحة"));
+  set("rplus",T("+٣٠ ث")); set("fp30",T("+٣٠ ث"));
+  set("rskip",T("تخطي")); set("fskip",T("جاهز الآن"));
+  set("fg",en?"?":"؟");
+  document.title = EN() ? "Gym Log" : "دفتر التمرين";
 }
 
 /* ============ exercise library ============ */
 /* m = muscles highlighted, v = which figure (f/b/both), eq = equipment, inc = weight step */
 var LIB=[
 {id:"bench",n:"بنش برس بار",eq:"بار حديد ومقعد مستوي",eqk:["bar","bench"],m:["chest","delts","tri"],v:"f",inc:2.5,
+ en:{n:"Barbell Bench Press",eq:"Barbell and flat bench",st:["Lie back with your eyes directly under the bar and plant both feet on the floor.", "Pull your shoulder blades together and pin them into the bench, keeping a slight arch in your back.", "Lower the bar under control until it touches about mid-chest, elbows around 45 degrees from your body.", "Press the bar up as you exhale until the arms are straight, without slamming into lockout."],mi:["Bouncing the bar off your chest - it kills the load and beats up your ribcage.", "Flaring the elbows to a full 90 degrees - the number one cause of shoulder pain.", "Lifting your hips off the bench just to get the weight up."]},
  st:["استلقِ وخلّ عينك تحت البار مباشرة، واثبت القدمين على الأرض.","اسحب لوحي الكتف لبعض ولصقهم بالمقعد، وخلّ قوس بسيط بالظهر.","نزّل البار بتحكم لين يلمس منتصف الصدر تقريباً، والكوع بزاوية ٤٥ درجة عن الجسم.","ادفع البار للأعلى مع الزفير حتى تستقيم الذراع بدون قفل عنيف."],
  mi:["تطيير البار على الصدر وارتداده — يضيّع الحمل ويأذي القفص.","فتح الكوع ٩٠ درجة كاملة — أكبر سبب لألم الكتف.","رفع الورك عن المقعد عشان توصل الوزن."],
  al:["db_bench","machine_press","smith_bench"]},
 {id:"inc_db",n:"بنش مائل دمبل",eq:"دمبل ومقعد مائل ٣٠°",eqk:["db","bench_inc"],m:["chest","delts"],v:"f",inc:2,
+ en:{n:"Incline Dumbbell Press",eq:"Dumbbells and 30° incline bench",st:["Set the bench to about 30 degrees - any higher and it works shoulders more than chest.", "Rest the dumbbells on your thighs, lie back, and kick them up to the start position.", "Lower until you feel a stretch in your upper chest, elbows below wrist level.", "Press up and bring the dumbbells together without clanging them."],mi:["Too steep an incline turns the lift into a shoulder press.", "Dropping the weights fast with no control.", "Banging the dumbbells together at the top and losing tension."]},
  st:["اضبط المقعد على ٣٠ درجة تقريباً — أعلى من كذا يشتغل كتف أكثر من صدر.","ارفع الدمبلات على فخذك ثم استلقِ ودفعهم لوضع البداية.","نزّل لين تحس بشد في أعلى الصدر، والمرفق تحت مستوى الرسغ.","ادفع للأعلى وقرّب الدمبلات بدون ما تصكّهم."],
  mi:["ميلان عالي جداً يحوّل التمرين لكتف.","تنزيل سريع بدون تحكم.","صك الدمبلات فوق ويفقد الشد."],
  al:["cable_press","machine_press","db_bench"]},
 {id:"fly",n:"تفتيح كيبل",eq:"جهاز كيبل بكرتين",eqk:["cable"],m:["chest"],v:"f",inc:2.5,
+ en:{n:"Cable Fly",eq:"Cable machine, two pulleys",st:["Set the pulleys at shoulder height or slightly above and grab the handles.", "Step forward with a slight lean in the torso, elbows bent and locked at that angle.", "Bring your hands together in front of your chest in an arc and squeeze for a second.", "Return slowly until you feel the stretch - don't open any wider."],mi:["Bending and straightening the elbows - that makes it a triceps pressdown, not a fly.", "Going too heavy so the whole body swings.", "Opening the arms too far and stressing the shoulder joint."]},
  st:["اضبط البكرات على مستوى الكتف أو أعلى شوي، وامسك المقابض.","خطوة للأمام وميل بسيط بالجذع، والكوع مثني ثابت.","اجمع يديك قدام صدرك بحركة قوس واعصر ثانية.","ارجع ببطء لين تحس بالشد وما توسع أكثر."],
  mi:["ثني وفرد الكوع — يصير ضغط ترايسبس مو تفتيح.","وزن ثقيل يخلي الحركة رجرجة بالجسم.","توسيع الذراع أكثر من اللازم ويضغط مفصل الكتف."],
  al:["db_fly","pec_deck","cable_press"]},
 {id:"cgbp",n:"بنش قبضة ضيقة",eq:"بار حديد ومقعد مستوي",eqk:["bar","bench"],m:["tri","chest"],v:"both",inc:2.5,
+ en:{n:"Close-Grip Bench Press",eq:"Barbell and flat bench",st:["Grip the bar about shoulder width - no narrower, or you'll hurt your wrists.", "Lower the bar to your lower chest with the elbows tucked in tight.", "Press up, focusing on the triceps."],mi:["Taking the grip narrower than it needs to be.", "Flaring the elbows out - it turns back into a chest press.", "Letting the wrists bend backward."]},
  st:["امسك البار بعرض الكتف تقريباً — مو أضيق، عشان ما تأذي الرسغ.","نزّل البار لأسفل الصدر والكوع ملزوق بالجسم.","ادفع للأعلى بتركيز على عضلة الترايسبس."],
  mi:["تضييق القبضة أكثر من اللازم.","فتح الكوع للجوانب ويرجع تمرين صدر.","تقويس الرسغ للخلف."],
  al:["dips","skull","tri_bar"]},
 {id:"tri_rope",n:"ترايسبس حبل كيبل",eq:"كيبل علوي مع حبل",eqk:["cable"],m:["tri"],v:"b",inc:2.5,
+ en:{n:"Rope Triceps Pushdown",eq:"High cable with rope attachment",st:["Set the pulley high, grab the rope, and stand solid with a slight forward lean.", "Keep your elbows pinned to your sides and still - the movement is forearms only.", "Extend down and split the rope apart at the bottom, then squeeze.", "Return slowly without letting the elbows ride up."],mi:["Rocking the elbows forward and back - it takes the load off the triceps.", "Leaning your bodyweight into every rep.", "Not fully straightening the arms at the bottom."]},
  st:["ثبّت البكرة عالياً وامسك الحبل، وقف بثبات وميل بسيط للأمام.","الكوع ملزوق بجنبك وثابت — الحركة من الساعد فقط.","افرد للأسفل وافتح الحبل بالنهاية واعصر.","ارجع ببطء بدون ما يرتفع الكوع."],
  mi:["تحريك الكوع للأمام والخلف — يشيل الحمل عن الترايسبس.","استخدام ثقل الجسم بالانحناء مع كل عدة.","عدم فرد الذراع كامل بالنهاية."],
  al:["tri_bar","oh_tri","skull"]},
 {id:"tri_fr",n:"ترايسبس فرنسي دمبل",eq:"دمبل واحد أو بار EZ",eqk:["db|ez"],m:["tri"],v:"b",inc:2,
+ en:{n:"Overhead Dumbbell Triceps Extension",eq:"One dumbbell or an EZ bar",st:["Hold the dumbbell with both hands overhead, arms fully extended.", "Lower it behind your head by bending only the elbows, upper arms locked vertical.", "Go down until you feel a full stretch, then squeeze back up."],mi:["Letting the upper arms move with the weight.", "Going too heavy and grinding the elbow joint.", "Flaring the elbows out to the sides."]},
  st:["امسك الدمبل بيدين فوق راسك والذراع ممدودة.","نزّل خلف الراس بثني الكوع فقط، والعضد ثابت عمودي.","انزل لين تحس بشد كامل ثم ارفع بالعصر."],
  mi:["تحريك العضد مع الحركة.","وزن ثقيل يضغط على مفصل الكوع.","فتح الكوع للجوانب."],
  al:["skull","oh_tri","tri_rope"]},
 {id:"lat_pd",n:"سحب علوي واسع",eq:"جهاز السحب العلوي",eqk:["m_pd"],m:["lats","bi"],v:"b",inc:5,
+ en:{n:"Wide-Grip Lat Pulldown",eq:"Lat pulldown machine",st:["Set the thigh pad so it locks you down, and grip the bar slightly wider than shoulder width.", "Chest up and a slight lean back - no swinging.", "Pull the bar to your upper chest by driving your elbows down and back.", "Return slowly until you feel a full stretch in your back."],mi:["Pulling behind the neck - risky for the shoulders with no extra benefit.", "Swinging the body to move more weight.", "Pulling with your hands instead of thinking about the elbows."]},
  st:["اضبط وسادة الفخذ لين تثبتك، وامسك البار أوسع من الكتف شوي.","صدرك مرفوع وميل خفيف للخلف — لا تتأرجح.","اسحب البار لأعلى الصدر بقيادة المرفق للأسفل والخلف.","ارجع ببطء لين تحس بتمدد كامل بالظهر."],
  mi:["السحب خلف الرقبة — خطر على الكتف بلا فائدة إضافية.","التأرجح بالجسم لسحب وزن أكبر.","السحب باليدين بدل ما تفكر بالمرفق."],
  al:["assist_pull","close_pd","seat_row"]},
 {id:"bb_row",n:"تجديف بار منحني",eq:"بار حديد",eqk:["bar"],m:["lats","traps","lowback","bi"],v:"b",inc:5,
+ en:{n:"Bent-Over Barbell Row",eq:"Barbell",st:["Stand hip-width, soft bend in the knees, and hinge from the hips until your torso is at 45 degrees.", "Keep your back flat and your eyes on the floor in front of you.", "Pull the bar to your lower abs while squeezing the shoulder blades together.", "Lower under control until the arms are straight."],mi:["Rounding the back - the most dangerous thing in this lift.", "Standing up a little more with every rep.", "Pulling the bar to your chest instead of your stomach."]},
  st:["قف بعرض الورك، ثنِ الركبة بسيط وميل من الورك لين يصير الجذع ٤٥ درجة.","الظهر مستقيم والنظر للأرض قدامك.","اسحب البار لأسفل البطن مع تقريب لوحي الكتف.","نزّل بتحكم لين تفرد الذراع."],
  mi:["تقويس الظهر للأسفل — أخطر شي في التمرين.","الوقوف تدريجياً مع كل عدة.","سحب البار للصدر بدل البطن."],
  al:["db_row","tbar","chest_row"]},
 {id:"seat_row",n:"تجديف كيبل جالس",eq:"جهاز تجديف كيبل",eqk:["cable"],m:["lats","traps"],v:"b",inc:5,
+ en:{n:"Seated Cable Row",eq:"Seated cable row machine",st:["Sit with a slight bend in the knees and your feet planted on the platform.", "Keep your back straight and chest up.", "Pull the handle to your stomach and squeeze the shoulder blades for a second.", "Come forward under control, letting the back stretch without rounding."],mi:["Rocking back and forth through a big range - it turns into a lower-back exercise.", "Shrugging your shoulders to your ears as you pull.", "Letting the weight yank you forward."]},
  st:["اجلس والركبة مثنية بسيط والقدم ثابتة على المسند.","الظهر مستقيم والصدر مرفوع.","اسحب المقبض لبطنك واعصر لوحي الكتف ثانية.","ارجع للأمام بتحكم مع تمدد الظهر بدون تقويس."],
  mi:["الميل للخلف والأمام بحركة كبيرة — يشتغل ظهر سفلي.","رفع الكتف للأذن أثناء السحب.","ترك الوزن يسحبك بسرعة للأمام."],
  al:["machine_row","chest_row","bb_row"]},
 {id:"pullover",n:"سحب ذراع مستقيمة",eq:"كيبل علوي مع بار",eqk:["cable"],m:["lats"],v:"b",inc:2.5,
+ en:{n:"Straight-Arm Pulldown",eq:"High cable with straight bar",st:["Stand facing the high cable, grip the bar at shoulder width with your arms extended.", "Hinge slightly forward from the hips.", "Sweep the bar down in an arc to your thighs, arms straight the whole time.", "Return to the top slowly."],mi:["Bending the elbows - it turns into a triceps exercise.", "Using too much weight and wrecking the bar path.", "Moving the torso along with the weight."]},
  st:["قف قدام الكيبل العلوي وامسك البار بعرض الكتف والذراع ممدودة.","ميل بسيط للأمام من الورك.","انزل بالبار قوس لين يوصل فخذك، والذراع مفرودة طول الوقت.","ارجع للأعلى ببطء."],
  mi:["ثني الكوع — يتحول لتمرين ترايسبس.","استخدام وزن ثقيل يخرب المسار.","تحريك الجذع مع الحركة."],
  al:["db_pullover","lat_pd"]},
 {id:"bb_curl",n:"بايسبس بار Z",eq:"بار EZ",eqk:["ez"],m:["bi","fore"],v:"f",inc:2.5,
+ en:{n:"EZ-Bar Curl",eq:"EZ bar",st:["Stand shoulder-width and grip the bar on the angled sections, elbows at your sides.", "Curl the bar up by bending only the elbows and squeeze at the top.", "Lower slowly (2-3 seconds) until the arms are fully straight."],mi:["Letting the elbows drift forward as you curl.", "Swinging with the back - a sign the weight is too heavy.", "Dropping the weight fast, when the lowering is the part that builds the most."]},
  st:["قف بعرض الكتف وامسك البار من الزوايا المائلة، الكوع بجنبك.","ارفع البار للأعلى بثني الكوع فقط واعصر بالأعلى.","نزّل ببطء (٢-٣ ثواني) لين تفرد كامل."],
  mi:["تحريك الكوع للأمام مع الرفع.","التأرجح بالظهر — علامة على وزن زايد.","التنزيل بسرعة وهو الجزء الأهم للنمو."],
  al:["db_curl","preacher","cable_curl"]},
 {id:"hammer",n:"مطرقة دمبل",eq:"دمبلات",eqk:["db"],m:["bi","fore"],v:"f",inc:2,
+ en:{n:"Dumbbell Hammer Curl",eq:"Dumbbells",st:["Hold the dumbbells with a neutral grip (thumbs up) and keep it that way the whole movement.", "Curl alternating or both together, elbows fixed at your sides.", "Lower slowly until the arms are straight."],mi:["Rotating the wrist during the curl.", "Using the shoulders to swing the weight up.", "Stopping short of full extension."]},
  st:["امسك الدمبلات والقبضة عمودية (الإبهام لفوق) وثابتة كذا طول الحركة.","ارفع بالتناوب أو معاً، والكوع ثابت بجنبك.","نزّل ببطء لين تفرد الذراع."],
  mi:["لف الرسغ أثناء الرفع.","استخدام الكتف لرفع الوزن.","التوقف قبل الفرد الكامل."],
  al:["db_curl","cable_curl"]},
 {id:"squat",n:"سكوات بار",eq:"قفص سكوات وبار",eqk:["bar","rack"],m:["quads","glutes","lowback"],v:"both",inc:5,
+ en:{n:"Barbell Back Squat",eq:"Squat rack and barbell",st:["Bar on your upper back (not on your neck), feet shoulder-width, toes turned out slightly.", "Take a breath and brace your abs, then descend by pushing your hips back and knees out.", "Go down until your thighs are parallel to the floor or lower, depending on your mobility.", "Drive up through your heels as you exhale."],mi:["Knees caving in on the way up.", "Heels coming off the floor.", "Lower back rounding at the bottom (butt wink) from going too deep."]},
  st:["البار على أعلى الظهر (مو على الرقبة)، والقدم بعرض الكتف وأصابع مفتوحة شوي للخارج.","خذ نفس وشدّ بطنك، وانزل بدفع الورك للخلف والركبة للخارج.","انزل لين يصير الفخذ موازي للأرض أو أقل، حسب مرونتك.","ادفع من كعب القدم للأعلى مع الزفير."],
  mi:["دخول الركبة للداخل عند الصعود.","رفع الكعب عن الأرض.","تقويس أسفل الظهر في القاع (butt wink) من النزول الزايد."],
  al:["hack","front_squat","leg_press","smith_squat"]},
 {id:"rdl",n:"رفعة رومانية",eq:"بار حديد أو دمبلات",eqk:["bar|db"],m:["hams","glutes","lowback"],v:"b",inc:5,
+ en:{n:"Romanian Deadlift",eq:"Barbell or dumbbells",st:["Stand with the bar in front of your thighs, knees slightly bent and held there.", "Push your hips back and lower the bar, dragging it close to your legs.", "Go down until you feel a strong stretch in your hamstrings - usually just below the knee.", "Come back up by driving your hips forward and squeezing your glutes."],mi:["Rounding the back - it has to stay perfectly flat.", "Bending the knees like a squat.", "Letting the bar drift away from your body, which loads your lower back."]},
  st:["قف والبار قدام فخذك، الركبة مثنية بسيط وثابتة.","ادفع الورك للخلف ونزّل البار ملاصق لرجلك.","انزل لين تحس بشد قوي بخلفية الفخذ — عادة تحت الركبة بشوي.","ارجع بدفع الورك للأمام وعصر المؤخرة."],
  mi:["تقويس الظهر — يجب يبقى مستقيم تماماً.","ثني الركبة مثل السكوات.","إبعاد البار عن الجسم ويزيد الضغط على الظهر."],
  al:["seat_curl","leg_curl","hyper"]},
 {id:"leg_press",n:"ضغط أرجل",eq:"جهاز ضغط الأرجل",eqk:["m_legpress"],m:["quads","glutes"],v:"f",inc:10,
+ en:{n:"Leg Press",eq:"Leg press machine",st:["Place your feet shoulder-width in the middle of the platform.", "Lower the platform under control until your knees reach 90 degrees or a bit less.", "Press through your heels without locking out the knees at the top."],mi:["Slamming the knees into lockout at the top.", "Lower back lifting off the seat from going too deep.", "Cutting the range way short with heavy weight."]},
  st:["حط القدمين بعرض الكتف بمنتصف اللوح.","نزّل اللوح بتحكم لين تصير الركبة ٩٠ درجة أو أقل شوي.","ادفع من الكعب بدون ما تقفل الركبة بالنهاية."],
  mi:["قفل الركبة بقوة في الأعلى.","رفع أسفل الظهر عن المقعد من النزول الزايد.","نزول قصير جداً بوزن كبير."],
  al:["hack","squat","smith_squat"]},
 {id:"leg_ext",n:"تمديد أرجل",eq:"جهاز تمديد الأرجل",eqk:["m_legext"],m:["quads"],v:"f",inc:5,
+ en:{n:"Leg Extension",eq:"Leg extension machine",st:["Set the pad so it sits right above your instep, with your knee lined up with the machine's pivot.", "Extend the legs fully and squeeze for a second at the top.", "Lower slowly without letting the plates touch down."],mi:["Jerking the weight up and rocking the body.", "A badly set pad that puts pressure on the knee.", "Letting the weight drop with no control."]},
  st:["اضبط المسند لين يصير فوق مشط القدم مباشرة، والركبة محاذية لمحور الجهاز.","افرد الرجل كامل واعصر ثانية بالأعلى.","نزّل ببطء بدون ما تلمس الأوزان بعضها."],
  mi:["اندفاع بالوزن ورجرجة الجسم.","ضبط خاطئ للمسند يضغط الركبة.","تنزيل حر بدون تحكم."],
  al:["leg_press","goblet"]},
 {id:"leg_curl",n:"ثني أرجل مستلقي",eq:"جهاز ثني الأرجل",eqk:["m_legcurl"],m:["hams","calves"],v:"b",inc:5,
+ en:{n:"Lying Leg Curl",eq:"Lying leg curl machine",st:["Lie face down with the pad right above your heels and your hips pressed into the bench.", "Curl your knees hard through the full range and squeeze.", "Lower slowly until you're close to full extension."],mi:["Lifting the hips off the bench to help the weight up.", "Short range of motion.", "Dropping the weight fast."]},
  st:["استلقِ والمسند فوق كعب القدم مباشرة والورك ملاصق للمقعد.","اثنِ الركبة بقوة لأقصى مدى واعصر.","نزّل ببطء لين تقارب الفرد الكامل."],
  mi:["رفع الورك عن المقعد للمساعدة.","نطاق حركة قصير.","تنزيل سريع."],
  al:["seat_curl","rdl"]},
 {id:"calf",n:"سمانة واقف",eq:"جهاز السمانة أو درجة",eqk:[],m:["calves"],v:"b",inc:5,
+ en:{n:"Standing Calf Raise",eq:"Calf raise machine or a step",st:["Put the balls of your feet on the edge with your heels hanging off.", "Drop your heels as low as they go and hold the stretch for a second.", "Rise up as high as you can and hold for a second."],mi:["Fast bouncy reps with no stretch.", "Bending the knees as you rise.", "Way too short a range of motion."]},
  st:["حط مشط القدم على الحافة والكعب معلق.","نزّل الكعب لأقصى أسفل وخذ ثانية بالتمدد.","ارفع لأعلى نقطة ممكنة واثبت ثانية."],
  mi:["حركة نطّية سريعة بدون تمدد.","ثني الركبة أثناء الرفع.","نطاق حركة قصير جداً."],
  al:["seated_calf"]},
 {id:"ohp_db",n:"ضغط كتف دمبل",eq:"دمبلات ومقعد بمسند",eqk:["db","bench_inc"],m:["delts","tri"],v:"f",inc:2,
+ en:{n:"Seated Dumbbell Shoulder Press",eq:"Dumbbells and bench with back support",st:["Sit with your back flat against the pad, dumbbells at ear height, elbows under your wrists.", "Press up along a slight inward arc.", "Lower under control until your elbows reach shoulder level or just below."],mi:["Flaring the elbows straight out to the sides — that grinds the shoulder joint.", "Over-arching the lower back, which turns it into an incline press.", "Clanging the dumbbells together at the top."]},
  st:["اجلس والظهر ملاصق للمسند، والدمبل على مستوى الأذن والكوع تحت الرسغ.","ادفع للأعلى بمسار قوس بسيط للداخل.","نزّل بتحكم لين يوصل الكوع مستوى الكتف أو أقل شوي."],
  mi:["فتح الكوع للجوانب تماماً — ضغط على مفصل الكتف.","تقويس مبالغ فيه بالظهر ويحوله لبنش مائل.","صك الدمبلات فوق."],
  al:["ohp_bb","machine_ohp"]},
 {id:"lat_raise",n:"رفرفة جانبي دمبل",eq:"دمبلات خفيفة",eqk:["db"],m:["delts"],v:"f",inc:1,
+ en:{n:"Dumbbell Lateral Raise",eq:"Light dumbbells",st:["Stand with the dumbbells at your sides, elbows just barely bent.", "Raise out to the sides until you hit shoulder height — no higher.", "Think about pouring out a little water (pinky slightly high).", "Lower slowly and fight the weight on the way down."],mi:["Going too heavy so the traps take over instead of the delts.", "Raising above shoulder level.", "Swinging your body on every rep."]},
  st:["قف والدمبل بجنبك والكوع مثني بسيط جداً.","ارفع للجانبين لين توصل مستوى الكتف — لا أعلى.","تخيّل إنك تصب ماء بسيط (الخنصر أعلى شوي).","نزّل ببطء وقاوم الوزن."],
  mi:["وزن ثقيل يخلي الترابيس تشتغل بدل الكتف.","رفع فوق مستوى الكتف.","التأرجح بالجسم مع كل عدة."],
  al:["cable_lat","machine_ohp"]},
 {id:"rear_del",n:"رفرفة خلفي كيبل",eq:"كيبل بكرتين أو دمبل منحني",eqk:["cable|db"],m:["delts","traps"],v:"b",inc:2.5,
+ en:{n:"Cable Rear Delt Fly",eq:"Cable machine with two pulleys, or dumbbells bent over",st:["Set the pulleys at chest height and grab the handles crossed over.", "Open your arms out to the sides and back, elbows locked in a slight bend.", "Squeeze the rear delts for a second, then return slowly."],mi:["Bending the elbows so it turns into a row.", "Using too much weight so the back takes over from the rear delts.", "Shrugging the shoulders up toward your ears."]},
  st:["اضبط البكرات على مستوى الصدر وامسك متقاطع.","افتح ذراعك للجانبين والخلف والكوع ثابت بثني بسيط.","اعصر خلفية الكتف ثانية ثم ارجع ببطء."],
  mi:["ثني الكوع ويصير التمرين تجديف.","استخدام وزن كبير يشغّل الظهر بدل الكتف الخلفي.","رفع الكتف للأذن."],
  al:["rev_pec","face_pull"]},
 {id:"shrug",n:"شراقات دمبل",eq:"دمبلات ثقيلة",eqk:["db"],m:["traps"],v:"b",inc:2.5,
+ en:{n:"Dumbbell Shrug",eq:"Heavy dumbbells",st:["Stand with the dumbbells at your sides, arms straight.", "Shrug your shoulders straight up toward your ears and hold for a second.", "Lower slowly to a full stretch."],mi:["Rolling the shoulders in circles — useless and can hurt you.", "Bending the elbows to help the weight up.", "Short, fast reps with no squeeze."]},
  st:["قف والدمبلات بجنبك والذراع مفرودة.","ارفع كتفك للأعلى باتجاه أذنك مباشرة واثبت ثانية.","نزّل ببطء لأقصى نقطة."],
  mi:["لف الكتف بحركة دائرية — بلا فائدة وقد تأذي.","ثني الكوع للمساعدة.","حركة قصيرة وسريعة بلا عصر."],
  al:["شراقات بار","شراقات بالجهاز"]},
 {id:"cable_curl",n:"بايسبس كيبل",eq:"كيبل سفلي مع بار",eqk:["cable"],m:["bi"],v:"f",inc:2.5,
+ en:{n:"Cable Bicep Curl",eq:"Low cable pulley with straight bar",st:["Stand facing the low pulley and grab the bar, elbows at your sides.", "Curl by bending the elbows only, until you squeeze the biceps.", "Lower slowly, resisting the constant tension."],mi:["Leaning back as you curl.", "Letting the elbows drift forward.", "Standing too far from the machine."]},
  st:["قف قدام البكرة السفلية وامسك البار، الكوع بجنبك.","ارفع بثني الكوع فقط لين تعصر البايسبس.","نزّل ببطء مع مقاومة الشد المستمر."],
  mi:["الميل للخلف مع الرفع.","تحريك الكوع للأمام.","الوقوف بعيد جداً عن الجهاز."],
  al:["bb_curl","preacher","conc_curl"]},
 {id:"oh_tri",n:"ترايسبس فوق الرأس",eq:"كيبل مع حبل",eqk:["cable"],m:["tri"],v:"b",inc:2.5,
+ en:{n:"Overhead Cable Triceps Extension",eq:"Cable machine with rope",st:["Face away from the cable and hold the rope overhead, elbows pointing up.", "Extend your arms forward and up, and squeeze.", "Return slowly until you feel a full stretch in the triceps."],mi:["Letting the elbows flare out to the sides.", "Moving the upper arm along with the rep.", "Leaning too far forward."]},
  st:["أعطِ ظهرك للكيبل وامسك الحبل فوق راسك، الكوع لأعلى.","افرد ذراعك للأمام والأعلى واعصر.","ارجع ببطء لين تحس بتمدد كامل بالترايسبس."],
  mi:["فتح الكوع للجوانب.","تحريك العضد مع الحركة.","الميل للأمام أكثر من اللازم."],
  al:["skull","tri_fr","tri_rope"]},
 {id:"deadlift",n:"ديدليفت",eq:"بار حديد وأوزان",eqk:["bar"],m:["lowback","glutes","hams","traps"],v:"b",inc:5,
+ en:{n:"Barbell Deadlift",eq:"Barbell and plates",st:["Set the bar over your mid-foot and grip just outside your knees.", "Drop your hips, chest up and back flat, shoulders slightly ahead of the bar.", "Pull the slack out of the bar, then drive your feet through the floor.", "Keep the bar against your body and lock out hips and knees together."],mi:["Rounding the back — end the set right there.", "Yanking with the back instead of pushing the floor away with your legs.", "Leaning back and hyperextending at the top."]},
  st:["البار فوق منتصف القدم، امسكه بعرض خارج الركبة.","انزل بالورك، الصدر مرفوع والظهر مستقيم، الكتف فوق البار بشوي.","شدّ البار (خذ الخلخلة) ثم ادفع الأرض برجلك.","خلّ البار ملاصق لجسمك، وافرد الورك والركبة بنفس الوقت."],
  mi:["تقويس الظهر — يوقف التمرين فوراً.","سحب البار بالظهر بدل دفع الأرض بالرجل.","الميل للخلف بالنهاية وقفل الظهر."],
  al:["rdl","tbar","hyper"]},
 {id:"pullup",n:"عقلة",eq:"بار عقلة",eqk:["pullup"],m:["lats","bi"],v:"b",inc:2.5,
+ en:{n:"Pull-Up",eq:"Pull-up bar",st:["Grip the bar wider than shoulder width, brace your core and stay tight.", "Start by pulling your shoulders down before you pull up.", "Pull until your chin clears the bar.", "Lower under control until your arms are straight."],mi:["Kipping the body to generate momentum.", "Only coming down halfway.", "Letting the shoulders shrug up to your ears at the start."]},
  st:["امسك البار أوسع من الكتف، وشدّ بطنك وخلّ جسمك مشدود.","ابدأ بإنزال الكتف للأسفل قبل السحب.","اسحب لين تعدي ذقنك البار.","انزل بتحكم لين تفرد الذراع."],
  mi:["نطنطة الجسم لتوليد زخم.","نزول نصف مسافة.","رفع الكتف للأذن بالبداية."],
  al:["assist_pull","lat_pd","close_pd"]},
 {id:"dips",n:"ديبس",eq:"متوازي",eqk:["dip"],m:["chest","tri","delts"],v:"both",inc:2.5,
+ en:{n:"Parallel Bar Dip",eq:"Parallel dip bars",st:["Press up to the top with arms straight and shoulders pulled down.", "Lean forward slightly for chest, stay upright for triceps.", "Lower until your elbows hit 90 degrees.", "Press back up without slamming the lockout."],mi:["Going too deep and stressing the shoulder.", "Letting the shoulders ride up to the ears.", "Swinging the legs."]},
  st:["ارفع نفسك والذراع مفرودة والكتف مشدود لتحت.","ميل بسيط للأمام لو تبي صدر، وعمودي لو تبي ترايسبس.","انزل لين يصير الكوع ٩٠ درجة.","ادفع للأعلى بدون قفل عنيف."],
  mi:["نزول عميق جداً يضغط الكتف.","ترك الكتف يرتفع للأذن.","تأرجح الرجول."],
  al:["bench_dip","cgbp","tri_bar"]},
 {id:"crunch",n:"بطن كيبل",eq:"كيبل علوي مع حبل",eqk:["cable"],m:["abs","obl"],v:"f",inc:2.5,
+ en:{n:"Kneeling Cable Crunch",eq:"High cable pulley with rope",st:["Kneel facing the cable with the rope beside your head.", "Curl your torso down, bringing your ribs toward your hips — not by bending at the hips.", "Squeeze the abs at the bottom, then return slowly."],mi:["Pulling with the arms instead of the abs.", "Moving from the hips.", "Craning the neck forward."]},
  st:["اركع قدام الكيبل والحبل بجانب راسك.","لف الجذع للأسفل بتقريب القفص من الحوض — مو بثني الورك.","اعصر البطن بالأسفل ثم ارجع ببطء."],
  mi:["السحب بالذراع بدل البطن.","الحركة من الورك.","شد الرقبة للأمام."],
  al:["hang_leg","ab_wheel"]},
 {id:"plank",n:"بلانك",eq:"وزن الجسم",eqk:[],m:["abs","obl"],v:"f",inc:0,
+ en:{n:"Plank",eq:"Bodyweight",st:["Set up on your forearms with your elbows directly under your shoulders.", "Brace your abs and squeeze your glutes so your body is one straight line.", "Breathe normally and don't hold your breath."],mi:["Piking the hips up.", "Letting the lower back sag.", "Holding your breath."]},
  st:["ارتكز على الساعد والمرفق تحت الكتف مباشرة.","شدّ البطن والمؤخرة وخلّ جسمك خط مستقيم.","تنفس بشكل طبيعي ولا تحبس نفسك."],
  mi:["رفع المؤخرة لفوق.","هبوط أسفل الظهر.","حبس النفس."],
  al:["ab_wheel","hang_leg"]},
 {id:"hip_thrust",n:"هيب ثراست",eq:"بار ومقعد",eqk:["bar","bench"],m:["glutes","hams"],v:"b",inc:5,
+ en:{n:"Barbell Hip Thrust",eq:"Barbell and bench",st:["Rest your upper back on the edge of the bench with the padded bar across your hips.", "Feet hip-width apart, shins vertical at the top.", "Drive your hips up and squeeze the glutes hard for a full second.", "Lower under control without resting on the floor."],mi:["Over-arching the lower back instead of squeezing the glutes.", "Feet too close in, so the quads take over.", "Cutting the range of motion short."]},
  st:["استند بأعلى ظهرك على حافة المقعد والبار على الورك مع وسادة.","القدم بعرض الورك والساق عمودية بالأعلى.","ادفع الورك للأعلى واعصر المؤخرة ثانية كاملة.","نزّل بتحكم بدون ما ترتاح بالأرض."],
  mi:["فرط تقويس الظهر بدل عصر المؤخرة.","القدم قريبة جداً ويشتغل الفخذ الأمامي.","نطاق حركة قصير."],
  al:["glute_kick","abductor","rdl"]},
 {id:"machine_press",n:"جهاز ضغط الصدر",eq:"جهاز ضغط الصدر",eqk:["m_press"],m:["chest","tri"],v:"f",inc:5,
+ en:{n:"Chest Press Machine",eq:"Chest press machine",st:["Set the seat so the handles line up with the middle of your chest.", "Back flat against the pad, shoulders pulled back.", "Press forward without slamming the lockout and squeeze the chest.", "Return slowly until you feel a stretch."],mi:["Wrong seat height, which dumps the load onto the shoulders.", "Fast, bouncy reps.", "Letting the shoulders roll forward as you press."]},
  st:["اضبط المقعد لين تصير المقابض بمستوى منتصف صدرك.","الظهر ملاصق للمسند والكتف مسحوب للخلف.","ادفع للأمام بدون قفل عنيف واعصر الصدر.","ارجع ببطء لين تحس بتمدد."],
  mi:["ارتفاع خاطئ للمقعد يضغط الكتف.","دفع سريع وارتداد.","رفع الكتف للأمام مع الدفع."],
  al:["db_bench","bench","pec_deck"]},
 {id:"face_pull",n:"فيس بُل",eq:"كيبل مع حبل",eqk:["cable"],m:["delts","traps"],v:"b",inc:2.5,
+ en:{n:"Cable Face Pull",eq:"Cable machine with rope",st:["Set the pulley at face height and take an overhand grip on the rope.", "Pull the rope toward your forehead, spreading your hands out to the sides.", "Squeeze the rear delts and shoulder blades, then return slowly."],mi:["Too much weight turns it into a row.", "Pulling to the chest instead of the face.", "Shrugging the shoulders up to the ears."]},
  st:["اضبط البكرة بمستوى الوجه وامسك الحبل بقبضة علوية.","اسحب الحبل باتجاه جبهتك وافتح يديك للجانبين.","اعصر خلفية الكتف ولوحي الكتف ثم ارجع ببطء."],
  mi:["وزن ثقيل يخلي الحركة تجديف.","السحب للصدر بدل الوجه.","رفع الكتف للأذن."],
  al:["rev_pec","rear_del"]},
 {id:"db_bench",n:"بنش دمبل مستوي",eq:"دمبلات ومقعد مستوي",eqk:["db","bench"],m:["chest","delts","tri"],v:"f",inc:2,
+ en:{n:"Flat Dumbbell Bench Press",eq:"Dumbbells and flat bench",st:["Kick the dumbbells up off your thighs, lie back, and press them to the start position over your chest.", "Lower until your elbows reach chest level or just below, elbows at 45 degrees to your body.", "Press up and bring the dumbbells together without clanging them."],mi:["Letting the shoulders roll forward instead of staying pulled back.", "Uneven lowering that leaves one dumbbell lower than the other.", "Banging the dumbbells at the top, which kills the tension."]},
  st:["ارفع الدمبلات على فخذك واستلقِ وادفعهم لوضع البداية فوق صدرك.","نزّل لين يوصل الكوع مستوى الصدر أو أقل شوي، والكوع بزاوية ٤٥ عن الجسم.","ادفع للأعلى وقرّب الدمبلات بدون ما تصكّهم."],
  mi:["ترك الكتف يطلع للأمام بدل ما يبقى مسحوب للخلف.","تنزيل غير متزن يخلي دمبل أوطى من الثاني.","صك الدمبلات فوق ويفقّد الشد."],
  al:["bench","machine_press","smith_bench"]},
 {id:"smith_bench",n:"بنش سميث",eq:"جهاز سميث ومقعد",eqk:["smith","bench"],m:["chest","tri"],v:"f",inc:2.5,
+ en:{n:"Smith Machine Bench Press",eq:"Smith machine and bench",st:["Set the bench so the bar sits exactly over the middle of your chest.", "Unrack the bar and lower it under control until it touches your chest.", "Press up with no bounce."],mi:["Bench placed wrong so the bar lands on your neck or your stomach.", "Bouncing off the chest — the fixed bar path makes cheating tempting.", "Slamming the elbows into lockout at the top."]},
  st:["اضبط المقعد لين يصير البار فوق منتصف صدرك بالضبط.","افتح قفل البار ونزّله بتحكم لين يلمس الصدر.","ادفع للأعلى بدون ارتداد."],
  mi:["وضع المقعد غلط فيصير البار على الرقبة أو البطن.","الارتداد على الصدر لأن المسار ثابت ويغري بالغش.","قفل الكوع بعنف في الأعلى."],
  al:["bench","machine_press","db_bench"]},
 {id:"pec_deck",n:"جهاز الفراشة",eq:"جهاز الفراشة (Pec Deck)",eqk:["m_pec"],m:["chest"],v:"f",inc:5,
+ en:{n:"Pec Deck Fly",eq:"Pec deck machine",st:["Set the seat so the handles are at chest height and your elbows at shoulder level.", "Bring your arms together in front and squeeze the chest for a full second.", "Return slowly until you feel a stretch, without opening up too far."],mi:["Opening the arms too far, which stresses the shoulder joint.", "Using momentum and clanging the weight stack.", "Shrugging the shoulders up as you squeeze."]},
  st:["اضبط المقعد لين تصير المقابض بمستوى الصدر والكوع بمستوى الكتف.","اجمع ذراعك للأمام واعصر الصدر ثانية كاملة.","ارجع ببطء لين تحس بتمدد بدون ما توسع زيادة."],
  mi:["فتح الذراع أكثر من اللازم ويضغط مفصل الكتف.","استخدام الزخم وصك الأوزان.","رفع الكتف للأذن مع العصر."],
  al:["fly","db_fly","cable_press"]},
 {id:"db_fly",n:"تفتيح دمبل مستوي",eq:"دمبلات ومقعد",eqk:["db","bench"],m:["chest"],v:"f",inc:1,
+ en:{n:"Flat Dumbbell Fly",eq:"Dumbbells and flat bench",st:["Lie back with the dumbbells over your chest, elbows in a slight, fixed bend.", "Open your arms out in an arc until you feel a stretch across the chest.", "Come back along the same arc and squeeze at the top."],mi:["Bending and straightening the elbow — that makes it a press, not a fly.", "Going too deep with heavy weight — the number one cause of pec injuries.", "Using heavy weight at all; this is an isolation move."]},
  st:["استلقِ والدمبل فوق صدرك والكوع مثني بسيط وثابت.","افتح ذراعك بقوس للجانبين لين تحس بشد بالصدر.","ارجع بنفس القوس واعصر بالأعلى."],
  mi:["ثني وفرد الكوع فيصير بنش مو تفتيح.","النزول العميق جداً بوزن ثقيل — أشهر سبب لإصابة الصدر.","استخدام وزن كبير أصلاً؛ هذا تمرين عزل."],
  al:["fly","pec_deck"]},
 {id:"decline_press",n:"بنش سفلي",eq:"مقعد سفلي وبار أو دمبل",eqk:["bench_dec","bar|db"],m:["chest","tri"],v:"f",inc:2.5,
+ en:{n:"Decline Bench Press",eq:"Decline bench with barbell or dumbbells",st:["Hook your feet under the pads and lie back on the decline.", "Lower the bar to your lower chest under control.", "Press up and squeeze the lower chest."],mi:["Dropping the bar fast — this angle is hard to control.", "Going heavy without a spotter.", "Sitting up too quickly after the set, which makes you dizzy."]},
  st:["ثبّت رجولك تحت الوسادة واستلقِ على الميلان السفلي.","نزّل البار لأسفل الصدر بتحكم.","ادفع للأعلى مع عصر أسفل الصدر."],
  mi:["النزول بسرعة مع صعوبة التحكم بهذا الوضع.","عدم وجود مساعد مع وزن ثقيل.","الجلوس بسرعة بعد الانتهاء ويسبب دوخة."],
  al:["bench","dips","machine_press"]},
 {id:"pushup",n:"ضغط أرضي",eq:"وزن الجسم",eqk:[],m:["chest","tri","abs"],v:"f",inc:0,
+ en:{n:"Push-Up",eq:"Bodyweight",st:["Hands slightly wider than shoulders, body in a straight line from head to heels.", "Lower until your chest nearly touches the floor, elbows at 45 degrees.", "Press up and keep your abs and glutes tight the whole way."],mi:["Hips sagging and lower back arching.", "Only going halfway down.", "Flaring the elbows all the way out to 90 degrees."]},
  st:["اليدين أوسع من الكتف شوي والجسم خط مستقيم من الرأس للكعب.","انزل لين يقارب صدرك الأرض والكوع ٤٥ درجة.","ادفع للأعلى وشدّ بطنك ومؤخرتك طول الحركة."],
  mi:["هبوط الورك وتقويس أسفل الظهر.","نزول نص مسافة.","فتح الكوع ٩٠ درجة كامل."],
  al:["bench","db_bench","dips"]},
 {id:"cable_press",n:"ضغط كيبل واقف",eq:"كيبل بكرتين",eqk:["cable"],m:["chest","delts"],v:"f",inc:2.5,
+ en:{n:"Standing Cable Chest Press",eq:"Cable machine, two pulleys",st:["Set the pulleys at chest height, grab the handles and take a step forward.", "Press forward, bring your hands together and squeeze.", "Return slowly until you feel the stretch."],mi:["Leaning too far forward and using bodyweight to push.", "Pressing fast with no squeeze.", "Standing too close to the machine, which kills the tension."]},
  st:["اضبط البكرات بمستوى الصدر وامسك المقابض وخطوة للأمام.","ادفع للأمام وقرّب يديك مع بعض واعصر.","ارجع ببطء لين تحس بتمدد."],
  mi:["الميل الزائد للأمام واستخدام ثقل الجسم.","دفع سريع بدون عصر.","الوقوف قريب جداً من الجهاز ويقلل الشد."],
  al:["machine_press","db_bench","fly"]},
 {id:"db_row",n:"تجديف دمبل بيد واحدة",eq:"دمبل ومقعد",eqk:["db","bench"],m:["lats","traps","bi"],v:"b",inc:2,
+ en:{n:"One-Arm Dumbbell Row",eq:"Dumbbell and flat bench",st:["Put one knee and one hand on the bench, back flat and parallel to the floor.", "Pull the dumbbell to the side of your waist, driving the elbow back.", "Lower slowly until the arm is straight and you feel a stretch."],mi:["Twisting the torso on every rep to help the weight up.", "Pulling the dumbbell to the chest instead of the waist.", "Letting the lower back round."]},
  st:["حط ركبتك ويدك على المقعد والظهر موازي للأرض ومستقيم.","اسحب الدمبل لجنب بطنك بقيادة المرفق للخلف.","نزّل ببطء لين تفرد الذراع وتحس بتمدد."],
  mi:["لف الجذع مع كل عدة للمساعدة.","سحب الدمبل للصدر بدل الخصر.","تقويس الظهر لتحت."],
  al:["bb_row","chest_row","machine_row"]},
 {id:"tbar",n:"تجديف T-bar",eq:"جهاز أو بار في الزاوية",eqk:["bar"],m:["lats","traps","bi"],v:"b",inc:5,
+ en:{n:"T-Bar Row",eq:"T-bar machine or barbell wedged in a corner",st:["Stand on the platform, hinge at the hips with a flat back and chest up.", "Pull the handle to your stomach and squeeze the shoulder blades.", "Lower under control until the arms are fully extended."],mi:["Standing up more with each rep (turning it into a deadlift).", "Rounding the back.", "Short range of motion with too much weight."]},
  st:["قف على المنصة وميل من الورك والظهر مستقيم والصدر مرفوع.","اسحب المقبض لبطنك واعصر لوحي الكتف.","نزّل بتحكم لين تفرد كامل."],
  mi:["الوقوف تدريجياً مع كل عدة (تحويل التمرين لديدليفت).","تقويس الظهر.","نطاق حركة قصير بوزن كبير."],
  al:["bb_row","chest_row","db_row"]},
 {id:"chest_row",n:"تجديف مستند للصدر",eq:"جهاز تجديف مائل بمسند صدر",eqk:["m_row"],m:["lats","traps"],v:"b",inc:5,
+ en:{n:"Chest-Supported Row",eq:"Incline row machine with chest pad",st:["Set the pad so your chest rests on it and your arms fully extend.", "Pull the handles back and squeeze the shoulder blades.", "Return slowly without letting your chest come off the pad."],mi:["Lifting the chest off the pad to help move the weight.", "Shrugging the shoulders up toward the ears.", "Pulling with the hands instead of driving the elbows."]},
  st:["اضبط المسند لين يصير صدرك عليه والذراع تفرد كامل.","اسحب المقابض للخلف واعصر لوحي الكتف.","ارجع ببطء بدون ما ترفع صدرك عن المسند."],
  mi:["رفع الصدر عن المسند للمساعدة بالوزن.","رفع الكتف للأذن.","سحب باليد بدل قيادة المرفق."],
  al:["bb_row","machine_row","seat_row"]},
 {id:"machine_row",n:"جهاز التجديف",eq:"جهاز تجديف بمقاعد",eqk:["m_row"],m:["lats","traps"],v:"b",inc:5,
+ en:{n:"Seated Machine Row",eq:"Seated row machine with chest pad",st:["Sit down and set the seat so the handles line up with mid-chest.", "Pull back, bring the shoulder blades together and hold for a second.", "Return slowly to a full stretch without rounding."],mi:["Leaning too far back with the torso.", "Rushing the reps with no squeeze.", "Shrugging the shoulders as you pull."]},
  st:["اجلس واضبط المقعد لين تصير المقابض بمستوى منتصف صدرك.","اسحب للخلف مع تقريب لوحي الكتف واثبت ثانية.","ارجع ببطء مع تمدد كامل بدون تقويس."],
  mi:["الميل الزائد للخلف بالجذع.","حركة سريعة بدون عصر.","رفع الكتف مع السحب."],
  al:["seat_row","chest_row","bb_row"]},
 {id:"close_pd",n:"سحب علوي قبضة ضيقة",eq:"جهاز السحب العلوي بمقبض V",eqk:["m_pd"],m:["lats","bi"],v:"b",inc:5,
+ en:{n:"Close-Grip Lat Pulldown",eq:"Lat pulldown machine with V-bar",st:["Grab the triangle handle, sit down and lock your thighs under the pad.", "Chest up, pull the handle to your lower chest by driving the elbows.", "Return slowly to a full stretch."],mi:["Swinging the torso.", "Pulling down to the stomach.", "Short range of motion."]},
  st:["امسك المقبض المثلث واجلس وثبّت فخذك تحت الوسادة.","صدرك مرفوع، اسحب المقبض لأسفل صدرك بقيادة المرفق.","ارجع ببطء لأقصى تمدد."],
  mi:["التأرجح بالجذع.","السحب لأسفل البطن.","نطاق حركة قصير."],
  al:["lat_pd","assist_pull","seat_row"]},
 {id:"assist_pull",n:"عقلة بمساعدة الجهاز",eq:"جهاز العقلة بمساعدة",eqk:["assist"],m:["lats","bi"],v:"b",inc:5,
+ en:{n:"Assisted Pull-Up",eq:"Assisted pull-up machine",st:["Pick an assist weight that still makes the last two reps a grind.", "Get on the pad, grip the bar and brace your body.", "Pull until your chin clears the bar, then lower under control."],mi:["Too much assistance, which makes the exercise pointless.", "Dropping down freely with no control.", "Shrugging the shoulders up at the start of the pull."]},
  st:["اختر وزن مساعدة يخليك تكمل النطاق بصعوبة بآخر عدتين.","اركب على الوسادة وامسك البار وشدّ جسمك.","اسحب لين يعدي ذقنك البار وانزل بتحكم."],
  mi:["وزن مساعدة كبير يخلي التمرين بلا فائدة.","النزول الحر بدون تحكم.","رفع الكتف للأذن بالبداية."],
  al:["pullup","lat_pd","close_pd"]},
 {id:"db_pullover",n:"بلوفر دمبل",eq:"دمبل واحد ومقعد",eqk:["db","bench"],m:["lats","chest"],v:"b",inc:2,
+ en:{n:"Dumbbell Pullover",eq:"Single dumbbell and flat bench",st:["Lie on the bench and hold one dumbbell with both hands over your chest.", "Lower it back behind your head in an arc, elbows locked in a slight bend.", "Pull it back up using your back muscles."],mi:["Bending the elbows too much, which turns it into a triceps move.", "Going too deep with a heavy weight.", "Lifting the hips off the bench."]},
  st:["استلقِ على المقعد وامسك دمبل واحد بيدين فوق صدرك.","نزّله خلف راسك بقوس والكوع مثني بسيط ثابت.","ارجع للأعلى بسحب الدمبل بعضلات الظهر."],
  mi:["ثني الكوع كثير ويتحول لترايسبس.","النزول العميق جداً بوزن ثقيل.","رفع الورك عن المقعد."],
  al:["pullover","lat_pd"]},
 {id:"hyper",n:"فرط تمديد الظهر",eq:"جهاز الهايبر إكستنشن",eqk:["m_hyper"],m:["lowback","glutes","hams"],v:"b",inc:2.5,
+ en:{n:"Back Extension",eq:"Hyperextension bench",st:["Set the pad just below your hip bone and lock your heels in.", "Lower your torso with a flat back until you feel the hamstrings stretch.", "Come up until your body is a straight line — no further."],mi:["Arching back at the top and compressing the spine.", "Bouncing up and down too fast.", "Rounding the back on the way down."]},
  st:["اضبط الوسادة تحت عظمة الورك بشوي وثبّت الكعب.","انزل بالجذع مع ظهر مستقيم لين تحس بشد بخلفية الفخذ.","ارجع للأعلى لين يصير جسمك خط مستقيم — لا ترجع أبعد."],
  mi:["التقوس للخلف بالنهاية وضغط الفقرات.","النزول والصعود بسرعة ونطنطة.","تقويس الظهر أثناء النزول."],
  al:["rdl","deadlift"]},
 {id:"ohp_bb",n:"ضغط كتف بار واقف",eq:"بار حديد",eqk:["bar"],m:["delts","tri","abs"],v:"f",inc:2.5,
+ en:{n:"Standing Barbell Overhead Press",eq:"Barbell",st:["Bar on your upper chest, grip slightly wider than shoulders, abs and glutes tight.", "Press the bar up and move your head back slightly to let it pass.", "Lock it out over the middle of your head, then lower under control."],mi:["Excessive arching of the lower back — the worst mistake here.", "Pressing the bar forward instead of straight overhead.", "Sneaking in a leg drive without meaning to (it becomes a push press)."]},
  st:["البار على أعلى الصدر والقبضة أوسع من الكتف بشوي، وشدّ بطنك ومؤخرتك.","ادفع البار للأعلى وحرّك راسك للخلف شوي عشان يمر.","ثبّت البار فوق منتصف راسك ثم نزّل بتحكم."],
  mi:["تقويس أسفل الظهر بشكل مبالغ فيه — أخطر خطأ هنا.","دفع البار للأمام بدل فوق الرأس.","استخدام دفعة من الركبة بدون قصد (يصير Push Press)."],
  al:["ohp_db","machine_ohp","smith_bench"]},
 {id:"machine_ohp",n:"جهاز ضغط الكتف",eq:"جهاز ضغط الكتف",eqk:["m_ohp"],m:["delts","tri"],v:"f",inc:5,
+ en:{n:"Machine Shoulder Press",eq:"Shoulder press machine",st:["Set the seat so the handles sit at ear height.", "Press up without slamming the elbows into lockout.", "Lower until the elbows are roughly level with the shoulders."],mi:["Wrong seat height, forcing the shoulder into a bad angle.", "Going too deep on the way down.", "Pressing fast and bouncing out of the bottom."]},
  st:["اضبط المقعد لين تصير المقابض بمستوى الأذن.","ادفع للأعلى بدون قفل عنيف.","نزّل لين يوصل الكوع مستوى الكتف تقريباً."],
  mi:["ارتفاع مقعد غلط يجبر الكتف على زاوية سيئة.","نزول عميق جداً.","دفع سريع وارتداد."],
  al:["ohp_db","ohp_bb"]},
 {id:"cable_lat",n:"رفرفة جانبي كيبل",eq:"كيبل سفلي بمقبض مفرد",eqk:["cable"],m:["delts"],v:"f",inc:1,
+ en:{n:"Cable Lateral Raise",eq:"Low cable with single handle",st:["Stand side-on to the machine with the cable crossing in front of you, grab it with the far arm.", "Raise out to the side up to shoulder height, elbow fixed.", "Lower slowly and fight it — the constant tension here beats dumbbells."],mi:["Leaning too far to the side.", "Raising above shoulder height and bringing in the traps.", "Too much weight, turning the movement into a swing."]},
  st:["قف جنب الجهاز والكيبل يمر قدام جسمك، امسك بالذراع البعيدة.","ارفع للجانب لين توصل مستوى الكتف والكوع ثابت.","نزّل ببطء وقاوم — الشد مستمر هنا أفضل من الدمبل."],
  mi:["الميل الزائد للجانب.","رفع فوق مستوى الكتف وإشراك الترابيس.","وزن ثقيل يخلي الحركة رجرجة."],
  al:["lat_raise","machine_ohp"]},
 {id:"rev_pec",n:"الفراشة العكسي",eq:"جهاز الفراشة (وضع عكسي)",eqk:["m_pec"],m:["delts","traps"],v:"b",inc:5,
+ en:{n:"Reverse Pec Deck",eq:"Pec deck machine (reverse setting)",st:["Sit facing the pad with the handles at shoulder height.", "Open your arms back and out to the sides and squeeze the rear delts.", "Return slowly without clanging the plates."],mi:["Bending the elbows so it turns into a row.", "Shrugging the shoulders up to the ears.", "Too much weight, shifting the work to the back."]},
  st:["اجلس بوجهك للمسند والمقابض بمستوى الكتف.","افتح ذراعك للخلف والجانبين واعصر خلفية الكتف.","ارجع ببطء بدون ما تصك الأوزان."],
  mi:["ثني الكوع ويصير تجديف.","رفع الكتف للأذن.","وزن كبير ينقل الشغل للظهر."],
  al:["rear_del","face_pull"]},
 {id:"front_raise",n:"رفرفة أمامي",eq:"دمبل أو بار أو قرص",eqk:["db|bar"],m:["delts"],v:"f",inc:1,
+ en:{n:"Front Raise",eq:"Dumbbells, barbell, or plate",st:["Stand with the weight in front of your thighs, arms straight with a slight elbow bend.", "Raise it forward to shoulder height.", "Lower slowly with no swinging."],mi:["Swinging the back to help the weight up.", "Raising above shoulder height for no reason.", "Skipping it entirely or overdoing it — the front delt already works on every pressing movement."]},
  st:["قف والوزن قدام فخذك والذراع مفرودة مع ثني بسيط بالكوع.","ارفع للأمام لين مستوى الكتف.","نزّل ببطء بدون تأرجح."],
  mi:["التأرجح بالظهر للمساعدة.","الرفع فوق مستوى الكتف بلا داعي.","إهمال هذا التمرين أو الإكثار منه — الكتف الأمامي يشتغل أصلاً بكل تمارين الدفع."],
  al:["ohp_db","lat_raise"]},
 {id:"preacher",n:"بايسبس بريتشر",eq:"مقعد بريتشر وبار EZ",eqk:["preacher","ez"],m:["bi"],v:"f",inc:2.5,
+ en:{n:"Preacher Curl",eq:"Preacher bench and EZ bar",st:["Set the seat so your armpits rest on the top edge of the pad.", "Lower the bar to full arm extension with tight control.", "Curl up and squeeze at the top without letting your shoulder lift."],mi:["Snapping into full extension at the bottom — the riskiest position for the biceps tendon.", "Lifting your butt off the seat.", "Short range of motion, working only the top half."]},
  st:["اضبط المقعد لين يصير إبطك على حافة الوسادة العليا.","نزّل البار لين تفرد الذراع كامل بتحكم شديد.","ارفع واعصر بالأعلى بدون ما ترفع كتفك."],
  mi:["الفرد السريع بالأسفل — أخطر وضع على وتر البايسبس.","رفع المؤخرة عن المقعد.","نطاق حركة قصير في الأعلى فقط."],
  al:["bb_curl","conc_curl","cable_curl"]},
 {id:"conc_curl",n:"بايسبس مركّز",eq:"دمبل ومقعد",eqk:["db","bench"],m:["bi"],v:"f",inc:1,
+ en:{n:"Concentration Curl",eq:"Dumbbell and flat bench",st:["Sit down and brace your elbow against the inside of your thigh.", "Curl the dumbbell up, squeezing the biceps and turning the wrist out at the top.", "Lower slowly until the arm is straight."],mi:["Moving the shoulder and torso to help.", "Too heavy, which defeats the whole point of isolation.", "Dropping the weight too fast on the way down."]},
  st:["اجلس وارتكز بمرفقك على داخل فخذك.","ارفع الدمبل بعصر البايسبس ولف الرسغ للخارج بالأعلى.","نزّل ببطء لين تفرد."],
  mi:["تحريك الكتف والجذع للمساعدة.","وزن ثقيل يخرب فكرة العزل.","التنزيل السريع."],
  al:["bb_curl","preacher","incline_curl"]},
 {id:"incline_curl",n:"بايسبس دمبل مائل",eq:"دمبلات ومقعد مائل",eqk:["db","bench_inc"],m:["bi"],v:"f",inc:1,
+ en:{n:"Incline Dumbbell Curl",eq:"Dumbbells and an incline bench",st:["Sit on a 45-degree incline bench and let your arms hang back naturally.", "Curl the dumbbell by bending the elbow, keeping your upper arm still.", "Lower slowly into a full stretch — that's the secret of this one."],mi:["Swinging the upper arm forward, which kills the stretch.", "Letting the shoulder roll forward.", "Going too heavy so you never fully straighten the arm."]},
  st:["اجلس على مقعد مائل ٤٥ وخلّ ذراعك تتدلى للخلف طبيعياً.","ارفع الدمبل بثني الكوع والعضد ثابت.","نزّل ببطء لأقصى تمدد — هنا سر التمرين."],
  mi:["تحريك العضد للأمام ويلغي التمدد.","رفع الكتف للأمام.","وزن ثقيل يمنع الفرد الكامل."],
  al:["db_curl","preacher","bb_curl"]},
 {id:"db_curl",n:"بايسبس دمبل",eq:"دمبلات",eqk:["db"],m:["bi","fore"],v:"f",inc:2,
+ en:{n:"Dumbbell Curl",eq:"Dumbbells",st:["Stand shoulder-width with the dumbbells at your sides, palms forward.", "Curl alternating or both together, rotating your wrists outward.", "Lower slowly to full extension."],mi:["Swinging with your back.", "Driving the elbow forward.", "Half range of motion."]},
  st:["قف بعرض الكتف والدمبل بجنبك والقبضة للأمام.","ارفع بالتناوب أو معاً مع لف الرسغ للخارج.","نزّل ببطء لين تفرد كامل."],
  mi:["التأرجح بالظهر.","تقديم الكوع للأمام.","نصف نطاق حركة."],
  al:["bb_curl","hammer","cable_curl"]},
 {id:"skull",n:"سكل كرشر",eq:"بار EZ ومقعد",eqk:["ez","bench"],m:["tri"],v:"b",inc:2.5,
+ en:{n:"Skull Crusher",eq:"EZ bar and a bench",st:["Lie back with the bar over your chest and arms extended, then tilt your upper arms back slightly.", "Lower the bar behind your head, bending only at the elbow.", "Press up and squeeze without slamming into lockout."],mi:["Letting the upper arms move with the lift.", "Lowering the bar straight onto your forehead with heavy weight.", "Flaring the elbows out to the sides."]},
  st:["استلقِ والبار فوق صدرك والذراع ممدودة، ثم مِل بالعضد للخلف شوي.","نزّل البار خلف راسك بثني الكوع فقط.","ارفع بالعصر بدون ما تفرد بعنف."],
  mi:["تحريك العضد مع الحركة.","تنزيل البار على الجبهة مباشرة بوزن ثقيل.","فتح الكوع للجوانب."],
  al:["tri_fr","cgbp","oh_tri"]},
 {id:"tri_bar",n:"ترايسبس بار مستقيم",eq:"كيبل علوي مع بار",eqk:["cable"],m:["tri"],v:"b",inc:2.5,
+ en:{n:"Cable Triceps Pushdown (Bar)",eq:"High cable with a straight bar",st:["Grab the bar with an overhand shoulder-width grip, elbows tucked at your sides.", "Push down to full extension and squeeze for a second.", "Come back up slowly without letting the elbows rise."],mi:["Leaning your body into it to push the weight.", "Letting the elbows swing forward and back.", "Using a weight that forces you to cheat."]},
  st:["امسك البار بقبضة علوية بعرض الكتف والكوع بجنبك.","افرد للأسفل واعصر ثانية.","ارجع ببطء بدون ما يرتفع الكوع."],
  mi:["الانحناء بالجسم لدفع الوزن.","تحريك الكوع للأمام والخلف.","استخدام وزن يجبرك على الغش."],
  al:["tri_rope","bench_dip","cgbp"]},
 {id:"bench_dip",n:"ديبس على مقعد",eq:"مقعدين أو مقعد واحد",eqk:["bench"],m:["tri","delts"],v:"b",inc:0,
+ en:{n:"Bench Dip",eq:"Two benches, or a single bench",st:["Set your hands on the edge of the bench behind you with your legs straight out in front.", "Lower by bending the elbows to 90 degrees, keeping your back close to the bench.", "Push back up with your triceps."],mi:["Drifting away from the bench, which hammers the shoulder.", "Dropping way too deep.", "Pushing with your legs."]},
  st:["ضع يديك على حافة المقعد خلفك والرجول ممدودة قدامك.","انزل بثني الكوع لين يصير ٩٠ درجة، والظهر قريب من المقعد.","ادفع للأعلى بالترايسبس."],
  mi:["إبعاد الجسم عن المقعد ويضغط الكتف بشدة.","النزول العميق جداً.","استخدام الرجول للدفع."],
  al:["dips","tri_rope","cgbp"]},
 {id:"front_squat",n:"سكوات أمامي",eq:"بار حديد وقفص",eqk:["bar","rack"],m:["quads","abs"],v:"f",inc:2.5,
+ en:{n:"Front Squat",eq:"Barbell and squat rack",st:["Rack the bar on your upper chest and front delts, elbows high.", "Descend straight down, keeping your torso as upright as possible.", "Drive up and keep those elbows high."],mi:["Dropping the elbows, so the bar rolls forward.", "Leaning the torso forward.", "Chasing heavy weight before you own the position."]},
  st:["البار على أعلى الصدر ومقدمة الكتف، والمرفق مرفوع عالي.","انزل عمودي والجذع مستقيم قدر الإمكان.","ادفع للأعلى مع بقاء المرفق مرفوع."],
  mi:["هبوط المرفق فيسقط البار للأمام.","الميل بالجذع للأمام.","محاولة الوزن الثقيل قبل إتقان الوضعية."],
  al:["squat","goblet","hack"]},
 {id:"hack",n:"هاك سكوات",eq:"جهاز الهاك",eqk:["m_hack"],m:["quads","glutes"],v:"f",inc:5,
+ en:{n:"Hack Squat",eq:"Hack squat machine",st:["Back flat against the pad, feet mid-platform at shoulder width.", "Lower until your thighs are parallel or below, knees tracking over your toes.", "Drive through the heels without slamming into lockout."],mi:["Letting the heels lift off the platform.", "Knees caving inward.", "Cutting the depth short with big weight."]},
  st:["ظهرك ملاصق للمسند والقدم بمنتصف اللوح بعرض الكتف.","انزل لين يصير الفخذ موازي أو أقل، والركبة باتجاه أصابع القدم.","ادفع من الكعب بدون قفل عنيف."],
  mi:["رفع الكعب عن اللوح.","دخول الركبة للداخل.","نزول قصير بوزن كبير."],
  al:["squat","leg_press","smith_squat"]},
 {id:"goblet",n:"سكوات كأس",eq:"دمبل أو كيتل بل",eqk:["db|kb"],m:["quads","glutes"],v:"f",inc:2,
+ en:{n:"Goblet Squat",eq:"Dumbbell or kettlebell",st:["Hold the dumbbell vertically against your chest with both hands.", "Squat down between your legs, elbows inside the knees, chest up.", "Drive up through your heels."],mi:["Leaning forward and letting the chest drop.", "Heels coming off the floor.", "Picking a weight so heavy it wrecks your position."]},
  st:["امسك الدمبل عمودي على صدرك بيدين.","انزل بين رجولك والمرفق داخل الركبة، والصدر مرفوع.","ادفع من الكعب للأعلى."],
  mi:["الميل للأمام وسقوط الصدر.","رفع الكعب.","اختيار وزن كبير يخرب الوضعية."],
  al:["front_squat","squat","bulgarian"]},
 {id:"smith_squat",n:"سكوات سميث",eq:"جهاز سميث",eqk:["smith"],m:["quads","glutes"],v:"f",inc:5,
+ en:{n:"Smith Machine Squat",eq:"Smith machine",st:["Set your feet slightly in front of the bar so the angle feels comfortable.", "Lower until your thighs are parallel, back flat against the bar path.", "Drive up and release the lock carefully at the end."],mi:["Setting your feet directly under the bar, which grinds the knees.", "Leaning fully on the machine and letting your core go slack.", "Forgetting to lock the bar before you step out of the machine."]},
  st:["حط قدمك للأمام شوي عن البار عشان تصير الزاوية مريحة.","انزل لين يصير الفخذ موازي والظهر ملاصق للمسار.","ادفع للأعلى وافتح القفل بحذر بالنهاية."],
  mi:["وضع القدم تحت البار مباشرة ويضغط الركبة.","الاعتماد الكامل على الجهاز وإهمال ثبات الجذع.","نسيان قفل البار قبل النزول عن الجهاز."],
  al:["squat","hack","leg_press"]},
 {id:"bulgarian",n:"سبليت بلغاري",eq:"دمبلات ومقعد",eqk:["db","bench"],m:["quads","glutes"],v:"f",inc:2,
+ en:{n:"Bulgarian Split Squat",eq:"Dumbbells and a bench",st:["Set the toes of your back foot on the bench, front foot a big step out.", "Drop straight down until your back knee is close to the floor.", "Drive up through the front heel."],mi:["Too short a stance, which crushes the front knee.", "Leaning too far forward.", "Losing balance with nothing to hold — grab something at first."]},
  st:["حط مشط رجلك الخلفية على المقعد والرجل الأمامية بمسافة خطوة كبيرة.","انزل عمودي لين تقارب ركبتك الخلفية الأرض.","ادفع من كعب الرجل الأمامية."],
  mi:["خطوة قصيرة تضغط ركبتك الأمامية.","الميل الزائد للأمام.","فقدان التوازن من غير مسند — امسك شي بالبداية."],
  al:["lunge","goblet","leg_press"]},
 {id:"lunge",n:"طعنات مشي",eq:"دمبلات",eqk:["db"],m:["quads","glutes","hams"],v:"f",inc:2,
+ en:{n:"Walking Lunge",eq:"Dumbbells",st:["Stand tall with the dumbbells at your sides and take a big step forward.", "Lower until both knees hit 90 degrees, torso upright.", "Drive off the front heel and step through with the other leg."],mi:["Too short a step, so the knee travels way past the toes.", "Leaning forward with the torso.", "Banging the back knee into the floor."]},
  st:["قف مستقيم والدمبل بجنبك، وخذ خطوة كبيرة للأمام.","انزل لين تصير الركبتين ٩٠ درجة، والجذع مستقيم.","ادفع من كعب الرجل الأمامية وقدّم الرجل الثانية."],
  mi:["خطوة قصيرة فتتقدم الركبة كثير على أصابع القدم.","الميل للأمام بالجذع.","ضرب الركبة الخلفية بالأرض."],
  al:["bulgarian","goblet","leg_press"]},
 {id:"seat_curl",n:"ثني أرجل جالس",eq:"جهاز ثني الأرجل جالس",eqk:["m_legcurl"],m:["hams"],v:"b",inc:5,
+ en:{n:"Seated Leg Curl",eq:"Seated leg curl machine",st:["Set the roller just above your heels and the thigh pad snug enough to lock you in.", "Curl your knees as far as they go and squeeze for a second.", "Return slowly until you're close to full extension."],mi:["Lifting your hips off the seat.", "Rushing the reps with no squeeze.", "Short range of motion."]},
  st:["اضبط المسند فوق كعبك ووسادة الفخذ لين تثبتك.","اثنِ الركبة لأقصى مدى واعصر ثانية.","ارجع ببطء لين تقارب الفرد."],
  mi:["رفع الورك عن المقعد.","حركة سريعة بدون عصر.","نطاق قصير."],
  al:["leg_curl","rdl"]},
 {id:"seated_calf",n:"سمانة جالس",eq:"جهاز السمانة جالس",eqk:["m_calf"],m:["calves"],v:"b",inc:5,
+ en:{n:"Seated Calf Raise",eq:"Seated calf raise machine",st:["Put the balls of your feet on the platform with the pad on your lower thighs.", "Drop the heels into a full stretch and hold a second.", "Raise to the top and hold — this one targets the deep calf muscle."],mi:["Fast, bouncy reps.", "Way too short a range.", "Putting the pad on your knees instead of your lower thighs."]},
  st:["حط مشط قدمك على المنصة والوسادة على أسفل الفخذ.","نزّل الكعب لأقصى تمدد وخذ ثانية.","ارفع لأعلى نقطة واثبت — هذا التمرين يستهدف العضلة العميقة."],
  mi:["حركة نطّية سريعة.","نطاق قصير جداً.","وضع الوسادة على الركبة بدل أسفل الفخذ."],
  al:["calf"]},
 {id:"abductor",n:"جهاز مبعدة الفخذ",eq:"جهاز الأبداكتور",eqk:["m_abd"],m:["glutes"],v:"b",inc:5,
+ en:{n:"Hip Abduction Machine",eq:"Abductor machine",st:["Sit with the pads on the outside of your thighs, leaning slightly forward to hit the glutes more.", "Push your legs out as far as they go and squeeze for a second.", "Return slowly without letting the plates clang."],mi:["Fast reps driven by momentum.", "Leaning all the way back, which cuts glute activation.", "Short range of motion."]},
  st:["اجلس والوسادات على خارج فخذك، وميل بسيط للأمام يزيد تفعيل المؤخرة.","افتح رجولك للخارج لأقصى مدى واعصر ثانية.","ارجع ببطء بدون ما تصك الأوزان."],
  mi:["حركة سريعة بالزخم.","الاتكاء الكامل للخلف ويقلل التفعيل.","نطاق حركة قصير."],
  al:["glute_kick","hip_thrust"]},
 {id:"glute_kick",n:"رفس خلفي كيبل",eq:"كيبل سفلي مع حزام كاحل",eqk:["cable"],m:["glutes","hams"],v:"b",inc:2.5,
+ en:{n:"Cable Glute Kickback",eq:"Low cable with ankle strap",st:["Strap the cuff to your ankle, hold the machine, and lean slightly forward.", "Drive the leg back by extending the hip and squeeze the glute.", "Return slowly without touching the floor."],mi:["Arching the lower back instead of extending the hip.", "Kicking too high, which loads the spine.", "Speed with no squeeze."]},
  st:["ثبّت الحزام على كاحلك وامسك الجهاز، وميل بسيط للأمام.","ادفع رجلك للخلف بفرد الورك واعصر المؤخرة.","ارجع ببطء بدون ما تلمس الأرض."],
  mi:["تقويس أسفل الظهر بدل فرد الورك.","الرفع عالي جداً ويضغط الفقرات.","سرعة بلا عصر."],
  al:["hip_thrust","abductor"]},
 {id:"hang_leg",n:"رفع أرجل معلق",eq:"بار عقلة أو مساند مرفقين",eqk:["pullup|dip"],m:["abs","obl"],v:"f",inc:0,
+ en:{n:"Hanging Leg Raise",eq:"Pull-up bar or captain's chair",st:["Hang from the bar with your body still — no swinging.", "Raise your legs until your pelvis curls up — not just lifting the thighs.", "Lower slowly with full control."],mi:["Swinging and using momentum.", "Only lifting the thighs without curling the pelvis (that's hip flexors, not abs).", "Just dropping the legs."]},
  st:["تعلّق بالبار والجسم ثابت بدون تأرجح.","ارفع رجولك لين يلف حوضك للأعلى — مو مجرد رفع الفخذ.","نزّل ببطء بتحكم كامل."],
  mi:["التأرجح واستخدام الزخم.","رفع الفخذ فقط بدون لف الحوض (يشتغل ثني الورك مو البطن).","النزول الحر."],
  al:["crunch","ab_wheel"]},
 {id:"ab_wheel",n:"عجلة البطن",eq:"عجلة البطن",eqk:["wheel"],m:["abs","obl"],v:"f",inc:0,
+ en:{n:"Ab Wheel Rollout",eq:"Ab wheel",st:["Kneel and hold the wheel under your shoulders, abs and glutes braced.", "Roll out as far as you can while keeping your back flat.", "Pull back with your abs, not your arms."],mi:["Lower back sagging — a sign you went past your limit.", "Starting with a full range before you've built the strength.", "Dragging yourself back with your arms."]},
  st:["اركع وامسك العجلة تحت كتفك وشدّ بطنك ومؤخرتك.","تدحرج للأمام لأبعد مسافة تقدر تحافظ فيها على ظهر مستقيم.","ارجع بشد البطن مو بشد الذراع."],
  mi:["هبوط أسفل الظهر — علامة إنك تجاوزت حدك.","البدء بمدى كامل قبل بناء القوة.","سحب الجسم بالذراع."],
  al:["crunch","hang_leg"]}];
@@ -766,7 +1316,7 @@ function eqMissing(x){
   x.eqk.forEach(function(g){
     var parts=g.split("|");
     if(parts.some(function(k){ return !!have[k]; })) return;
-    out.push(parts.map(function(k){ return EQ[k]||k; }).join(" أو "));
+    out.push(parts.map(function(k){ return T(EQ[k]||k); }).join(T(" أو ")));
   });
   return out;
 }
@@ -828,7 +1378,7 @@ var TEMPLATES=[
 /* ============ state ============ */
 var plan=JSON.parse(JSON.stringify(DEFAULT)), sessions={}, bw={}, notes={}, warm={},
     cfg={rest:90,autoRest:true,sound:true,level:"beg",sex:"m",autoNext:true,ytShow:false,yt:"",ytList:[],ytLock:false,
-         warmOn:true,rpeOn:false,eqOn:false,eq:{}};
+         warmOn:true,rpeOn:false,eqOn:false,eq:{},lang:"ar"};
 var dayId="d1", view="log";
 var pad=function(n){return n<10?"0"+n:""+n;};
 var td=new Date();
@@ -837,7 +1387,7 @@ var $=function(i){return document.getElementById(i);};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function key(d,dy){return dy+"|"+d;}
 function meta(ex){ return ex.ref&&LIBMAP[ex.ref] ? LIBMAP[ex.ref] : null; }
-function exName(ex){ var m=meta(ex); return m?m.n:(ex.n||"تمرين"); }
+function exName(ex){ var m=meta(ex); return m?libN(m):(ex.n||T("تمرين")); }
 function exInc(ex){ var m=meta(ex); return m?(m.inc||2.5):(ex.inc||2.5); }
 
 /* ============ boot & save ============ */
@@ -852,6 +1402,7 @@ function boot(){
     try{ if(r[5]) warm=JSON.parse(r[5])||{}; }catch(e){}
     for(var k in bw){ if(typeof bw[k]==="number") bw[k]={w:bw[k]}; }
     if(!cfg.eq||typeof cfg.eq!=="object") cfg.eq={};
+    applyLang();
     $("date").value=dateStr; render();
   });
 }
@@ -892,8 +1443,8 @@ function uidMov(uid){
   return "u:"+uid;
 }
 function movName(mv){
-  if(mv.indexOf("m:")===0&&LIBMAP[mv.slice(2)]) return LIBMAP[mv.slice(2)].n;
-  return mv.slice(2)||"تمرين";
+  if(mv.indexOf("m:")===0&&LIBMAP[mv.slice(2)]) return libN(LIBMAP[mv.slice(2)]);
+  return mv.slice(2)||T("تمرين");
 }
 function movMuscles(mv){
   var a=(mv.indexOf("m:")===0)?LIBMAP[mv.slice(2)]:null; return a?a.m:[];
@@ -970,9 +1521,9 @@ function lastBW(){ var ks=Object.keys(bw).sort(); return ks.length?bw[ks[ks.leng
 function leanMass(){
   var b=lastBW(); if(!b||!b.w) return null;
   var w=parseFloat(b.w);
-  if(b.f) return {v:w*(1-parseFloat(b.f)/100),src:"نسبة الدهون"};
-  if(b.m) return {v:parseFloat(b.m)/0.54,src:"كتلة العضلات"};
-  return {v:w*(cfg.sex==="f"?0.70:0.78),src:"الوزن فقط (تقديري)"};
+  if(b.f) return {v:w*(1-parseFloat(b.f)/100),src:T("نسبة الدهون")};
+  if(b.m) return {v:parseFloat(b.m)/0.54,src:T("كتلة العضلات")};
+  return {v:w*(cfg.sex==="f"?0.70:0.78),src:T("الوزن فقط (تقديري)")};
 }
 function roundW(v){
   if(v>=20) return Math.round(v/2.5)*2.5;
@@ -1071,11 +1622,11 @@ function warmToggle(uid,i){
 function warmHtml(ex,cls){
   var ws=warmSets(ex); if(!ws.length) return "";
   var dn=warmDone(ex.uid);
-  return '<div class="'+(cls||"warmrow")+'"><span class="wl">تسخين</span>'+
+  return '<div class="'+(cls||"warmrow")+T('"><span class="wl">تسخين</span>')+
     ws.map(function(x,i){
       return '<button class="wchip '+(dn[i]?"on":"")+'" data-wu="'+ex.uid+'" data-wi="'+i+'">'+
         (dn[i]?"✓ ":"")+x.w+' × '+x.r+'</button>';}).join("")+
-    '<span class="wl2">لا تُحسب في الحمل</span></div>';
+    T('<span class="wl2">لا تُحسب في الحمل</span></div>');
 }
 function bindWarm(root,after){
   root.querySelectorAll("[data-wu]").forEach(function(b){
@@ -1085,8 +1636,8 @@ function bindWarm(root,after){
 /* ============ render ============ */
 function render(){
   $("tabs").innerHTML=plan.map(function(d){
-    return '<button class="tab '+(d.id===dayId?"on":"")+'" data-d="'+d.id+'">'+esc(d.name)+'</button>';}).join("")+
-    '<button class="tab" id="mgd" title="إدارة الأيام">⚙ الأيام</button>';
+    return '<button class="tab '+(d.id===dayId?"on":"")+'" data-d="'+d.id+'">'+esc(T(d.name))+'</button>';}).join("")+
+    T('<button class="tab" id="mgd" title="إدارة الأيام">⚙ الأيام</button>');
   Array.prototype.forEach.call($("tabs").querySelectorAll("[data-d]"),function(b){
     b.onclick=function(){dayId=b.getAttribute("data-d");view="log";render();window.scrollTo(0,0);};});
   $("mgd").onclick=dayMgr;
@@ -1102,14 +1653,14 @@ function render(){
 function renderLog(){
   var d=day(),s=cur(),prev=prevSession(),vol=volume(s),pv=prev?volume(prev):0;
   var h='<div class="strip"><div class="big">'+vol.toLocaleString("en-US")+'</div>'+
-        '<div class="lbl">كجم إجمالي حمل اليوم</div>';
+        T('<div class="lbl">كجم إجمالي حمل اليوم</div>');
   if(pv&&vol){var df=vol-pv,pc=Math.round(df/pv*100);
-    h+='<div class="delta '+(df>=0?"up":"down")+'">'+(df>=0?"▲ ":"▼ ")+Math.abs(pc)+'٪ عن آخر مرة</div>';}
+    h+='<div class="delta '+(df>=0?"up":"down")+'">'+(df>=0?"▲ ":"▼ ")+Math.abs(pc)+T('٪ عن آخر مرة</div>');}
   h+='</div>';
   if(!editMode){
-    h+='<button class="startf" id="startf">▶ وضع التركيز — سجّل بضغطتين وأنت تتمرن</button>';
+    h+=T('<button class="startf" id="startf">▶ وضع التركيز — سجّل بضغطتين وأنت تتمرن</button>');
     var anyPrev=d.ex.some(function(e){return !!lastSets(e);});
-    if(anyPrev) h+='<button class="repeat" id="rep">↺ كرر آخر جلسة — عبّي كل الأوزان وعدّل اللي تغيّر</button>';
+    if(anyPrev) h+=T('<button class="repeat" id="rep">↺ كرر آخر جلسة — عبّي كل الأوزان وعدّل اللي تغيّر</button>');
   }
 
   d.ex.forEach(function(ex,xi){
@@ -1120,47 +1671,47 @@ function renderLog(){
       var g=(p&&p.w)?(p.w+" × "+(p.r||"?")):"—";
       var up=(p&&p.w&&r.w&&parseFloat(r.w)>parseFloat(p.w));
       var pb=cfg.rpeOn?('<button class="pbtn '+(r.p!=null?"on":"")+'" data-p="'+ex.uid+'" data-i="'+i+
-        '" title="الجهد">'+(r.p!=null?r.p:"جهد")+'</button>'):"";
+        T('" title="الجهد">')+(r.p!=null?r.p:T("جهد"))+'</button>'):"";
       body+='<div class="row'+(cfg.rpeOn?" rpe":"")+'">'+
-        '<button class="chk '+(r.d?"on":"")+'" data-c="'+ex.uid+'" data-i="'+i+'" title="علّم المجموعة">'+(r.d?"✓":(i+1))+'</button>'+
-        '<div class="fld"><input type="number" inputmode="decimal" step="0.5" placeholder="—" value="'+(r.w!=null?r.w:"")+'" data-u="'+ex.uid+'" data-i="'+i+'" data-f="w"><span class="unit">كجم</span></div>'+
-        '<div class="fld"><input type="number" inputmode="numeric" placeholder="—" value="'+(r.r!=null?r.r:"")+'" data-u="'+ex.uid+'" data-i="'+i+'" data-f="r"><span class="unit">عدة</span></div>'+
+        '<button class="chk '+(r.d?"on":"")+'" data-c="'+ex.uid+'" data-i="'+i+T('" title="علّم المجموعة">')+(r.d?"✓":(i+1))+'</button>'+
+        '<div class="fld"><input type="number" inputmode="decimal" step="0.5" placeholder="—" value="'+(r.w!=null?r.w:"")+'" data-u="'+ex.uid+'" data-i="'+i+T('" data-f="w"><span class="unit">كجم</span></div>')+
+        '<div class="fld"><input type="number" inputmode="numeric" placeholder="—" value="'+(r.r!=null?r.r:"")+'" data-u="'+ex.uid+'" data-i="'+i+T('" data-f="r"><span class="unit">عدة</span></div>')+
         pb+
-        '<div class="ghost">'+(up?'<span class="badge">▲ تقدم</span>':'سابق <b>'+g+'</b>')+'</div></div>';
+        '<div class="ghost">'+(up?T('<span class="badge">▲ تقدم</span>'):T('سابق <b>')+g+'</b>')+'</div></div>';
     }
     var stw=stall(ex),sth="";
-    if(stw) sth='<div class="stall">ثابت على '+stw+' كجم من ٣ جلسات. جرّب تنزل ١٠٪ وترجع تبني، أو زد مجموعة، أو بدّل التمرين ببديل من قائمة "؟".</div>';
+    if(stw) sth=T('<div class="stall">ثابت على ')+stw+T(' كجم من ٣ جلسات. جرّب تنزل ١٠٪ وترجع تبني، أو زد مجموعة، أو بدّل التمرين ببديل من قائمة "؟".</div>');
     var sg=suggest(ex),sgh="";
-    if(sg&&sg.bw) sgh='<button class="sugg" style="cursor:default">تمرين بوزن الجسم — سجّل العدات فقط</button>';
+    if(sg&&sg.bw) sgh=T('<button class="sugg" style="cursor:default">تمرين بوزن الجسم — سجّل العدات فقط</button>');
     else if(sg) sgh='<button class="sugg" data-sg="'+xi+'" data-w="'+sg.w+'">'+
-      (sg.est?("بداية مقترحة من تحليل جسمك"+(bwAge()!=null&&bwAge()>60?" (قياس قديم)":"")+": "):
-        (sg.hold?"أكملت النطاق لكن بجهد أقصى — ثبّت على ":
-         sg.big?"أكملت النطاق بجهد مريح — اقفز إلى ":
-         sg.up?"أكملت النطاق آخر مرة — جرّب ":"استمر على "))+
-      sg.w+' كجم'+(sg.per?" للدمبل الواحد":"")+' · اضغط للتعبئة</button>';
+      (sg.est?(T("بداية مقترحة من تحليل جسمك")+(bwAge()!=null&&bwAge()>60?T(" (قياس قديم)"):"")+": "):
+        (sg.hold?T("أكملت النطاق لكن بجهد أقصى — ثبّت على "):
+         sg.big?T("أكملت النطاق بجهد مريح — اقفز إلى "):
+         sg.up?T("أكملت النطاق آخر مرة — جرّب "):T("استمر على ")))+
+      sg.w+T(' كجم')+(sg.per?T(" للدمبل الواحد"):"")+T(' · اضغط للتعبئة</button>');
     var wmh=editMode?"":warmHtml(ex);
     var tools = editMode
-      ? '<button class="icobtn" data-up="'+xi+'" title="أعلى"'+(xi===0?' disabled style="opacity:.3"':'')+'>▲</button>'+
-        '<button class="icobtn" data-dn="'+xi+'" title="أسفل"'+(xi===d.ex.length-1?' disabled style="opacity:.3"':'')+'>▼</button>'+
-        (meta(ex)?'<button class="icobtn" data-sp="'+xi+'" title="بدّل التمرين">⇄</button>':'')+
-        '<button class="icobtn" data-x="'+xi+'" title="حذف التمرين" style="color:#C08585">✕</button>'
-      : (meta(ex)?'<button class="icobtn info" data-g="'+xi+'" title="الطريقة الصحيحة">؟</button>':'')+
-        '<button class="icobtn" data-t="1" title="مؤقت راحة">⏱</button>';
+      ? '<button class="icobtn" data-up="'+xi+T('" title="أعلى"')+(xi===0?' disabled style="opacity:.3"':'')+'>▲</button>'+
+        '<button class="icobtn" data-dn="'+xi+T('" title="أسفل"')+(xi===d.ex.length-1?' disabled style="opacity:.3"':'')+'>▼</button>'+
+        (meta(ex)?'<button class="icobtn" data-sp="'+xi+T('" title="بدّل التمرين">⇄</button>'):'')+
+        '<button class="icobtn" data-x="'+xi+T('" title="حذف التمرين" style="color:#C08585">✕</button>')
+      : (meta(ex)?'<button class="icobtn info" data-g="'+xi+T('" title="الطريقة الصحيحة">؟</button>'):'')+
+        T('<button class="icobtn" data-t="1" title="مؤقت راحة">⏱</button>');
     h+='<div class="card"><div class="chead"><div class="cname">'+esc(exName(ex))+'</div>'+
        '<div class="ctag'+(editMode?' tap" data-cfg="'+xi+'"':'"')+'>'+ex.s+' × '+esc(ex.r)+'</div>'+
        '<div class="sp"></div>'+tools+'</div>'+
        sth+sgh+wmh+'<div class="sets">'+body+
-       (editMode?'<div class="setbtns"><button class="addset" data-a="'+ex.uid+'" data-n="'+n+'">+ مجموعة</button>'+
-         (n>1?'<button class="addset del" data-rm="'+xi+'" data-n="'+n+'">− حذف آخر مجموعة</button>':'')+
+       (editMode?'<div class="setbtns"><button class="addset" data-a="'+ex.uid+'" data-n="'+n+T('">+ مجموعة</button>')+
+         (n>1?'<button class="addset del" data-rm="'+xi+'" data-n="'+n+T('">− حذف آخر مجموعة</button>'):'')+
          '</div>':'')+
        '</div></div>';
   });
-  if(editMode) h+='<button class="addex" id="addex">+ إضافة تمرين لهذا اليوم</button>';
-  h+='<h2 class="sec">ملاحظة على الجلسة</h2>'+
-     '<textarea class="noteBox" id="note" placeholder="كيف كان إحساسك؟ نومك، طاقتك، أي ألم أو ملاحظة تنفعك بعدين…">'+
+  if(editMode) h+=T('<button class="addex" id="addex">+ إضافة تمرين لهذا اليوم</button>');
+  h+=T('<h2 class="sec">ملاحظة على الجلسة</h2>')+
+     T('<textarea class="noteBox" id="note" placeholder="كيف كان إحساسك؟ نومك، طاقتك، أي ألم أو ملاحظة تنفعك بعدين…">')+
      esc(notes[key(dateStr,dayId)]||"")+'</textarea>';
   h+='<button class="editbtn '+(editMode?"on":"")+'" id="edt" style="margin-bottom:18px">'+
-     (editMode?'✓ تم — إغلاق التعديل':'✎ تعديل التمارين — إضافة وحذف وترتيب')+'</button>';
+     (editMode?T('✓ تم — إغلاق التعديل'):T('✎ تعديل التمارين — إضافة وحذف وترتيب'))+'</button>';
   $("main").innerHTML=h;
 
   $("main").querySelectorAll("input").forEach(function(inp){
@@ -1180,7 +1731,7 @@ function renderLog(){
     b.onclick=function(){ delSet(+b.getAttribute("data-rm"), (+b.getAttribute("data-n"))-1); };});
   $("main").querySelectorAll("[data-x]").forEach(function(b){
     b.onclick=function(){ var i=+b.getAttribute("data-x");
-      if(!confirm("حذف "+exName(day().ex[i])+" من هذا اليوم؟")) return;
+      if(!confirm(T("حذف ")+exName(day().ex[i])+T(" من هذا اليوم؟"))) return;
       day().ex.splice(i,1); saveP(); renderLog(); };});
   $("main").querySelectorAll("[data-g]").forEach(function(b){
     b.onclick=function(){ var i=+b.getAttribute("data-g"); guide(meta(day().ex[i]),i); };});
@@ -1245,8 +1796,8 @@ function renderLog(){
   $("main").querySelectorAll("[data-cfg]").forEach(function(b){
     b.onclick=function(){
       var ex=day().ex[+b.getAttribute("data-cfg")];
-      var st=prompt("كم مجموعة؟",ex.s); if(st===null) return;
-      var rp=prompt("نطاق التكرارات؟",ex.r); if(rp===null) return;
+      var st=prompt(T("كم مجموعة؟"),ex.s); if(st===null) return;
+      var rp=prompt(T("نطاق التكرارات؟"),ex.r); if(rp===null) return;
       ex.s=Math.max(1,parseInt(st,10)||ex.s); ex.r=rp||ex.r; saveP(); renderLog(); };});
 }
 
@@ -1255,9 +1806,9 @@ function delSet(xi,i){
   var ex=day().ex[xi]; if(!ex) return;
   var ss=cur(),rows=ss[ex.uid]||[];
   var n=Math.max(ex.s,rows.length);
-  if(n<=1) return alert("لازم تبقى مجموعة واحدة على الأقل.");
+  if(n<=1) return alert(T("لازم تبقى مجموعة واحدة على الأقل."));
   var v=rows[i];
-  if(v&&(v.w||v.r)&&!confirm("حذف المجموعة "+(i+1)+"؟ فيها "+(v.w||"—")+" × "+(v.r||"—")+".")) return;
+  if(v&&(v.w||v.r)&&!confirm(T("حذف المجموعة ")+(i+1)+T("؟ فيها ")+(v.w||"—")+" × "+(v.r||"—")+".")) return;
   if(i<rows.length) rows.splice(i,1);
   if(rows.length){ ss[ex.uid]=rows; } else { delete ss[ex.uid]; }
   ex.s=Math.max(1,Math.min(ex.s,n-1));
@@ -1290,7 +1841,7 @@ function updStrip(){
   var d=document.querySelector(".strip .delta");
   if(d&&pv){var df=vol-pv,pc=Math.round(df/pv*100);
     d.className="delta "+(df>=0?"up":"down");
-    d.textContent=(df>=0?"▲ ":"▼ ")+Math.abs(pc)+"٪ عن آخر مرة";}
+    d.textContent=(df>=0?"▲ ":"▼ ")+Math.abs(pc)+T("٪ عن آخر مرة");}
 }
 
 /* ============ anatomy figure ============ */
@@ -1341,16 +1892,16 @@ function rpeSheet(uid,i){
   var ss=cur(); if(!ss[uid]) ss[uid]=[];
   while(ss[uid].length<=i) ss[uid].push({});
   var v=ss[uid][i].p;
-  var h='<div class="note" style="margin-top:0">كم كان الجهد في هذي المجموعة؟ الرقم يقيس كم عدة بقيت عندك، '+
-        'ويدخل في قرار زيادة الوزن المرة الجاية.</div>'+
+  var h=T('<div class="note" style="margin-top:0">كم كان الجهد في هذي المجموعة؟ الرقم يقيس كم عدة بقيت عندك، ')+
+        T('ويدخل في قرار زيادة الوزن المرة الجاية.</div>')+
         '<div class="rpechips">'+RPEV.map(function(n){
           return '<button class="rchip '+(v==n?"on":"")+'" data-rp="'+n+'">'+n+'</button>';}).join("")+'</div>'+
-        '<div class="rhint" id="rh">'+(v!=null?(RPETXT[v]||""):"")+'</div>'+
+        '<div class="rhint" id="rh">'+(v!=null?T(RPETXT[v]||""):"")+'</div>'+
         '<div style="font-size:11.5px;color:var(--dim);line-height:1.8;margin:10px 2px 0">'+
-        RPEV.map(function(n){ return '<b style="font-family:var(--num);color:var(--chalk)">'+n+'</b> — '+RPETXT[n]; }).join("<br>")+
+        RPEV.map(function(n){ return '<b style="font-family:var(--num);color:var(--chalk)">'+n+'</b> — '+T(RPETXT[n]); }).join("<br>")+
         '</div>'+
-        '<button class="btn ghostb" id="rclr" style="width:100%;margin-top:14px">امسح الجهد</button>';
-  sheet("جهد المجموعة "+(i+1),h);
+        T('<button class="btn ghostb" id="rclr" style="width:100%;margin-top:14px">امسح الجهد</button>');
+  sheet(T("جهد المجموعة ")+(i+1),h);
   $("modal").querySelectorAll("[data-rp]").forEach(function(b){
     b.onclick=function(){
       ss[uid][i].p=parseFloat(b.getAttribute("data-rp")); saveS(); closeModal(); renderLog(); };});
@@ -1359,27 +1910,27 @@ function rpeSheet(uid,i){
 function guide(m,xi){
   if(!m) return;
   var h='<div class="figs">'+
-    '<figure>'+figure("f",m.m)+'<figcaption>أمامي</figcaption></figure>'+
-    '<figure>'+figure("b",m.m)+'<figcaption>خلفي</figcaption></figure></div>';
-  h+='<div class="meta"><div class="chip">الجهاز: <b>'+esc(m.eq)+'</b></div>'+
-     m.m.map(function(k){return '<div class="chip"><b>'+esc(MNAMES[k]||k)+'</b></div>';}).join("")+'</div>';
-  h+='<div class="gh">الطريقة الصحيحة</div><ol class="steps">'+m.st.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>';
-  h+='<div class="gh">أخطاء شائعة</div><ul class="mis">'+m.mi.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
-  h+='<div class="gh">بدائل — لو الجهاز مشغول أو ما يناسبك</div>';
-  if(xi!=null) h+='<div class="note" style="margin:0 0 8px">اضغط أي بديل ليحل محل التمرين في برنامج هذا اليوم.</div>';
+    '<figure>'+figure("f",m.m)+T('<figcaption>أمامي</figcaption></figure>')+
+    '<figure>'+figure("b",m.m)+T('<figcaption>خلفي</figcaption></figure></div>');
+  h+=T('<div class="meta"><div class="chip">الجهاز: <b>')+esc(libEq(m))+'</b></div>'+
+     m.m.map(function(k){return '<div class="chip"><b>'+esc(MN(k))+'</b></div>';}).join("")+'</div>';
+  h+=T('<div class="gh">الطريقة الصحيحة</div><ol class="steps">')+libSt(m).map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>';
+  h+=T('<div class="gh">أخطاء شائعة</div><ul class="mis">')+libMi(m).map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
+  h+=T('<div class="gh">بدائل — لو الجهاز مشغول أو ما يناسبك</div>');
+  if(xi!=null) h+=T('<div class="note" style="margin:0 0 8px">اضغط أي بديل ليحل محل التمرين في برنامج هذا اليوم.</div>');
   var alts=m.al.slice().sort(function(a,b){
     return (eqOk(LIBMAP[b])?1:0)-(eqOk(LIBMAP[a])?1:0); });
   h+=alts.map(function(t){
     var a=LIBMAP[t];
     var ok=eqOk(a),ms=ok?"":eqMissing(a).join(" · ");
-    if(a&&xi!=null) return '<button class="pick '+(ok?"":"off")+'" data-sw="'+a.id+'"><div class="n">'+esc(a.n)+
-      (ok?'':'<div class="no">غير متوفر عندك: '+esc(ms)+'</div>')+'</div>'+
-      '<div class="e">'+esc(a.eq)+'</div></button>';
-    return '<div class="pick" style="cursor:default">'+esc(a?a.n:t)+'</div>';}).join("");
-  if(xi!=null) h+='<button class="addex" id="more" style="margin-top:4px">أو اختر بديلاً آخر بنفس العضلة…</button>';
+    if(a&&xi!=null) return '<button class="pick '+(ok?"":"off")+'" data-sw="'+a.id+'"><div class="n">'+esc(libN(a))+
+      (ok?'':T('<div class="no">غير متوفر عندك: ')+esc(ms)+'</div>')+'</div>'+
+      '<div class="e">'+esc(libEq(a))+'</div></button>';
+    return '<div class="pick" style="cursor:default">'+esc(a?libN(a):t)+'</div>';}).join("");
+  if(xi!=null) h+=T('<button class="addex" id="more" style="margin-top:4px">أو اختر بديلاً آخر بنفس العضلة…</button>');
   h+='<a class="ytb" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+
-     encodeURIComponent(m.n+" تمرين طريقة صحيحة")+'">▶ شوف الحركة بالفيديو</a>';
-  sheet(m.n,h);
+     encodeURIComponent(m.n+T(" تمرين طريقة صحيحة"))+T('">▶ شوف الحركة بالفيديو</a>');
+  sheet(libN(m),h);
   $("modal").querySelectorAll("[data-sw]").forEach(function(b){
     b.onclick=function(){ swapEx(xi,b.getAttribute("data-sw")); };});
   if($("more")) $("more").onclick=function(){ swapPicker(xi); };
@@ -1387,7 +1938,7 @@ function guide(m,xi){
 /* replace an exercise in the plan, keeping sets and rep range */
 function swapEx(xi,ref){
   var ex=day().ex[xi],a=LIBMAP[ref]; if(!a) return;
-  if(!confirm("استبدال «"+exName(ex)+"» بـ «"+a.n+"» في هذا اليوم؟")) return;
+  if(!confirm(T("استبدال «")+exName(ex)+T("» بـ «")+libN(a)+T("» في هذا اليوم؟"))) return;
   ex.ref=ref; delete ex.n;
   ex.uid=dayId+"_"+ref+"_"+Date.now().toString(36);
   saveP(); closeModal(); renderLog();
@@ -1400,12 +1951,12 @@ function swapPicker(xi){
     var sa=a.m.filter(function(k){return mus.indexOf(k)>=0;}).length;
     var sb=b.m.filter(function(k){return mus.indexOf(k)>=0;}).length;
     return sb-sa; });
-  var h='<input class="search" id="sq" placeholder="ابحث…"><div id="sres"></div>';
-  sheet("بديل لـ "+(m?m.n:exName(ex)),h);
+  var h=T('<input class="search" id="sq" placeholder="ابحث…"><div id="sres"></div>');
+  sheet(T("بديل لـ ")+(m?libN(m):exName(ex)),h);
   function draw(f){
     f=(f||"").trim();
-    var items=(f?LIB:cand).filter(function(x){ return !f||x.n.indexOf(f)>=0||x.eq.indexOf(f)>=0||
-      x.m.some(function(k){return (MNAMES[k]||"").indexOf(f)>=0;}); });
+    var items=(f?LIB:cand).filter(function(x){ return !f||libMatch(x,f)||
+      x.m.some(function(k){return (MNAMES[k]||"").indexOf(f)>=0||(MN(k)||"").toLowerCase().indexOf(f.toLowerCase())>=0;}); });
     $("sres").innerHTML=pickList(items,"data-sw2");
     $("sres").querySelectorAll("[data-sw2]").forEach(function(b){
       b.onclick=function(){ swapEx(xi,b.getAttribute("data-sw2")); };});
@@ -1422,30 +1973,30 @@ function pickList(items,attr){
   var use=(cfg.eqOn&&!eqShowAll)?av:items;
   var h=use.length?use.map(function(x){
     var ok=eqOk(x);
-    return '<button class="pick '+(ok?"":"off")+'" '+attr+'="'+x.id+'"><div class="n">'+esc(x.n)+
-      '<div style="font-size:10.5px;color:var(--dim);font-weight:400">'+esc(x.eq)+'</div>'+
-      (ok?'':'<div class="no">غير متوفر: '+esc(eqMissing(x).join(" · "))+'</div>')+'</div>'+
-      '<div class="e">'+esc(x.m.map(function(k){return MNAMES[k];}).slice(0,2).join(" · "))+'</div></button>';
-  }).join(""):'<div class="empty">ما فيه نتيجة بالأجهزة المتوفرة عندك.</div>';
+    return '<button class="pick '+(ok?"":"off")+'" '+attr+'="'+x.id+'"><div class="n">'+esc(libN(x))+
+      '<div style="font-size:10.5px;color:var(--dim);font-weight:400">'+esc(libEq(x))+'</div>'+
+      (ok?'':T('<div class="no">غير متوفر: ')+esc(eqMissing(x).join(" · "))+'</div>')+'</div>'+
+      '<div class="e">'+esc(x.m.map(function(k){return MN(k);}).slice(0,2).join(" · "))+'</div></button>';
+  }).join(""):T('<div class="empty">ما فيه نتيجة بالأجهزة المتوفرة عندك.</div>');
   if(cfg.eqOn&&hid.length) h+='<button class="showall" id="shall">'+
-    (eqShowAll?"أخفِ غير المتوفر":hid.length+" تمرين مخفي — جهازه غير متوفر عندك · أظهرها")+'</button>';
+    (eqShowAll?T("أخفِ غير المتوفر"):hid.length+T(" تمرين مخفي — جهازه غير متوفر عندك · أظهرها"))+'</button>';
   return h;
 }
 function picker(){
-  var h='<input class="search" id="q" placeholder="ابحث بالاسم أو الجهاز أو العضلة…"><div id="res"></div>'+
-        '<button class="btn ghostb" id="custom" style="width:100%;margin-top:8px">تمرين مخصص (اكتب اسمه بنفسك)</button>';
-  sheet("إضافة تمرين",h);
+  var h=T('<input class="search" id="q" placeholder="ابحث بالاسم أو الجهاز أو العضلة…"><div id="res"></div>')+
+        T('<button class="btn ghostb" id="custom" style="width:100%;margin-top:8px">تمرين مخصص (اكتب اسمه بنفسك)</button>');
+  sheet(T("إضافة تمرين"),h);
   function list(f){
     f=(f||"").trim();
-    var items=LIB.filter(function(x){ return !f||x.n.indexOf(f)>=0||x.eq.indexOf(f)>=0||
-      x.m.some(function(k){return (MNAMES[k]||"").indexOf(f)>=0;}); });
+    var items=LIB.filter(function(x){ return !f||libMatch(x,f)||
+      x.m.some(function(k){return (MNAMES[k]||"").indexOf(f)>=0||(MN(k)||"").toLowerCase().indexOf(f.toLowerCase())>=0;}); });
     $("res").innerHTML=pickList(items,"data-r");
     if($("shall")) $("shall").onclick=function(){ eqShowAll=!eqShowAll; list($("q").value); };
     $("res").querySelectorAll("[data-r]").forEach(function(b){
       b.onclick=function(){
         var ref=b.getAttribute("data-r");
-        var st=prompt("كم مجموعة؟","3"); if(st===null) return;
-        var rp=prompt("نطاق التكرارات؟","8-12"); if(rp===null) return;
+        var st=prompt(T("كم مجموعة؟"),"3"); if(st===null) return;
+        var rp=prompt(T("نطاق التكرارات؟"),"8-12"); if(rp===null) return;
         day().ex.push({ref:ref,uid:dayId+"_"+ref+"_"+Date.now().toString(36),
           s:Math.max(1,parseInt(st,10)||3),r:rp||"8-12"});
         saveP(); closeModal(); renderLog();
@@ -1454,8 +2005,8 @@ function picker(){
   list("");
   $("q").oninput=function(){list($("q").value);};
   $("custom").onclick=function(){
-    var nm=prompt("اسم التمرين؟"); if(!nm) return;
-    var st=prompt("كم مجموعة؟","3"); var rp=prompt("نطاق التكرارات؟","8-12");
+    var nm=prompt(T("اسم التمرين؟")); if(!nm) return;
+    var st=prompt(T("كم مجموعة؟"),"3"); var rp=prompt(T("نطاق التكرارات؟"),"8-12");
     day().ex.push({n:nm,uid:dayId+"_c"+Date.now().toString(36),
       s:Math.max(1,parseInt(st,10)||3),r:rp||"8-12",inc:2.5});
     saveP(); closeModal(); renderLog();
@@ -1464,16 +2015,16 @@ function picker(){
 
 function dayMgr(){
   var h=plan.map(function(d,i){
-    return '<div class="setrow"><div class="l">'+esc(d.name)+
-      '<div style="font-size:11px;color:var(--dim)">'+d.ex.length+' تمارين</div></div><div class="c"></div>'+
+    return '<div class="setrow"><div class="l">'+esc(T(d.name))+
+      '<div style="font-size:11px;color:var(--dim)">'+d.ex.length+T(' تمارين</div></div><div class="c"></div>')+
       '<button class="icobtn" data-up="'+i+'" '+(i===0?'disabled style="opacity:.3"':'')+'>▲</button>'+
       '<button class="icobtn" data-dn="'+i+'" '+(i===plan.length-1?'disabled style="opacity:.3"':'')+'>▼</button>'+
       '<button class="icobtn" data-rn="'+i+'">✎</button>'+
-      '<button class="icobtn" data-cp="'+i+'">نسخ</button>'+
+      '<button class="icobtn" data-cp="'+i+T('">نسخ</button>')+
       '<button class="icobtn" data-dl="'+i+'">✕</button></div>';}).join("");
-  h+='<button class="addex" id="newday" style="margin-top:14px">+ إضافة يوم تمرين جديد</button>'+
-     '<div class="note">ترتيب الأيام هنا هو نفسه ترتيبها في الشريط العلوي. حذف يوم يشيله من البرنامج، وسجلاته القديمة تبقى محفوظة لو رجعته باسم جديد لاحقاً ما بتظهر.</div>';
-  sheet("أيام البرنامج",h);
+  h+=T('<button class="addex" id="newday" style="margin-top:14px">+ إضافة يوم تمرين جديد</button>')+
+     T('<div class="note">ترتيب الأيام هنا هو نفسه ترتيبها في الشريط العلوي. حذف يوم يشيله من البرنامج، وسجلاته القديمة تبقى محفوظة لو رجعته باسم جديد لاحقاً ما بتظهر.</div>');
+  sheet(T("أيام البرنامج"),h);
   var body=$("modal");
   body.querySelectorAll("[data-up]").forEach(function(b){ b.onclick=function(){
     var i=+b.getAttribute("data-up"); if(i<1) return;
@@ -1482,24 +2033,24 @@ function dayMgr(){
     var i=+b.getAttribute("data-dn"); if(i>=plan.length-1) return;
     plan.splice(i+1,0,plan.splice(i,1)[0]); saveP(); dayMgr(); render(); };});
   body.querySelectorAll("[data-rn]").forEach(function(b){ b.onclick=function(){
-    var i=+b.getAttribute("data-rn"),n=prompt("اسم اليوم؟",plan[i].name);
+    var i=+b.getAttribute("data-rn"),n=prompt(T("اسم اليوم؟"),plan[i].name);
     if(!n) return; plan[i].name=n; saveP(); dayMgr(); render(); };});
   body.querySelectorAll("[data-cp]").forEach(function(b){ b.onclick=function(){
     var i=+b.getAttribute("data-cp"),src=plan[i];
-    var n=prompt("اسم النسخة؟",src.name+" ٢"); if(!n) return;
+    var n=prompt(T("اسم النسخة؟"),src.name+T(" ٢")); if(!n) return;
     var id="d"+Date.now().toString(36);
     plan.push({id:id,name:n,ex:src.ex.map(function(e,j){
       var c=JSON.parse(JSON.stringify(e)); c.uid=id+"_"+(c.ref||"c")+"_"+j; return c; })});
     saveP(); dayMgr(); render(); };});
   body.querySelectorAll("[data-dl]").forEach(function(b){ b.onclick=function(){
     var i=+b.getAttribute("data-dl");
-    if(plan.length<2) return alert("لازم يبقى يوم واحد على الأقل.");
-    if(!confirm("حذف يوم «"+plan[i].name+"» من البرنامج؟")) return;
+    if(plan.length<2) return alert(T("لازم يبقى يوم واحد على الأقل."));
+    if(!confirm(T("حذف يوم «")+plan[i].name+T("» من البرنامج؟"))) return;
     var gone=plan[i].id; plan.splice(i,1);
     if(dayId===gone) dayId=plan[0].id;
     saveP(); dayMgr(); render(); };});
   $("newday").onclick=function(){
-    var n=prompt("اسم اليوم؟ (مثلاً: بطن وكارديو)"); if(!n) return;
+    var n=prompt(T("اسم اليوم؟ (مثلاً: بطن وكارديو)")); if(!n) return;
     var id="d"+Date.now().toString(36);
     plan.push({id:id,name:n,ex:[]});
     dayId=id; saveP(); closeModal(); view="log"; render(); window.scrollTo(0,0);
@@ -1570,50 +2121,50 @@ function renderProg(){
     var mv=mkey(e); if(!movs[mv]){ movs[mv]={mv:mv,n:exName(e),cur:true}; order.push(mv); } }); });
   for(var kk in sessions){ for(var uu in sessions[kk]){
     var mv2=uidMov(uu); if(!movs[mv2]){ movs[mv2]={mv:mv2,n:movName(mv2),cur:false}; order.push(mv2); } } }
-  if(!order.length){ $("main").innerHTML='<div class="empty">ما فيه تمارين.</div>'; return; }
+  if(!order.length){ $("main").innerHTML=T('<div class="empty">ما فيه تمارين.</div>'); return; }
   if(!psel||!movs[psel]) psel=order[0];
 
-  var h='<h2 class="sec">تطور التمرين</h2><select class="sel" id="ps">'+
+  var h=T('<h2 class="sec">تطور التمرين</h2><select class="sel" id="ps">')+
     order.map(function(mv){return '<option value="'+mv+'" '+(mv===psel?"selected":"")+'>'+
-      esc(movs[mv].n)+(movs[mv].cur?'':' — سابق')+'</option>';}).join("")+'</select>'+
+      esc(movs[mv].n)+(movs[mv].cur?'':T(' — سابق'))+'</option>';}).join("")+'</select>'+
     '<div class="mini" id="pm">'+
-      '<button data-p="w" class="'+(pmetric==="w"?"on":"")+'">أثقل وزن</button>'+
-      '<button data-p="e" class="'+(pmetric==="e"?"on":"")+'">أقصى قوة تقديرية</button></div>';
+      '<button data-p="w" class="'+(pmetric==="w"?"on":"")+T('">أثقل وزن</button>')+
+      '<button data-p="e" class="'+(pmetric==="e"?"on":"")+T('">أقصى قوة تقديرية</button></div>');
 
   var pts=movHistory(psel);
-  if(!pts.length) h+='<div class="empty">ما فيه بيانات لهذا التمرين بعد.</div>';
+  if(!pts.length) h+=T('<div class="empty">ما فيه بيانات لهذا التمرين بعد.</div>');
   else{
     var vals=pts.map(function(x){return pmetric==="w"?x.w:x.e;});
     var max=Math.max.apply(null,vals);
-    h+='<div class="strip"><div class="big">'+max+'</div><div class="lbl">كجم — '+
-      (pmetric==="w"?"أعلى رقم وصلته":"أقصى قوة تقديرية (١ عدة)")+'</div></div>';
+    h+='<div class="strip"><div class="big">'+max+T('</div><div class="lbl">كجم — ')+
+      (pmetric==="w"?T("أعلى رقم وصلته"):T("أقصى قوة تقديرية (١ عدة)"))+'</div></div>';
     pts.slice(-16).forEach(function(x,i){
       var v=pmetric==="w"?x.w:x.e;
       h+='<div class="pbar"><div class="nm">'+x.d.slice(5)+'</div><div class="track">'+
          '<div class="fill" style="width:'+Math.round(v/max*100)+'%"></div></div>'+
-         '<div class="v">'+(pmetric==="w"?(x.w+" × "+(x.r||"?")):v+" كجم")+'</div></div>';});
-    if(pmetric==="e") h+='<div class="note">تقدير رياضي من الوزن والعدات (معادلة إيبلي). يفيد لمقارنة جلساتك ببعض حتى لو تغيّر عدد التكرارات — لكنه تقدير، لا تختبر رقم عدة واحدة بناءً عليه بدون مساعد.</div>';
+         '<div class="v">'+(pmetric==="w"?(x.w+" × "+(x.r||"?")):v+T(" كجم"))+'</div></div>';});
+    if(pmetric==="e") h+=T('<div class="note">تقدير رياضي من الوزن والعدات (معادلة إيبلي). يفيد لمقارنة جلساتك ببعض حتى لو تغيّر عدد التكرارات — لكنه تقدير، لا تختبر رقم عدة واحدة بناءً عليه بدون مساعد.</div>');
   }
 
   /* volume per muscle over a selectable window */
   var mvr=muscleVolume(vrange),wv=mvr.v,mk=Object.keys(wv).sort(function(a,b){return wv[b]-wv[a];});
-  var rlab={7:"آخر ٧ أيام",30:"آخر ٣٠ يوم",90:"آخر ٣ شهور",0:"كل السجل"}[vrange];
-  h+='<h2 class="sec">مجموعات كل عضلة — '+rlab+'</h2>'+
+  var rlab={7:T("آخر ٧ أيام"),30:T("آخر ٣٠ يوم"),90:T("آخر ٣ شهور"),0:T("كل السجل")}[vrange];
+  h+=T('<h2 class="sec">مجموعات كل عضلة — ')+rlab+'</h2>'+
      '<div class="mini" id="vr">'+[7,30,90,0].map(function(d){
        return '<button data-v="'+d+'" class="'+(vrange===d?"on":"")+'">'+
-         ({7:"٧ أيام",30:"٣٠ يوم",90:"٣ شهور",0:"الكل"}[d])+'</button>';}).join("")+'</div>';
-  if(!mk.length) h+='<div class="empty">سجّل جلسة وبيبان لك توزيع الحمل على العضلات.</div>';
+         ({7:T("٧ أيام"),30:T("٣٠ يوم"),90:T("٣ شهور"),0:T("الكل")}[d])+'</button>';}).join("")+'</div>';
+  if(!mk.length) h+=T('<div class="empty">سجّل جلسة وبيبان لك توزيع الحمل على العضلات.</div>');
   else{
     var top=wv[mk[0]],wks=mvr.weeks,multi=(vrange!==7);
     mk.forEach(function(m){
       var n=Math.round(wv[m]*10)/10, per=Math.round(wv[m]/wks*10)/10;
       var col=per<8?"#6E7A8B":(per>22?"var(--down)":"var(--brass)");
-      h+='<div class="pbar"><div class="nm" style="min-width:78px;font-family:var(--ar)">'+esc(MNAMES[m]||m)+'</div>'+
+      h+='<div class="pbar"><div class="nm" style="min-width:78px;font-family:var(--ar)">'+esc(MN(m))+'</div>'+
          '<div class="track"><div class="fill" style="width:'+Math.round(n/top*100)+'%;background:'+col+'"></div></div>'+
-         '<div class="v" style="min-width:'+(multi?"86px":"72px")+'">'+n+(multi?' · '+per+'/أسبوع':' مجموعة')+'</div></div>';});
-    h+='<div class="note">'+(multi?'الرقم الأول إجمالي المجموعات خلال '+rlab+'، والثاني معدلها الأسبوعي على مدى '+
-       (Math.round(wks*10)/10)+' أسبوع — وهو الرقم اللي تقارنه بالمرجع. ':'')+
-       'المدى المعتاد للنمو تقريباً ١٠–٢٠ مجموعة فعّالة للعضلة أسبوعياً. الرمادي = أقل من ٨ (عضلة مهملة)، الأحمر = فوق ٢٢ (حمل زائد قد يعيق الاستشفاء). التمرين يحسب مجموعة كاملة لعضلته الأساسية ونص مجموعة للمساعدة.</div>';
+         '<div class="v" style="min-width:'+(multi?"86px":"72px")+'">'+n+(multi?' · '+per+T('/أسبوع'):T(' مجموعة'))+'</div></div>';});
+    h+='<div class="note">'+(multi?T('الرقم الأول إجمالي المجموعات خلال ')+rlab+T('، والثاني معدلها الأسبوعي على مدى ')+
+       (Math.round(wks*10)/10)+T(' أسبوع — وهو الرقم اللي تقارنه بالمرجع. '):'')+
+       T('المدى المعتاد للنمو تقريباً ١٠–٢٠ مجموعة فعّالة للعضلة أسبوعياً. الرمادي = أقل من ٨ (عضلة مهملة)، الأحمر = فوق ٢٢ (حمل زائد قد يعيق الاستشفاء). التمرين يحسب مجموعة كاملة لعضلته الأساسية ونص مجموعة للمساعدة.</div>');
   }
 
   /* session history */
@@ -1622,8 +2173,8 @@ function renderProg(){
     for(var u in s){ if((s[u]||[]).some(function(x){return x&&x.w;})){ok=true;break;} }
     return ok;
   }).sort(function(a,b){ return a.split("|")[1]<b.split("|")[1]?1:-1; });
-  h+='<h2 class="sec">سجل الجلسات</h2>';
-  if(!hk.length) h+='<div class="empty">ما فيه جلسات محفوظة بعد.</div>';
+  h+=T('<h2 class="sec">سجل الجلسات</h2>');
+  if(!hk.length) h+=T('<div class="empty">ما فيه جلسات محفوظة بعد.</div>');
   else h+=hk.slice(0,25).map(function(k){
     var p=k.split("|"),dn="—";
     plan.forEach(function(d){ if(d.id===p[0]) dn=d.name; });
@@ -1631,9 +2182,9 @@ function renderProg(){
     for(var u in s) sets+=(s[u]||[]).filter(function(x){return x&&x.w&&x.r;}).length;
     return '<div class="hrow" style="cursor:default"><button data-h="'+k+'" style="background:none;border:0;color:var(--chalk);'+
       'display:flex;align-items:center;gap:10px;flex:1;text-align:right;cursor:pointer;padding:0">'+
-      '<span class="d">'+p[1].slice(5)+'</span><span class="n">'+esc(dn)+(notes[k]?' 📝':'')+'</span>'+
-      '<span class="v" style="margin-right:auto">'+sets+' مجموعة · '+volume(s).toLocaleString("en-US")+' كجم</span></button>'+
-      '<button class="icobtn" data-hd="'+k+'" title="حذف الجلسة" style="color:#C08585;margin-right:8px">✕</button></div>';
+      '<span class="d">'+p[1].slice(5)+'</span><span class="n">'+esc(T(dn))+(notes[k]?' 📝':'')+'</span>'+
+      '<span class="v" style="margin-right:auto">'+sets+T(' مجموعة · ')+volume(s).toLocaleString("en-US")+T(' كجم</span></button>')+
+      '<button class="icobtn" data-hd="'+k+T('" title="حذف الجلسة" style="color:#C08585;margin-right:8px">✕</button></div>');
   }).join("");
 
   $("main").innerHTML=h;
@@ -1645,7 +2196,7 @@ function renderProg(){
   $("main").querySelectorAll("[data-hd]").forEach(function(b){
     b.onclick=function(){
       var k=b.getAttribute("data-hd"),p=k.split("|");
-      if(!confirm("حذف جلسة "+p[1]+" بالكامل؟ ما يمكن التراجع.")) return;
+      if(!confirm(T("حذف جلسة ")+p[1]+T(" بالكامل؟ ما يمكن التراجع."))) return;
       delete sessions[k]; delete notes[k]; delete warm[k]; saveS(); saveN(); saveW(); renderProg();
     };});
   $("main").querySelectorAll("[data-h]").forEach(function(b){
@@ -1671,15 +2222,15 @@ function lastBWDate(){ var ks=Object.keys(bw).sort(); return ks.length?ks[ks.len
 function bwAge(){ var d=lastBWDate(); return d?daysBetween(d,dateStr):null; }
 function agoText(n){
   if(n==null) return "";
-  if(n<=0) return "اليوم";
-  if(n===1) return "أمس";
-  if(n<14) return "قبل "+n+" يوم";
-  if(n<60) return "قبل "+Math.round(n/7)+" أسابيع";
-  return "قبل "+Math.round(n/30)+" شهور";
+  if(n<=0) return T("اليوم");
+  if(n===1) return T("أمس");
+  if(n<14) return T("قبل ")+n+T(" يوم");
+  if(n<60) return T("قبل ")+Math.round(n/7)+T(" أسابيع");
+  return T("قبل ")+Math.round(n/30)+T(" شهور");
 }
 /* readings are weeks or months apart, so the x-axis follows real dates, not row order */
 function bwChart(pts){
-  if(pts.length<2) return '<div class="note">قراءة واحدة فقط — يحتاج قراءتين على الأقل لرسم الاتجاه.</div>';
+  if(pts.length<2) return T('<div class="note">قراءة واحدة فقط — يحتاج قراءتين على الأقل لرسم الاتجاه.</div>');
   var t0=new Date(pts[0].d+"T00:00:00").getTime();
   var t1=new Date(pts[pts.length-1].d+"T00:00:00").getTime();
   var span=(t1-t0)||1;
@@ -1705,52 +2256,52 @@ function bwChart(pts){
   g+='</svg>';
   return '<div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 4px 2px;margin:6px 0">'+g+
     '<div style="display:flex;justify-content:space-between;padding:0 8px 6px;font-family:var(--num);font-size:10px;color:var(--dim)">'+
-    '<span>'+pts[0].d+'</span><span>'+Math.round(span/86400000)+' يوم</span><span>'+pts[pts.length-1].d+'</span></div></div>';
+    '<span>'+pts[0].d+'</span><span>'+Math.round(span/86400000)+T(' يوم</span><span>')+pts[pts.length-1].d+'</span></div></div>';
 }
 
 function renderBody(){
   var e=bw[dateStr]||{},keys=Object.keys(bw).sort();
-  var h='<h2 class="sec">قياس اليوم — '+dateStr+'</h2>';
-  h+='<button class="scan" id="scan">📷 ارفع صورة تقرير InBody أو ملف — يقرأه ويعبّي الخانات</button>'+
+  var h=T('<h2 class="sec">قياس اليوم — ')+dateStr+'</h2>';
+  h+=T('<button class="scan" id="scan">📷 ارفع صورة تقرير InBody أو ملف — يقرأه ويعبّي الخانات</button>')+
      '<input type="file" id="file" accept="image/*,application/pdf" style="display:none">'+
-     '<div class="note" id="scanNote">يشتغل داخل تطبيق Claude. لو ركّبت الملف على جوالك كتطبيق مستقل، عبّي الخانات يدوياً.</div>';
+     T('<div class="note" id="scanNote">يشتغل داخل تطبيق Claude. لو ركّبت الملف على جوالك كتطبيق مستقل، عبّي الخانات يدوياً.</div>');
   h+='<div class="grid3">'+
-    '<div class="f"><label>الوزن (كجم)</label><input type="number" inputmode="decimal" step="0.1" id="bw_w" placeholder="—" value="'+(e.w!=null?e.w:"")+'"></div>'+
-    '<div class="f"><label>نسبة الدهون ٪</label><input type="number" inputmode="decimal" step="0.1" id="bw_f" placeholder="—" value="'+(e.f!=null?e.f:"")+'"></div>'+
-    '<div class="f"><label>كتلة العضلات (كجم)</label><input type="number" inputmode="decimal" step="0.1" id="bw_m" placeholder="—" value="'+(e.m!=null?e.m:"")+'"></div>'+
-    '<div class="f"><label>محيط الخصر (سم)</label><input type="number" inputmode="decimal" step="0.5" id="bw_c" placeholder="—" value="'+(e.c!=null?e.c:"")+'"></div>'+
-    '<div class="f calc"><label>كتلة الدهون</label><div class="v" id="cFat">'+(fatMass(e)!=null?fatMass(e)+" كجم":"—")+'</div></div>'+
-    '<div class="f calc"><label>الكتلة الخالية من الدهون</label><div class="v" id="cLean">'+(leanOf(e)!=null?leanOf(e)+" كجم":"—")+'</div></div>'+
+    T('<div class="f"><label>الوزن (كجم)</label><input type="number" inputmode="decimal" step="0.1" id="bw_w" placeholder="—" value="')+(e.w!=null?e.w:"")+'"></div>'+
+    T('<div class="f"><label>نسبة الدهون ٪</label><input type="number" inputmode="decimal" step="0.1" id="bw_f" placeholder="—" value="')+(e.f!=null?e.f:"")+'"></div>'+
+    T('<div class="f"><label>كتلة العضلات (كجم)</label><input type="number" inputmode="decimal" step="0.1" id="bw_m" placeholder="—" value="')+(e.m!=null?e.m:"")+'"></div>'+
+    T('<div class="f"><label>محيط الخصر (سم)</label><input type="number" inputmode="decimal" step="0.5" id="bw_c" placeholder="—" value="')+(e.c!=null?e.c:"")+'"></div>'+
+    T('<div class="f calc"><label>كتلة الدهون</label><div class="v" id="cFat">')+(fatMass(e)!=null?fatMass(e)+T(" كجم"):"—")+'</div></div>'+
+    T('<div class="f calc"><label>الكتلة الخالية من الدهون</label><div class="v" id="cLean">')+(leanOf(e)!=null?leanOf(e)+T(" كجم"):"—")+'</div></div>'+
     '</div>';
-  h+='<button class="btn" id="bwsave">حفظ القياس</button>'+
-     '<button class="btn ghostb" id="bwdel">مسح قياس اليوم</button>';
+  h+=T('<button class="btn" id="bwsave">حفظ القياس</button>')+
+     T('<button class="btn ghostb" id="bwdel">مسح قياس اليوم</button>');
 
-  h+='<h2 class="sec">مستواك في التمرين</h2><div class="seg" id="lvl">'+
-    Object.keys(LEVELS).map(function(k){return '<button data-l="'+k+'" class="'+(cfg.level===k?"on":"")+'">'+LEVELS[k].n+'</button>';}).join("")+
+  h+=T('<h2 class="sec">مستواك في التمرين</h2><div class="seg" id="lvl">')+
+    Object.keys(LEVELS).map(function(k){return '<button data-l="'+k+'" class="'+(cfg.level===k?"on":"")+'">'+T(LEVELS[k].n)+'</button>';}).join("")+
     '</div><div class="seg" id="sex">'+
-    '<button data-s="m" class="'+(cfg.sex==="m"?"on":"")+'">ذكر</button>'+
-    '<button data-s="f" class="'+(cfg.sex==="f"?"on":"")+'">أنثى</button></div>';
+    '<button data-s="m" class="'+(cfg.sex==="m"?"on":"")+T('">ذكر</button>')+
+    '<button data-s="f" class="'+(cfg.sex==="f"?"on":"")+T('">أنثى</button></div>');
   var lm=leanMass();
   var age=bwAge();
-  if(lm) h+='<div class="warn">الكتلة الخالية من الدهون: <b>'+Math.round(lm.v*10)/10+' كجم</b> (محسوبة من '+lm.src+
-    ' · آخر قياس '+agoText(age)+').'+
-    (age!=null&&age>60?'<br><b style="color:#E0A6A6">القياس قديم — أعد القياس قبل ما تعتمد على وزن البداية المقترح.</b>':'')+'<br>منها يُشتق وزن البداية المقترح لكل تمرين في صفحة التمرين. هذا تقدير مبدئي — سخّن أولاً، وابدأ أخف من المقترح لو حسيت الحركة غير مضبوطة. المرجع الحقيقي هو أن تكمل النطاق بأداء نظيف.</div>';
-  else h+='<div class="note">سجّل وزنك ونسبة الدهون عشان يحسب لك وزن البداية المقترح لكل تمرين.</div>';
+  if(lm) h+=T('<div class="warn">الكتلة الخالية من الدهون: <b>')+Math.round(lm.v*10)/10+T(' كجم</b> (محسوبة من ')+lm.src+
+    T(' · آخر قياس ')+agoText(age)+').'+
+    (age!=null&&age>60?T('<br><b style="color:#E0A6A6">القياس قديم — أعد القياس قبل ما تعتمد على وزن البداية المقترح.</b>'):'')+T('<br>منها يُشتق وزن البداية المقترح لكل تمرين في صفحة التمرين. هذا تقدير مبدئي — سخّن أولاً، وابدأ أخف من المقترح لو حسيت الحركة غير مضبوطة. المرجع الحقيقي هو أن تكمل النطاق بأداء نظيف.</div>');
+  else h+=T('<div class="note">سجّل وزنك ونسبة الدهون عشان يحسب لك وزن البداية المقترح لكل تمرين.</div>');
 
-  h+='<h2 class="sec">التطور مع الوقت</h2><div class="mini" id="mm">'+
-    '<button data-m="w" class="'+(bmetric==="w"?"on":"")+'">الوزن</button>'+
-    '<button data-m="f" class="'+(bmetric==="f"?"on":"")+'">كتلة الدهون</button>'+
-    '<button data-m="m" class="'+(bmetric==="m"?"on":"")+'">العضلات</button></div>';
+  h+=T('<h2 class="sec">التطور مع الوقت</h2><div class="mini" id="mm">')+
+    '<button data-m="w" class="'+(bmetric==="w"?"on":"")+T('">الوزن</button>')+
+    '<button data-m="f" class="'+(bmetric==="f"?"on":"")+T('">كتلة الدهون</button>')+
+    '<button data-m="m" class="'+(bmetric==="m"?"on":"")+T('">العضلات</button></div>');
   var pts=keys.map(function(k){return {d:k,v:metricVal(bw[k],bmetric)};}).filter(function(x){return x.v!=null;});
-  if(pts.length<1) h+='<div class="empty">ما فيه قراءات لهذا المؤشر بعد.</div>';
+  if(pts.length<1) h+=T('<div class="empty">ما فيه قراءات لهذا المؤشر بعد.</div>');
   else{
     var vals=pts.map(function(x){return x.v;});
     var lastV=vals[vals.length-1],firstV=vals[0];
     var df=Math.round((lastV-firstV)*10)/10;
     var good = bmetric==="f" ? df<0 : df>0;
-    h+='<div class="strip"><div class="big">'+lastV+'</div><div class="lbl">كجم — آخر قراءة</div>'+
+    h+='<div class="strip"><div class="big">'+lastV+T('</div><div class="lbl">كجم — آخر قراءة</div>')+
        (pts.length>1?'<div class="delta '+(df===0?"":(good?"up":"down"))+'">'+
-       (df>0?"▲ +":(df<0?"▼ ":""))+(df!==0?Math.abs(df)+" كجم":"بلا تغيير")+'</div>':'')+'</div>';
+       (df>0?"▲ +":(df<0?"▼ ":""))+(df!==0?Math.abs(df)+T(" كجم"):T("بلا تغيير"))+'</div>':'')+'</div>';
     h+=bwChart(pts);
     if(pts.length>1){
       var totalDays=daysBetween(pts[0].d,pts[pts.length-1].d)||1;
@@ -1758,17 +2309,17 @@ function renderBody(){
       var gap=daysBetween(pts[pts.length-2].d,pts[pts.length-1].d)||1;
       var lastDf=Math.round((lastV-vals[vals.length-2])*10)/10;
       var lastRate=Math.round(lastDf/gap*30*100)/100;
-      h+='<div class="warn">المعدل العام: <b>'+(perMonth>0?"+":"")+perMonth+' كجم/شهر</b> على مدى '+totalDays+' يوم.<br>'+
-         'بين آخر قراءتين (بينهما '+gap+' يوم): <b>'+(lastRate>0?"+":"")+lastRate+' كجم/شهر</b>.</div>';
+      h+=T('<div class="warn">المعدل العام: <b>')+(perMonth>0?"+":"")+perMonth+T(' كجم/شهر</b> على مدى ')+totalDays+T(' يوم.<br>')+
+         T('بين آخر قراءتين (بينهما ')+gap+T(' يوم): <b>')+(lastRate>0?"+":"")+lastRate+T(' كجم/شهر</b>.</div>');
     }
-    h+='<h2 class="sec">القراءات والفترات بينها</h2>';
+    h+=T('<h2 class="sec">القراءات والفترات بينها</h2>');
     pts.slice(-16).forEach(function(x,i,arr){
       var gp=i>0?daysBetween(arr[i-1].d,x.d):null;
       h+='<div class="pbar"><div class="nm" style="min-width:52px">'+x.d.slice(5)+'</div>'+
-         '<div class="v" style="text-align:right;min-width:62px;color:var(--chalk)">'+x.v+' كجم</div>'+
+         '<div class="v" style="text-align:right;min-width:62px;color:var(--chalk)">'+x.v+T(' كجم</div>')+
          '<div style="margin-right:auto;font-size:11px;color:var(--dim)">'+
-         (gp!=null?('+ '+gp+' يوم'):'أول قراءة')+'</div></div>';});
-    h+='<div class="note">الرسم يوزّع القراءات حسب تاريخها الحقيقي، فالفجوة الطويلة تبين طويلة. القياس مرة كل ٢–٤ أسابيع كافي — التغير الحقيقي في تكوين الجسم أبطأ من أن يظهر أسبوعياً، والقراءات المتقاربة تعكس الماء والطعام أكثر من الدهون والعضل.</div>';
+         (gp!=null?('+ '+gp+T(' يوم')):T('أول قراءة'))+'</div></div>';});
+    h+=T('<div class="note">الرسم يوزّع القراءات حسب تاريخها الحقيقي، فالفجوة الطويلة تبين طويلة. القياس مرة كل ٢–٤ أسابيع كافي — التغير الحقيقي في تكوين الجسم أبطأ من أن يظهر أسبوعياً، والقراءات المتقاربة تعكس الماء والطعام أكثر من الدهون والعضل.</div>');
   }
   $("main").innerHTML=h;
 
@@ -1779,10 +2330,10 @@ function renderBody(){
     v=parseFloat($("bw_f").value); if(v) o.f=Math.round(v*10)/10;
     v=parseFloat($("bw_m").value); if(v) o.m=Math.round(v*10)/10;
     v=parseFloat($("bw_c").value); if(v) o.c=Math.round(v*10)/10;
-    if(!o.w) return alert("اكتب الوزن على الأقل.");
+    if(!o.w) return alert(T("اكتب الوزن على الأقل."));
     bw[dateStr]=o; saveB(); renderBody();
   };
-  $("bwdel").onclick=function(){ if(!bw[dateStr]) return; if(!confirm("مسح قياس اليوم؟")) return;
+  $("bwdel").onclick=function(){ if(!bw[dateStr]) return; if(!confirm(T("مسح قياس اليوم؟"))) return;
     delete bw[dateStr]; saveB(); renderBody(); };
   $("lvl").querySelectorAll("[data-l]").forEach(function(b){
     b.onclick=function(){ cfg.level=b.getAttribute("data-l"); saveC(); renderBody(); };});
@@ -1796,24 +2347,24 @@ function renderBody(){
 function liveCalc(){
   var w=parseFloat($("bw_w").value),f=parseFloat($("bw_f").value);
   if(w&&f){ var fm=Math.round(w*f/100*10)/10;
-    $("cFat").textContent=fm+" كجم"; $("cLean").textContent=(Math.round((w-fm)*10)/10)+" كجم"; }
+    $("cFat").textContent=fm+T(" كجم"); $("cLean").textContent=(Math.round((w-fm)*10)/10)+T(" كجم"); }
   else { $("cFat").textContent="—"; $("cLean").textContent="—"; }
 }
 
 /* ---- read an InBody / smart-scale report ---- */
 function readReport(file){
-  var btn=$("scan"); btn.disabled=true; btn.textContent="جاري القراءة…";
+  var btn=$("scan"); btn.disabled=true; btn.textContent=T("جاري القراءة…");
   var fr=new FileReader();
-  fr.onerror=function(){ btn.disabled=false; btn.textContent="📷 ارفع صورة تقرير InBody أو ملف"; alert("ما قدرت أقرأ الملف."); };
+  fr.onerror=function(){ btn.disabled=false; btn.textContent=T("📷 ارفع صورة تقرير InBody أو ملف"); alert(T("ما قدرت أقرأ الملف.")); };
   fr.onload=function(){
     var b64=String(fr.result).split(",")[1];
     var isPdf=/pdf/i.test(file.type)||/\.pdf$/i.test(file.name);
     var mt=isPdf?"application/pdf":(file.type||"image/jpeg");
     var block= isPdf ? {type:"document",source:{type:"base64",media_type:"application/pdf",data:b64}}
                      : {type:"image",source:{type:"base64",media_type:mt,data:b64}};
-    var prompt="هذا تقرير تحليل تكوين الجسم (InBody أو ميزان ذكي). استخرج القيم وأعد JSON فقط بدون أي نص آخر وبدون علامات كود، بالمفاتيح التالية: "+
-      '{"date":"YYYY-MM-DD أو null","weight":رقم كجم أو null,"fatPercent":رقم أو null,"muscleMass":رقم كجم أو null,"waist":رقم سم أو null}. '+
-      "muscleMass هي كتلة العضلات الهيكلية SMM. حوّل الباوند إلى كيلو. لو القيمة غير موجودة ضع null.";
+    var prompt=T("هذا تقرير تحليل تكوين الجسم (InBody أو ميزان ذكي). استخرج القيم وأعد JSON فقط بدون أي نص آخر وبدون علامات كود، بالمفاتيح التالية: ")+
+      T('{"date":"YYYY-MM-DD أو null","weight":رقم كجم أو null,"fatPercent":رقم أو null,"muscleMass":رقم كجم أو null,"waist":رقم سم أو null}. ')+
+      T("muscleMass هي كتلة العضلات الهيكلية SMM. حوّل الباوند إلى كيلو. لو القيمة غير موجودة ضع null.");
     fetch("https://api.anthropic.com/v1/messages",{
       method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,
@@ -1821,19 +2372,19 @@ function readReport(file){
     }).then(function(r){return r.json();}).then(function(d){
       var txt=(d.content||[]).map(function(x){return x.text||"";}).join("").replace(/```json|```/g,"").trim();
       var o=JSON.parse(txt);
-      btn.disabled=false; btn.textContent="📷 ارفع صورة تقرير InBody أو ملف";
+      btn.disabled=false; btn.textContent=T("📷 ارفع صورة تقرير InBody أو ملف");
       if(o.date&&/^\d{4}-\d{2}-\d{2}$/.test(o.date)){ dateStr=o.date; $("date").value=dateStr; renderBody(); }
       if(o.weight) $("bw_w").value=o.weight;
       if(o.fatPercent) $("bw_f").value=o.fatPercent;
       if(o.muscleMass) $("bw_m").value=o.muscleMass;
       if(o.waist) $("bw_c").value=o.waist;
       liveCalc();
-      $("scanNote").textContent="تمت القراءة — راجع الأرقام واضغط حفظ القياس.";
+      $("scanNote").textContent=T("تمت القراءة — راجع الأرقام واضغط حفظ القياس.");
       $("scanNote").style.color="var(--up)";
     }).catch(function(err){
       console.error(err);
-      btn.disabled=false; btn.textContent="📷 ارفع صورة تقرير InBody أو ملف";
-      $("scanNote").textContent="ما قدرت أقرأ التقرير هنا. الفحص التلقائي يشتغل داخل تطبيق Claude فقط — عبّي الخانات يدوياً.";
+      btn.disabled=false; btn.textContent=T("📷 ارفع صورة تقرير InBody أو ملف");
+      $("scanNote").textContent=T("ما قدرت أقرأ التقرير هنا. الفحص التلقائي يشتغل داخل تطبيق Claude فقط — عبّي الخانات يدوياً.");
       $("scanNote").style.color="var(--down)";
     });
   };
@@ -1843,63 +2394,68 @@ function readReport(file){
 /* ============ settings / backup ============ */
 function eqCount(){ var n=0; LIB.forEach(function(x){ if(eqOk(x)) n++; }); return n; }
 function renderSet(){
-  var h='<h2 class="sec">مؤقت الراحة</h2>'+
-   '<div class="setrow"><div class="l">مدة الراحة</div><div class="c"></div>'+
-     '<input class="num-s" type="number" id="crest" value="'+cfg.rest+'"> <span style="font-size:12px;color:var(--dim)">ثانية</span></div>'+
-   '<div class="setrow"><div class="l">يبدأ تلقائياً بعد تسجيل العدات</div><div class="c"></div>'+
+  var h=T('<h2 class="sec">اللغة</h2>')+
+   '<div class="seg" id="lang">'+LANGS.map(function(L){
+     return '<button data-lg="'+L.k+'" class="'+((cfg.lang||"ar")===L.k?"on":"")+'">'+esc(L.n)+'</button>';}).join("")+
+   '</div>'+
+   T('<div class="note" style="margin-top:0">«EN + عربي» يعرض الأسماء والأزرار بالإنجليزي ويبقي الشرح وخطوات الحركة بالعربي.</div>')+
+   T('<h2 class="sec">مؤقت الراحة</h2>')+
+   T('<div class="setrow"><div class="l">مدة الراحة</div><div class="c"></div>')+
+     '<input class="num-s" type="number" id="crest" value="'+cfg.rest+T('"> <span style="font-size:12px;color:var(--dim)">ثانية</span></div>')+
+   T('<div class="setrow"><div class="l">يبدأ تلقائياً بعد تسجيل العدات</div><div class="c"></div>')+
      '<button class="sw '+(cfg.autoRest?"on":"")+'" id="cauto"><i></i></button></div>'+
-   '<div class="setrow"><div class="l">انتقال تلقائي للمجموعة التالية بعد الراحة<div style="font-size:11px;color:var(--dim)">في وضع التركيز</div></div><div class="c"></div>'+
+   T('<div class="setrow"><div class="l">انتقال تلقائي للمجموعة التالية بعد الراحة<div style="font-size:11px;color:var(--dim)">في وضع التركيز</div></div><div class="c"></div>')+
      '<button class="sw '+(cfg.autoNext?"on":"")+'" id="cnext"><i></i></button></div>'+
-   '<div class="setrow"><div class="l">صوت التنبيه</div><div class="c"></div>'+
+   T('<div class="setrow"><div class="l">صوت التنبيه</div><div class="c"></div>')+
      '<button class="sw '+(cfg.sound?"on":"")+'" id="csnd"><i></i></button></div>'+
 
-   '<h2 class="sec">التسخين والجهد</h2>'+
-   '<div class="setrow"><div class="l">مجموعات التسخين'+
-     '<div style="font-size:11px;color:var(--dim);line-height:1.6">سلّم محسوب من وزن العمل، يظهر قبل المجموعة الأولى. لا يدخل في الحمل ولا في مجموعات العضلة.</div></div>'+
+   T('<h2 class="sec">التسخين والجهد</h2>')+
+   T('<div class="setrow"><div class="l">مجموعات التسخين')+
+     T('<div style="font-size:11px;color:var(--dim);line-height:1.6">سلّم محسوب من وزن العمل، يظهر قبل المجموعة الأولى. لا يدخل في الحمل ولا في مجموعات العضلة.</div></div>')+
      '<div class="c"></div><button class="sw '+(cfg.warmOn?"on":"")+'" id="cwarm"><i></i></button></div>'+
-   '<div class="setrow"><div class="l">تسجيل الجهد (RPE)'+
-     '<div style="font-size:11px;color:var(--dim);line-height:1.6">رقم من ٦ إلى ١٠ لكل مجموعة يقيس كم عدة بقيت عندك. لو أكملت النطاق بجهد ٧ أو أقل يقترح قفزة أكبر، ولو ٩.٥ فأعلى ما يقترح زيادة.</div></div>'+
+   T('<div class="setrow"><div class="l">تسجيل الجهد (RPE)')+
+     T('<div style="font-size:11px;color:var(--dim);line-height:1.6">رقم من ٦ إلى ١٠ لكل مجموعة يقيس كم عدة بقيت عندك. لو أكملت النطاق بجهد ٧ أو أقل يقترح قفزة أكبر، ولو ٩.٥ فأعلى ما يقترح زيادة.</div></div>')+
      '<div class="c"></div><button class="sw '+(cfg.rpeOn?"on":"")+'" id="crpe"><i></i></button></div>'+
 
-   '<h2 class="sec">الأجهزة المتوفرة</h2>'+
-   '<div class="setrow"><div class="l">فلترة التمارين على المتوفر'+
-     '<div style="font-size:11px;color:var(--dim);line-height:1.6">يخفي من قوائم الإضافة والبدائل كل تمرين يحتاج جهازاً ما عندك. لا يمسّ تمارين برنامجك الحالية.</div></div>'+
+   T('<h2 class="sec">الأجهزة المتوفرة</h2>')+
+   T('<div class="setrow"><div class="l">فلترة التمارين على المتوفر')+
+     T('<div style="font-size:11px;color:var(--dim);line-height:1.6">يخفي من قوائم الإضافة والبدائل كل تمرين يحتاج جهازاً ما عندك. لا يمسّ تمارين برنامجك الحالية.</div></div>')+
      '<div class="c"></div><button class="sw '+(cfg.eqOn?"on":"")+'" id="ceq"><i></i></button></div>'+
    (cfg.eqOn
-     ? '<div class="eqh">جاهز سريع</div><div class="eqgrid">'+
-       EQPRESETS.map(function(p,i){ return '<button class="eqchip" data-pre="'+i+'" title="'+esc(p.d)+'">'+esc(p.n)+'</button>'; }).join("")+
+     ? T('<div class="eqh">جاهز سريع</div><div class="eqgrid">')+
+       EQPRESETS.map(function(p,i){ return '<button class="eqchip" data-pre="'+i+'" title="'+esc(T(p.d))+'">'+esc(T(p.n))+'</button>'; }).join("")+
        '</div>'+
        EQGRP.map(function(g){
-         return '<div class="eqh">'+esc(g.n)+'</div><div class="eqgrid">'+
+         return '<div class="eqh">'+esc(T(g.n))+'</div><div class="eqgrid">'+
            g.k.map(function(k){ return '<button class="eqchip '+((cfg.eq||{})[k]?"on":"")+'" data-eq="'+k+'">'+
-             esc(EQ[k])+'</button>'; }).join("")+'</div>';
+             esc(T(EQ[k]))+'</button>'; }).join("")+'</div>';
        }).join("")+
-       '<div class="note" style="margin-top:0">'+eqCount()+' تمرين من '+LIB.length+' متاح بالأجهزة المختارة. تمارين وزن الجسم متاحة دائماً.</div>'
+       '<div class="note" style="margin-top:0">'+eqCount()+T(' تمرين من ')+LIB.length+T(' متاح بالأجهزة المختارة. تمارين وزن الجسم متاحة دائماً.</div>')
      : '')+
    (window.canInstall&&window.canInstall()
-     ? '<h2 class="sec">تثبيت التطبيق</h2>'+
-       '<div class="note" style="margin-top:0">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>'+
-       '<button class="btn" id="binst">⬇ تثبيت على الشاشة الرئيسية</button>'
+     ? T('<h2 class="sec">تثبيت التطبيق</h2>')+
+       T('<div class="note" style="margin-top:0">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>')+
+       T('<button class="btn" id="binst">⬇ تثبيت على الشاشة الرئيسية</button>')
      : '')+
-   '<h2 class="sec">تصدير السجل</h2>'+
-   '<button class="btn" id="bxls">📊 ملف Excel</button>'+
-   '<button class="btn" id="bpdf">📄 PDF / طباعة</button>'+
-   '<div class="note" style="margin-top:2px">ملف Excel فيه أربع أوراق: الجلسات، قياسات الجسم، الأرقام القياسية، وحجم العضلات. زر PDF يفتح شاشة الطباعة — اختر «حفظ كـ PDF».</div>'+
-   '<h2 class="sec">مكان حفظ بياناتك</h2>'+
-   '<div class="warn">بياناتك محفوظة: <b>'+esc(storageLabel())+'</b>.<br>ما تروح لأي خادم ولا يشوفها أحد غيرك. لو مسحت بيانات المتصفح أو غيّرت الجهاز، بتحتاج النسخة الاحتياطية تحت.</div>'+
-   '<h2 class="sec">نسخة احتياطية</h2>'+
+   T('<h2 class="sec">تصدير السجل</h2>')+
+   T('<button class="btn" id="bxls">📊 ملف Excel</button>')+
+   T('<button class="btn" id="bpdf">📄 PDF / طباعة</button>')+
+   T('<div class="note" style="margin-top:2px">ملف Excel فيه أربع أوراق: الجلسات، قياسات الجسم، الأرقام القياسية، وحجم العضلات. زر PDF يفتح شاشة الطباعة — اختر «حفظ كـ PDF».</div>')+
+   T('<h2 class="sec">مكان حفظ بياناتك</h2>')+
+   T('<div class="warn">بياناتك محفوظة: <b>')+esc(storageLabel())+T('</b>.<br>ما تروح لأي خادم ولا يشوفها أحد غيرك. لو مسحت بيانات المتصفح أو غيّرت الجهاز، بتحتاج النسخة الاحتياطية تحت.</div>')+
+   T('<h2 class="sec">نسخة احتياطية</h2>')+
    '<div class="empty" style="padding:2px 4px;text-align:right;line-height:1.7">'+
-     'اضغط تصدير، انسخ النص واحفظه في ملاحظاتك أو أرسله لنفسك. للاستعادة الصقه هنا واضغط استيراد.</div>'+
-   '<button class="btn" id="bexp">تصدير البيانات</button>'+
-   '<button class="btn ghostb" id="bimp">استيراد</button>'+
-   '<button class="btn ghostb" id="bcopy">نسخ</button>'+
-   '<textarea class="ta" id="bak" placeholder="بيانات النسخة الاحتياطية تظهر هنا…"></textarea>'+
-   '<h2 class="sec">تغيير الجدول</h2>'+
-   '<div class="note" style="margin-top:0">اختيار جدول جاهز يستبدل أيامك وتمارينك الحالية. سجلك القديم يبقى محفوظاً لكن ما يظهر مع الجدول الجديد — صدّر نسخة احتياطية أولاً.</div>'+
+     T('اضغط تصدير، انسخ النص واحفظه في ملاحظاتك أو أرسله لنفسك. للاستعادة الصقه هنا واضغط استيراد.</div>')+
+   T('<button class="btn" id="bexp">تصدير البيانات</button>')+
+   T('<button class="btn ghostb" id="bimp">استيراد</button>')+
+   T('<button class="btn ghostb" id="bcopy">نسخ</button>')+
+   T('<textarea class="ta" id="bak" placeholder="بيانات النسخة الاحتياطية تظهر هنا…"></textarea>')+
+   T('<h2 class="sec">تغيير الجدول</h2>')+
+   T('<div class="note" style="margin-top:0">اختيار جدول جاهز يستبدل أيامك وتمارينك الحالية. سجلك القديم يبقى محفوظاً لكن ما يظهر مع الجدول الجديد — صدّر نسخة احتياطية أولاً.</div>')+
    TEMPLATES.map(function(t){
-     return '<div class="setrow" style="align-items:flex-start"><div class="l">'+esc(t.n)+
-       '<div style="font-size:11px;color:var(--dim);line-height:1.6">'+esc(t.d)+'</div></div>'+
-       '<div class="c"></div><button class="icobtn" data-tp="'+t.id+'" style="color:var(--brass);border-color:#4A3B18">تطبيق</button></div>';
+     return '<div class="setrow" style="align-items:flex-start"><div class="l">'+esc(T(t.n))+
+       '<div style="font-size:11px;color:var(--dim);line-height:1.6">'+esc(T(t.d))+'</div></div>'+
+       '<div class="c"></div><button class="icobtn" data-tp="'+t.id+T('" style="color:var(--brass);border-color:#4A3B18">تطبيق</button></div>');
    }).join("");
   $("main").innerHTML=h;
 
@@ -1910,6 +2466,8 @@ function renderSet(){
   $("cauto").onclick=function(){ cfg.autoRest=!cfg.autoRest; saveC(); renderSet(); };
   $("cnext").onclick=function(){ cfg.autoNext=!cfg.autoNext; saveC(); renderSet(); };
   $("csnd").onclick=function(){ cfg.sound=!cfg.sound; saveC(); if(cfg.sound) beep(); renderSet(); };
+  $("lang").querySelectorAll("[data-lg]").forEach(function(b){
+    b.onclick=function(){ cfg.lang=b.getAttribute("data-lg"); saveC(); applyLang(); render(); window.scrollTo(0,0); };});
   $("cwarm").onclick=function(){ cfg.warmOn=!cfg.warmOn; saveC(); renderSet(); };
   $("crpe").onclick=function(){ cfg.rpeOn=!cfg.rpeOn; saveC(); renderSet(); };
   $("ceq").onclick=function(){ cfg.eqOn=!cfg.eqOn; saveC(); renderSet(); };
@@ -1929,20 +2487,20 @@ function renderSet(){
   $("bcopy").onclick=function(){
     if(!$("bak").value) $("bak").value=JSON.stringify({v:4,plan:plan,sessions:sessions,bw:bw,notes:notes,warm:warm,cfg:cfg});
     $("bak").select();
-    if(navigator.clipboard) navigator.clipboard.writeText($("bak").value).then(function(){alert("تم النسخ");},
+    if(navigator.clipboard) navigator.clipboard.writeText($("bak").value).then(function(){alert(T("تم النسخ"));},
       function(){document.execCommand("copy");});
-    else { document.execCommand("copy"); alert("تم النسخ"); }
+    else { document.execCommand("copy"); alert(T("تم النسخ")); }
   };
   $("bimp").onclick=function(){
-    var t=$("bak").value.trim(); if(!t) return alert("الصق بيانات النسخة الاحتياطية أولاً.");
-    var o; try{ o=JSON.parse(t); }catch(e){ return alert("النص غير صالح."); }
-    if(!o||!o.sessions) return alert("النص غير صالح.");
-    if(!confirm("سيستبدل السجل الحالي بالكامل. متأكد؟")) return;
+    var t=$("bak").value.trim(); if(!t) return alert(T("الصق بيانات النسخة الاحتياطية أولاً."));
+    var o; try{ o=JSON.parse(t); }catch(e){ return alert(T("النص غير صالح.")); }
+    if(!o||!o.sessions) return alert(T("النص غير صالح."));
+    if(!confirm(T("سيستبدل السجل الحالي بالكامل. متأكد؟"))) return;
     plan=o.plan||plan; sessions=o.sessions||{}; bw=o.bw||{}; notes=o.notes||{}; warm=o.warm||{};
     cfg=Object.assign(cfg,o.cfg||{});
     if(!cfg.eq||typeof cfg.eq!=="object") cfg.eq={};
     for(var kk in bw){ if(typeof bw[kk]==="number") bw[kk]={w:bw[kk]}; }
-    saveP(); saveS(); saveB(); saveN(); saveW(); saveC(); alert("تم الاستيراد."); render();
+    saveP(); saveS(); saveB(); saveN(); saveW(); saveC(); alert(T("تم الاستيراد.")); render();
   };
   $("main").querySelectorAll("[data-tp]").forEach(function(b){
     b.onclick=function(){ applyTemplate(b.getAttribute("data-tp")); };});
@@ -1952,7 +2510,7 @@ function renderSet(){
 function applyTemplate(tid){
   var t=null; TEMPLATES.forEach(function(x){ if(x.id===tid) t=x; });
   if(!t) return;
-  if(!confirm("تطبيق «"+t.n+"»؟ بيستبدل أيامك وتمارينك الحالية.")) return;
+  if(!confirm(T("تطبيق «")+T(t.n)+T("»؟ بيستبدل أيامك وتمارينك الحالية."))) return;
   if(!t.days){ plan=JSON.parse(JSON.stringify(DEFAULT)); }
   else{
     var stamp=Date.now().toString(36);
@@ -1968,7 +2526,7 @@ function applyTemplate(tid){
 
 
 /* ============ export ============ */
-function dayNameOf(id){ var n="—"; plan.forEach(function(d){ if(d.id===id) n=d.name; }); return n; }
+function dayNameOf(id){ var n="—"; plan.forEach(function(d){ if(d.id===id) n=d.name; }); return T(n); }
 function exNameByUid(uid){ return movName(uidMov(uid)); }
 function allSessionKeys(){
   return Object.keys(sessions).filter(function(k){
@@ -2012,7 +2570,7 @@ function exportXls(){
     var p=k.split("|"),s=sessions[k];
     for(var u in s) (s[u]||[]).forEach(function(x,i){
       if(!x||!x.w) return;
-      rows.push([p[1],dayNameOf(p[0]),exNameByUid(u),i+1,x.w,x.r||"",x.p!=null?x.p:"",x.d?"نعم":"",
+      rows.push([p[1],dayNameOf(p[0]),exNameByUid(u),i+1,x.w,x.r||"",x.p!=null?x.p:"",x.d?T("نعم"):"",
         (x.w&&x.r)?e1rm(x.w,x.r):"",(x.w&&x.r)?Math.round(x.w*x.r):"",notes[k]||""]);
     });
   });
@@ -2024,32 +2582,32 @@ function exportXls(){
     .sort(function(a,b){ return b[1]-a[1]; });
   var mvr=muscleVolume(vrange),wv=mvr.v;
   var vrows=Object.keys(wv).sort(function(a,b){return wv[b]-wv[a];})
-    .map(function(m){ return [MNAMES[m]||m,Math.round(wv[m]*10)/10,Math.round(wv[m]/mvr.weeks*10)/10]; });
-  var vlab={7:"آخر ٧ أيام",30:"آخر ٣٠ يوم",90:"آخر ٣ شهور",0:"كل السجل"}[vrange];
+    .map(function(m){ return [MN(m),Math.round(wv[m]*10)/10,Math.round(wv[m]/mvr.weeks*10)/10]; });
+  var vlab={7:T("آخر ٧ أيام"),30:T("آخر ٣٠ يوم"),90:T("آخر ٣ شهور"),0:T("كل السجل")}[vrange];
 
-  var sheets=[["الجلسات","الجلسات"],["قياسات الجسم","قياسات الجسم"],
-              ["الأرقام القياسية","الأرقام القياسية"],["حجم العضلات","حجم العضلات"]];
+  var sheets=[[T("الجلسات"),T("الجلسات")],[T("قياسات الجسم"),T("قياسات الجسم")],
+              [T("الأرقام القياسية"),T("الأرقام القياسية")],[T("حجم العضلات"),T("حجم العضلات")]];
   var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" '+
     'xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">'+
     '<head><meta charset="utf-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets>'+
     sheets.map(function(sh){ return '<x:ExcelWorksheet><x:Name>'+sh[0]+'</x:Name>'+
-      '<x:WorksheetOptions><x:DisplayRightToLeft/></x:WorksheetOptions></x:ExcelWorksheet>'; }).join("")+
-    '</x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body dir="rtl">'+
-    tbl("الجلسات",["التاريخ","اليوم","التمرين","المجموعة","الوزن (كجم)","العدات","الجهد","مكتملة","قوة تقديرية","الحمل","ملاحظة الجلسة"],rows)+
-    tbl("قياسات الجسم",["التاريخ","الوزن","نسبة الدهون ٪","كتلة العضلات","محيط الخصر","كتلة الدهون","الكتلة الخالية"],brows)+
-    tbl("الأرقام القياسية",["التمرين","أثقل وزن","العدات","التاريخ","أقصى قوة تقديرية"],prows)+
-    tbl("حجم العضلات ("+vlab+")",["العضلة","إجمالي المجموعات","معدل أسبوعي"],vrows)+
+      (FULLEN()?'':'<x:WorksheetOptions><x:DisplayRightToLeft/></x:WorksheetOptions>')+'</x:ExcelWorksheet>'; }).join("")+
+    '</x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body dir="'+(FULLEN()?"ltr":"rtl")+'">'+
+    tbl(T("الجلسات"),[T("التاريخ"),T("يوم التمرين"),T("اسم التمرين"),T("المجموعة"),T("الوزن (كجم)"),T("العدات"),T("الجهد"),T("مكتملة"),T("قوة تقديرية"),T("الحمل"),T("ملاحظة الجلسة")],rows)+
+    tbl(T("قياسات الجسم"),[T("التاريخ"),T("الوزن"),T("نسبة الدهون ٪"),T("كتلة العضلات"),T("محيط الخصر"),T("كتلة الدهون"),T("الكتلة الخالية")],brows)+
+    tbl(T("الأرقام القياسية"),[T("اسم التمرين"),T("أثقل وزن"),T("العدات"),T("التاريخ"),T("أقصى قوة تقديرية")],prows)+
+    tbl(T("حجم العضلات (")+vlab+")",[T("العضلة"),T("إجمالي المجموعات"),T("معدل أسبوعي")],vrows)+
     '</body></html>';
-  if(!dl("سجل-التمرين-"+dateStr+".xls","application/vnd.ms-excel",html))
-    alert("ما قدرت أنزّل الملف هنا. جرّب من متصفح جوالك بعد تركيب التطبيق.");
+  if(!dl(T("سجل-التمرين-")+dateStr+".xls","application/vnd.ms-excel",html))
+    alert(T("ما قدرت أنزّل الملف هنا. جرّب من متصفح جوالك بعد تركيب التطبيق."));
 }
 function exportPdf(){
   var ks=allSessionKeys(),bl=bestLifts();
-  var h='<h1>سجل التمرين</h1><div class="sub">صادر بتاريخ '+dateStr+' · '+ks.length+' جلسة مسجلة</div>';
+  var h=T('<h1>سجل التمرين</h1><div class="sub">صادر بتاريخ ')+dateStr+' · '+ks.length+T(' جلسة مسجلة</div>');
   var bk=Object.keys(bw).sort();
   if(bk.length){
-    h+='<h2>قياسات الجسم</h2><table><tr><th>التاريخ</th><th>الوزن</th><th>دهون ٪</th>'+
-       '<th>كتلة الدهون</th><th>الكتلة الخالية</th><th>عضلات</th><th>خصر</th></tr>'+
+    h+=T('<h2>قياسات الجسم</h2><table><tr><th>التاريخ</th><th>الوزن</th><th>دهون ٪</th>')+
+       T('<th>كتلة الدهون</th><th>الكتلة الخالية</th><th>عضلات</th><th>خصر</th></tr>')+
        bk.map(function(k){ var e=bw[k];
          return '<tr><td>'+k+'</td><td>'+(e.w||"—")+'</td><td>'+(e.f||"—")+'</td><td>'+
            (fatMass(e)||"—")+'</td><td>'+(leanOf(e)||"—")+'</td><td>'+(e.m||"—")+'</td><td>'+(e.c||"—")+'</td></tr>';
@@ -2057,18 +2615,18 @@ function exportPdf(){
   }
   var pk=Object.keys(bl).sort(function(a,b){return bl[b].w-bl[a].w;});
   if(pk.length){
-    h+='<h2>الأرقام القياسية</h2><table><tr><th>التمرين</th><th>أثقل وزن</th><th>العدات</th>'+
-       '<th>التاريخ</th><th>قوة تقديرية</th></tr>'+
+    h+=T('<h2>الأرقام القياسية</h2><table><tr><th>التمرين</th><th>أثقل وزن</th><th>العدات</th>')+
+       T('<th>التاريخ</th><th>قوة تقديرية</th></tr>')+
        pk.map(function(u){ var b=bl[u];
          return '<tr><td>'+esc(b.n)+'</td><td>'+b.w+'</td><td>'+(b.r||"—")+'</td><td>'+b.d+'</td><td>'+b.e+'</td></tr>';
        }).join("")+'</table>';
   }
-  h+='<h2>الجلسات</h2>';
+  h+=T('<h2>الجلسات</h2>');
   ks.forEach(function(k){
     var p=k.split("|"),s=sessions[k];
     h+='<div class="ses"><div class="sh">'+p[1]+' — '+esc(dayNameOf(p[0]))+
-       ' <span>('+volume(s).toLocaleString("en-US")+' كجم)</span></div><table>'+
-       '<tr><th>التمرين</th><th>المجموعات (وزن × عدة)</th></tr>';
+       ' <span>('+volume(s).toLocaleString("en-US")+T(' كجم)</span></div><table>')+
+       T('<tr><th>التمرين</th><th>المجموعات (وزن × عدة)</th></tr>');
     for(var u in s){
       var sets=(s[u]||[]).filter(function(x){return x&&x.w;});
       if(!sets.length) continue;
@@ -2119,23 +2677,23 @@ function drawYt(){
   var zone=$("ytzone"); if(!zone) return;
   if(!zone.firstChild)
     zone.innerHTML='<div id="ytctl"></div><div class="ytwrap" id="ytwrap" style="display:none"></div>'+
-      '<a class="ytfall" id="ytfall" target="_blank" rel="noopener" style="display:none">ما ظهر المقطع؟ افتحه في يوتيوب</a>';
+      T('<a class="ytfall" id="ytfall" target="_blank" rel="noopener" style="display:none">ما ظهر المقطع؟ افتحه في يوتيوب</a>');
   var cu=ytParse(cfg.yt||""),c='';
   if(cfg.ytShow){
     c+='<div class="ytbar">'+
-       '<button id="ytpaste" style="flex:1">📋 لصق رابط منسوخ</button>'+
-       '<button id="ytopen">🔎 افتح يوتيوب</button>'+
-       '<button id="ythide">إخفاء</button></div>';
+       T('<button id="ytpaste" style="flex:1">📋 لصق رابط منسوخ</button>')+
+       T('<button id="ytopen">🔎 افتح يوتيوب</button>')+
+       T('<button id="ythide">إخفاء</button></div>');
     var lst=cfg.ytList||[];
     if(lst.length) c+='<div class="ytchips">'+lst.map(function(v,i){
       return '<span class="ytchip '+(cfg.yt===v.u?"on":"")+'" data-ytp="'+i+'"><b>'+esc(v.t)+'</b>'+
              '<i data-ytd="'+i+'">✕</i></span>';}).join("")+'</div>';
     if(cu.src&&isFileUrl()) c+='<div class="warn" style="margin:8px 0 2px">'+
-      'المشغّل المدمج ما يشتغل والملف مفتوح مباشرة من جهازك — يوتيوب يرفض التضمين بدون رابط موقع '+
-      '(الخطأ ١٥٣). ارفع التطبيق على GitHub Pages وافتحه من رابطه، وبيشتغل المقطع هنا داخل الشاشة.'+
-      '<br><a class="ytb" style="margin-top:10px" target="_blank" rel="noopener" href="'+esc(ytWatch(cu))+'">▶ افتح المقطع في يوتيوب الآن</a></div>';
-    else if(!cu.src) c+='<div class="note" style="margin:6px 2px">افتح يوتيوب، انسخ رابط المقطع أو قائمة التشغيل، وارجع واضغط «لصق رابط منسوخ».</div>';
-  }else c+='<div class="frow"><button id="ytshow">▶ افتح مشغّل يوتيوب داخل الشاشة</button></div>';
+      T('المشغّل المدمج ما يشتغل والملف مفتوح مباشرة من جهازك — يوتيوب يرفض التضمين بدون رابط موقع ')+
+      T('(الخطأ ١٥٣). ارفع التطبيق على GitHub Pages وافتحه من رابطه، وبيشتغل المقطع هنا داخل الشاشة.')+
+      '<br><a class="ytb" style="margin-top:10px" target="_blank" rel="noopener" href="'+esc(ytWatch(cu))+T('">▶ افتح المقطع في يوتيوب الآن</a></div>');
+    else if(!cu.src) c+=T('<div class="note" style="margin:6px 2px">افتح يوتيوب، انسخ رابط المقطع أو قائمة التشغيل، وارجع واضغط «لصق رابط منسوخ».</div>');
+  }else c+=T('<div class="frow"><button id="ytshow">▶ افتح مشغّل يوتيوب داخل الشاشة</button></div>');
   $("ytctl").innerHTML=c;
 
   var want=(cfg.ytShow&&cu.src&&!isFileUrl())?cu.src:"";
@@ -2160,7 +2718,7 @@ function drawYt(){
 function paintLock(){
   var b=$("ytlock"),sh=$("ytshield"); if(!b||!sh) return;
   b.className="ytlockb"+(cfg.ytLock?" on":"");
-  b.textContent=cfg.ytLock?"🔒 مقفل":"🔓 قفل";
+  b.textContent=cfg.ytLock?T("🔒 مقفل"):T("🔓 قفل");
   sh.className="ytshield"+(cfg.ytLock?" on":"");
 }
 function bindYt(){
@@ -2177,26 +2735,26 @@ function bindYt(){
   z.querySelectorAll("[data-ytd]").forEach(function(b){
     b.onclick=function(ev){ ev.stopPropagation();
       var i=+b.getAttribute("data-ytd"),l=cfg.ytList||[];
-      if(!confirm("حذف «"+l[i].t+"» من قائمتك؟")) return;
+      if(!confirm(T("حذف «")+l[i].t+T("» من قائمتك؟"))) return;
       if(cfg.yt===l[i].u) cfg.yt="";
       l.splice(i,1); cfg.ytList=l; saveC(); drawYt(); };});
 }
 function ytSave(url){
   var p=ytParse(url);
-  if(!p.src){ alert("ما عرفت أقرأ الرابط. تأكد إنه رابط مقطع أو قائمة تشغيل من يوتيوب."); return; }
+  if(!p.src){ alert(T("ما عرفت أقرأ الرابط. تأكد إنه رابط مقطع أو قائمة تشغيل من يوتيوب.")); return; }
   cfg.yt=url;
   var l=cfg.ytList||[];
   var exists=false; l.forEach(function(x){ if(x.u===url) exists=true; });
   if(!exists){
-    var nm=prompt("سمِّ هذا المقطع عشان ترجع له بسرعة:", p.kind==="l"?"قائمة تشغيل":"مقطع "+(l.length+1));
-    if(nm===null) nm=(p.kind==="l"?"قائمة":"مقطع "+(l.length+1));
-    l.unshift({t:nm.slice(0,24)||"مقطع",u:url});
+    var nm=prompt(T("سمِّ هذا المقطع عشان ترجع له بسرعة:"), p.kind==="l"?T("قائمة تشغيل"):T("مقطع ")+(l.length+1));
+    if(nm===null) nm=(p.kind==="l"?T("قائمة"):T("مقطع ")+(l.length+1));
+    l.unshift({t:nm.slice(0,24)||T("مقطع"),u:url});
     cfg.ytList=l.slice(0,8);
   }
   cfg.ytLock=false; saveC(); drawYt();
 }
 function ytPaste(){
-  function manual(){ var v=prompt("الصق رابط يوتيوب هنا:"); if(v) ytSave(v); }
+  function manual(){ var v=prompt(T("الصق رابط يوتيوب هنا:")); if(v) ytSave(v); }
   try{
     if(navigator.clipboard&&navigator.clipboard.readText){
       navigator.clipboard.readText().then(function(t){
@@ -2208,7 +2766,7 @@ function ytPaste(){
 function fSets(ex){ var rows=(cur()[ex.uid]||[]); return Math.max(ex.s,rows.length); }
 function fGet(ex,i){ var rows=cur()[ex.uid]||[]; return rows[i]||{}; }
 function startFocus(){
-  var d=day(); if(!d.ex.length) return alert("أضف تمارين لهذا اليوم أولاً.");
+  var d=day(); if(!d.ex.length) return alert(T("أضف تمارين لهذا اليوم أولاً."));
   F.xi=0; F.si=0; F.done=false;
   /* jump to the first set that isn't logged yet */
   outer: for(var a=0;a<d.ex.length;a++){
@@ -2241,7 +2799,7 @@ function drawFocus(){
   if(F.done||!ex) return drawSummary();
   var m=meta(ex),n=fSets(ex);
   $("fname").textContent=exName(ex);
-  $("fst").textContent="مجموعة "+(F.si+1)+" من "+n+" · "+(m?m.eq:"")+" · "+ex.r+" عدة";
+  $("fst").textContent=T("مجموعة ")+(F.si+1)+T(" من ")+n+" · "+(m?libEq(m):"")+" · "+ex.r+T(" عدة");
   $("fdots").innerHTML=d.ex.map(function(e,i){
     var rows=cur()[e.uid]||[],dn=rows.filter(function(x){return x&&x.w&&x.r;}).length>=e.s;
     return '<div class="fdot '+(i===F.xi?"now":(dn?"done":""))+'"></div>';}).join("");
@@ -2249,12 +2807,12 @@ function drawFocus(){
   var lp2=lastSets(ex),p=lp2&&lp2.sets[F.si];
   var sg=suggest(ex);
   var t='';
-  if(p&&p.w) t+='آخر مرة في هذي المجموعة: <b>'+p.w+' × '+(p.r||"?")+'</b>';
-  else if(sg&&sg.w) t+=(sg.est?'بداية مقترحة: ':'مقترح: ')+'<b>'+sg.w+' كجم</b>';
-  else t+='سجّل مجموعتك';
-  if(sg&&sg.hold&&p) t+='<br>أكملت النطاق آخر مرة لكن بجهد أقصى — ثبّت الوزن وحسّن الأداء';
-  else if(sg&&sg.big&&p) t+='<br>أكملت النطاق بجهد مريح — تقدر تقفز قفزة أكبر';
-  else if(sg&&sg.up&&p) t+='<br>أكملت النطاق آخر مرة — زد الوزن لو الأداء نظيف';
+  if(p&&p.w) t+=T('آخر مرة في هذي المجموعة: <b>')+p.w+' × '+(p.r||"?")+'</b>';
+  else if(sg&&sg.w) t+=(sg.est?T('بداية مقترحة: '):T('مقترح: '))+'<b>'+sg.w+T(' كجم</b>');
+  else t+=T('سجّل مجموعتك');
+  if(sg&&sg.hold&&p) t+=T('<br>أكملت النطاق آخر مرة لكن بجهد أقصى — ثبّت الوزن وحسّن الأداء');
+  else if(sg&&sg.big&&p) t+=T('<br>أكملت النطاق بجهد مريح — تقدر تقفز قفزة أكبر');
+  else if(sg&&sg.up&&p) t+=T('<br>أكملت النطاق آخر مرة — زد الوزن لو الأداء نظيف');
 
   drawYt();
   var h='<div class="ftarget">'+t+'</div>';
@@ -2264,23 +2822,23 @@ function drawFocus(){
     if(fw) h+=fw;
   }
   h+='<div class="step"><button data-w="-1">−</button>'+
-     '<div class="val" id="wv"><div class="n">'+F.w+'</div><div class="u">كجم — اضغط للكتابة</div></div>'+
+     '<div class="val" id="wv"><div class="n">'+F.w+T('</div><div class="u">كجم — اضغط للكتابة</div></div>')+
      '<button data-w="1">+</button></div>';
   h+='<div class="step"><button data-r="-1">−</button>'+
-     '<div class="val" id="rv"><div class="n">'+F.r+'</div><div class="u">عدة</div></div>'+
+     '<div class="val" id="rv"><div class="n">'+F.r+T('</div><div class="u">عدة</div></div>')+
      '<button data-r="1">+</button></div>';
   if(cfg.rpeOn){
     h+='<div class="rpechips">'+RPEV.map(function(nv){
       return '<button class="rchip '+(F.p===nv?"on":"")+'" data-rp="'+nv+'">'+nv+'</button>';}).join("")+'</div>'+
-      '<div class="rhint">'+(F.p!=null?("جهد "+F.p+" — "+(RPETXT[F.p]||"")):"الجهد اختياري — اضغط رقماً لو تبي تسجله")+'</div>';
+      '<div class="rhint">'+(F.p!=null?(T("جهد ")+F.p+" — "+T(RPETXT[F.p]||"")):T("الجهد اختياري — اضغط رقماً لو تبي تسجله"))+'</div>';
   }
-  h+='<button class="fdone" id="fdone">✓ سجّل المجموعة وابدأ الراحة</button>';
-  h+='<div class="frow"><button id="fdelset">حذف هذه المجموعة</button>'+
-     '<button id="fskipset">تخطي المجموعة</button>'+
-     '<button id="fprevx">التمرين السابق</button><button id="fnextx">التمرين التالي</button></div>';
+  h+=T('<button class="fdone" id="fdone">✓ سجّل المجموعة وابدأ الراحة</button>');
+  h+=T('<div class="frow"><button id="fdelset">حذف هذه المجموعة</button>')+
+     T('<button id="fskipset">تخطي المجموعة</button>')+
+     T('<button id="fprevx">التمرين السابق</button><button id="fnextx">التمرين التالي</button></div>');
   h+='<div class="frow"><button id="fauto" class="'+(cfg.autoNext?"on":"")+'">'+
-     (cfg.autoNext?"✓ ":"")+'انتقال تلقائي بعد الراحة</button>'+
-     '<button id="frestlen">راحة '+cfg.rest+' ث</button></div>';
+     (cfg.autoNext?"✓ ":"")+T('انتقال تلقائي بعد الراحة</button>')+
+     T('<button id="frestlen">راحة ')+cfg.rest+T(' ث</button></div>');
   var rows=cur()[ex.uid]||[];
   h+='<div class="fprev">'+Array.apply(null,{length:n}).map(function(_,i){
     var v=rows[i]||{};
@@ -2297,11 +2855,11 @@ function drawFocus(){
   $("fbody").querySelectorAll("[data-rp]").forEach(function(b){
     b.onclick=function(){ var nv=parseFloat(b.getAttribute("data-rp"));
       F.p=(F.p===nv)?null:nv; drawFocus(); };});
-  $("wv").onclick=function(){ var v=prompt("الوزن بالكجم؟",F.w); if(v!==null&&!isNaN(parseFloat(v))){F.w=parseFloat(v);drawFocus();} };
-  $("rv").onclick=function(){ var v=prompt("عدد التكرارات؟",F.r); if(v!==null&&!isNaN(parseInt(v,10))){F.r=parseInt(v,10);drawFocus();} };
+  $("wv").onclick=function(){ var v=prompt(T("الوزن بالكجم؟"),F.w); if(v!==null&&!isNaN(parseFloat(v))){F.w=parseFloat(v);drawFocus();} };
+  $("rv").onclick=function(){ var v=prompt(T("عدد التكرارات؟"),F.r); if(v!==null&&!isNaN(parseInt(v,10))){F.r=parseInt(v,10);drawFocus();} };
   $("fdone").onclick=logFocusSet;
   $("fdelset").onclick=function(){
-    var n2=fSets(ex); if(n2<=1) return alert("لازم تبقى مجموعة واحدة على الأقل.");
+    var n2=fSets(ex); if(n2<=1) return alert(T("لازم تبقى مجموعة واحدة على الأقل."));
     delSetQuiet(F.xi,F.si);
     if(F.si>=fSets(ex)) F.si=Math.max(0,fSets(ex)-1);
     loadFocusVals(); drawFocus();
@@ -2310,7 +2868,7 @@ function drawFocus(){
   $("fnextx").onclick=function(){ if(F.xi<d.ex.length-1){F.xi++;F.si=0;loadFocusVals();drawFocus();} else {F.done=true;drawSummary();} };
   $("fprevx").onclick=function(){ if(F.xi>0){F.xi--;F.si=0;loadFocusVals();drawFocus();} };
   $("fauto").onclick=function(){ cfg.autoNext=!cfg.autoNext; saveC(); drawFocus(); };
-  $("frestlen").onclick=function(){ var v=prompt("مدة الراحة بالثواني؟",cfg.rest);
+  $("frestlen").onclick=function(){ var v=prompt(T("مدة الراحة بالثواني؟"),cfg.rest);
     if(v!==null&&parseInt(v,10)>0){ cfg.rest=parseInt(v,10); saveC(); drawFocus(); } };
 }
 function logFocusSet(){
@@ -2333,8 +2891,8 @@ function advance(fromRest){
 }
 function focusRest(){
   var d=day(),ex=d.ex[F.xi],nxt;
-  if(F.si<fSets(ex)-1) nxt="التالي: "+exName(ex)+" — مجموعة "+(F.si+2);
-  else nxt="التالي: "+exName(d.ex[F.xi+1]);
+  if(F.si<fSets(ex)-1) nxt=T("التالي: ")+exName(ex)+T(" — مجموعة ")+(F.si+2);
+  else nxt=T("التالي: ")+exName(d.ex[F.xi+1]);
   $("fnx").textContent=nxt;
   $("frest").classList.add("on");
   startRest();
@@ -2347,18 +2905,18 @@ window.__ftick=function(left,total){
 window.__fend=function(){
   if(!F.on) return;
   if(cfg.autoNext){ $("frest").classList.remove("on"); advance(true); }
-  else { $("fbig").textContent="0:00"; $("fnx").textContent="انتهت الراحة — اضغط جاهز"; }
+  else { $("fbig").textContent="0:00"; $("fnx").textContent=T("انتهت الراحة — اضغط جاهز"); }
 };
 function drawSummary(){
   var s=cur(),sets=0;
   for(var u in s) sets+=(s[u]||[]).filter(function(x){return x&&x.w&&x.r;}).length;
-  $("fname").textContent="خلصت الجلسة"; $("fst").textContent=dateStr+" · "+day().name;
+  $("fname").textContent=T("خلصت الجلسة"); $("fst").textContent=dateStr+" · "+day().name;
   $("fdots").innerHTML="";
-  $("fbody").innerHTML='<div class="fsum"><div class="h">أحسنت 💪</div>'+
+  $("fbody").innerHTML=T('<div class="fsum"><div class="h">أحسنت 💪</div>')+
     '<div class="v">'+volume(s).toLocaleString("en-US")+'</div>'+
-    '<div style="font-size:12px;color:var(--dim);margin-top:4px">كجم إجمالي الحمل · '+sets+' مجموعة</div>'+
-    '<button class="startf" id="fclose" style="margin-top:24px">إغلاق ورجوع للسجل</button>'+
-    '<button class="fdone" id="fagain" style="background:var(--panel);color:var(--chalk);border:1px solid var(--line)">رجوع للتمارين</button></div>';
+    T('<div style="font-size:12px;color:var(--dim);margin-top:4px">كجم إجمالي الحمل · ')+sets+T(' مجموعة</div>')+
+    T('<button class="startf" id="fclose" style="margin-top:24px">إغلاق ورجوع للسجل</button>')+
+    T('<button class="fdone" id="fagain" style="background:var(--panel);color:var(--chalk);border:1px solid var(--line)">رجوع للتمارين</button></div>');
   $("fclose").onclick=exitFocus;
   $("fagain").onclick=function(){ F.done=false; F.xi=0; F.si=0; loadFocusVals(); drawFocus(); };
 }
@@ -2392,7 +2950,7 @@ if("serviceWorker" in navigator){
         var c={}; try{ c=JSON.parse(raw)||{}; }catch(e){}
         var l=c.ytList||[];
         var seen=false; l.forEach(function(x){ if(x.u===shared) seen=true; });
-        if(!seen) l.unshift({t:"من المشاركة",u:shared});
+        if(!seen) l.unshift({t:T("من المشاركة"),u:shared});
         c.ytList=l.slice(0,8); c.yt=shared; c.ytShow=true; c.ytLock=false;
         store.set("cfg",JSON.stringify(c)).then(function(){
           cfg=Object.assign(cfg,c);
