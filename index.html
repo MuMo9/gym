@@ -347,6 +347,30 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .showall{width:100%;background:none;border:1px dashed var(--line);color:var(--dim);
   border-radius:10px;padding:9px;font-size:12px;cursor:pointer;margin-top:6px}
 
+/* boot / failure screen — rendered with zero JavaScript so a crash is never a blank page */
+#boot{position:fixed;inset:0;z-index:200;background:#11151B;color:#E9ECF1;
+  display:flex;align-items:center;justify-content:center;padding:22px;
+  font-family:'Tajawal','Noto Kufi Arabic','Segoe UI',system-ui,sans-serif}
+#boot .card{max-width:420px;width:100%;text-align:center}
+#boot .lg{font-size:22px;font-weight:900;margin-bottom:6px}
+#boot .lg span{color:#D6A344}
+#boot .msg{font-size:13.5px;color:#8B94A5;line-height:1.9}
+#boot .err{background:#1F2733;border:1px solid #2B3542;border-radius:12px;padding:11px;
+  margin:14px 0 4px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;
+  color:#C97070;text-align:left;direction:ltr;word-break:break-word;max-height:130px;overflow:auto}
+#boot .acts{display:none;margin-top:14px}
+#boot button{width:100%;border-radius:12px;padding:13px;font-size:14px;font-weight:700;
+  cursor:pointer;margin-bottom:9px;font-family:inherit}
+#boot .pri{background:#D6A344;border:0;color:#171208}
+#boot .sec{background:#191F28;border:1px solid #2B3542;color:#E9ECF1}
+#boot .ver{font-size:10.5px;color:#4E5A6B;font-family:ui-monospace,monospace;margin-top:10px}
+#errbar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;align-items:center;gap:8px;
+  background:#2A1B1B;border-top:1px solid #6B3A3A;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  font-family:'Tajawal','Segoe UI',system-ui,sans-serif;direction:rtl}
+#errbar.on{display:flex}
+#errbar span{flex:1;font-size:12.5px;color:#E0C0C0}
+#errbar button{background:#191F28;border:1px solid #2B3542;color:#E9ECF1;border-radius:9px;
+  padding:7px 11px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
 #report{display:none}
 @media print{
   header,nav,#rest,#modal,main,#focus,.frest{display:none!important}
@@ -390,6 +414,81 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
   </div>
 </div></div></div>
 
+<div id="boot"><div class="card">
+  <div class="lg">دفتر <span>التمرين</span></div>
+  <div class="msg" id="bootmsg">جاري الفتح…</div>
+  <div class="err" id="booterr" style="display:none"></div>
+  <div class="acts" id="bootacts">
+    <button class="pri" id="bootretry">أعد المحاولة</button>
+    <button class="sec" id="bootfix">إصلاح — امسح ذاكرة التطبيق وأعد التحميل</button>
+    <div class="msg" style="font-size:11.5px;margin-top:4px">الإصلاح لا يمسح سجل تمارينك.</div>
+  </div>
+  <div class="ver" id="bootver"></div>
+</div></div>
+
+<script>
+/* Runs before the app. Its only job: never leave the person staring at a blank screen.
+   Any thrown error, any rejected promise, or a boot that simply never finishes,
+   all land here as readable text plus a way out. */
+(function(){
+  var V="gymlog-v9";
+  window.APPV=V; window.__booted=false;
+  var seen=false;
+  function el(i){ return document.getElementById(i); }
+  /* once the app is running, a full-screen takeover would wipe out whatever the person
+     is in the middle of logging — so post-boot faults get a small bar instead */
+  var barSeen=0;
+  function bar(msg){
+    var now=(new Date()).getTime();
+    if(now-barSeen<20000) return; barSeen=now;
+    var d=el("errbar");
+    if(!d){ d=document.createElement("div"); d.id="errbar"; document.body.appendChild(d); }
+    d.innerHTML='<span>صار خطأ — لو تكرر اضغط إصلاح</span>'+
+      '<button id="ebFix">إصلاح</button><button id="ebX">✕</button>';
+    d.className="on"; d.title=String(msg||"").slice(0,300);
+    el("ebX").onclick=function(){ d.className=""; };
+    el("ebFix").onclick=function(){ var f=el("bootfix"); if(f) f.click(); };
+  }
+  function fail(msg){
+    if(window.__booted) return bar(msg);
+    if(seen) return; seen=true;
+    var b=el("boot"); if(!b) return;
+    b.style.display="flex";
+    el("bootmsg").innerHTML="ما قدر التطبيق يفتح على هذا الجهاز.<br>جرّب الإصلاح تحت — وإن تكرر، صوّر هذي الشاشة وأرسلها.";
+    if(msg){ el("booterr").style.display="block"; el("booterr").textContent=String(msg).slice(0,400); }
+    el("bootacts").style.display="block";
+    el("bootver").textContent=V+" · "+(navigator.userAgent||"").slice(0,80);
+  }
+  window.__bootFail=fail;
+  window.addEventListener("error",function(e){ fail((e&&e.message)||"script error"); });
+  window.addEventListener("unhandledrejection",function(e){ fail((e&&e.reason&&(e.reason.message||e.reason))||"promise rejected"); });
+  /* nothing rendered after 6s means something hung rather than threw */
+  setTimeout(function(){ if(!window.__booted) fail("boot timeout — التطبيق ما أكمل التحميل"); },6000);
+
+  document.addEventListener("DOMContentLoaded",function(){
+    el("bootver").textContent=V;
+    el("bootretry").onclick=function(){ location.reload(); };
+    el("bootfix").onclick=function(){
+      el("bootmsg").textContent="جاري الإصلاح…";
+      var jobs=[];
+      try{
+        if(window.caches&&caches.keys) jobs.push(caches.keys().then(function(ks){
+          return Promise.all(ks.map(function(k){ return caches.delete(k); })); }));
+      }catch(e){}
+      try{
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){
+            return Promise.all(rs.map(function(r){ return r.unregister(); })); }));
+      }catch(e){}
+      var done=function(){ location.replace(location.pathname+"?fresh="+Date.now()); };
+      if(!jobs.length) return done();
+      Promise.all(jobs).then(done,done);
+      setTimeout(done,3000);
+    };
+  });
+})();
+</script>
+
 <div id="modal"></div>
 <div id="inst"></div>
 <div id="report"></div>
@@ -421,7 +520,8 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
   <button id="n4"></button>
 </div></nav>
 
-<script>(function(){
+<script>
+(function(){
 "use strict";
 
 /* ============ storage ============ */
@@ -1502,9 +1602,18 @@ function exName(ex){ var m=meta(ex); return m?libN(m):(ex.n||T("تمرين")); }
 function exInc(ex){ var m=meta(ex); return m?(m.inc||2.5):(ex.inc||2.5); }
 
 /* ============ boot & save ============ */
+/* the boot overlay stays up until a real screen has been drawn */
+function bootDone(){
+  if(window.__booted) return;
+  window.__booted=true;
+  var b=document.getElementById("boot"); if(b) b.style.display="none";
+}
+
 function boot(){
-  Promise.all([store.get("plan"),store.get("sessions"),store.get("bw"),store.get("cfg"),
-               store.get("notes"),store.get("warm")]).then(function(r){
+  var reads=Promise.all([store.get("plan"),store.get("sessions"),store.get("bw"),store.get("cfg"),
+               store.get("notes"),store.get("warm")]);
+  Promise.race([reads,new Promise(function(res){ setTimeout(function(){ res([null,null,null,null,null,null]); },4000); })])
+  .then(function(r){
     try{ if(r[0]){var p=JSON.parse(r[0]); if(p&&p.length) plan=p;} }catch(e){}
     try{ if(r[1]) sessions=JSON.parse(r[1])||{}; }catch(e){}
     try{ if(r[2]) bw=JSON.parse(r[2])||{}; }catch(e){}
@@ -1513,16 +1622,16 @@ function boot(){
     try{ if(r[5]) warm=JSON.parse(r[5])||{}; }catch(e){}
     for(var k in bw){ if(typeof bw[k]==="number") bw[k]={w:bw[k]}; }
     if(!cfg.eq||typeof cfg.eq!=="object") cfg.eq={};
-    applyLang();
-    $("date").value=dateStr; render();
-  });
+    try{ applyLang(); $("date").value=dateStr; render(); }
+    catch(e){ if(window.__bootFail) window.__bootFail("render: "+(e&&e.message||e)); }
+  }).catch(function(e){ if(window.__bootFail) window.__bootFail("storage: "+(e&&e.message||e)); });
 }
 var tq={};
 function save(k,val){
   clearTimeout(tq[k]);
   tq[k]=setTimeout(function(){ store.set(k,JSON.stringify(val)).then(flash); },350);
 }
-function saveS(){save("sessions",sessions);} function saveP(){save("plan",plan);}
+function saveS(){memoClear();save("sessions",sessions);} function saveP(){memoClear();save("plan",plan);}
 function saveB(){save("bw",bw);} function saveC(){save("cfg",cfg);}
 function saveN(){save("notes",notes);} function saveW(){save("warm",warm);}
 function flash(){var s=$("saved");s.classList.add("on");setTimeout(function(){s.classList.remove("on");},1100);}
@@ -1544,14 +1653,25 @@ function volume(s){var v=0;for(var e in s){(s[e]||[]).forEach(function(x){if(x&&
 function topRep(range){var m=String(range).match(/(\d+)\s*$/);return m?parseInt(m[1],10):12;}
 function e1rm(w,r){ return Math.round(parseFloat(w)*(1+parseFloat(r)/30)*10)/10; }
 
+/* ---- per-render memo ----
+   uidMov walks the whole plan, and lastSets/suggest walk every session. With a year of
+   history those run hundreds of times per repaint, so cache them for the duration of one
+   render and drop the cache whenever the log changes. */
+var _M={mov:{},last:{},sug:{}};
+function memoClear(){ _M={mov:{},last:{},sug:{}}; }
+
 /* ---- movements: a lift's history follows the lift itself, across programs and days ---- */
 function mkey(ex){ return ex.ref?("m:"+ex.ref):("c:"+String(ex.n||"").trim()); }
 function uidMov(uid){
-  for(var i=0;i<plan.length;i++) for(var j=0;j<plan[i].ex.length;j++)
-    if(plan[i].ex[j].uid===uid) return mkey(plan[i].ex[j]);
-  var p=String(uid).split("_");           /* orphaned slot from an old program */
-  if(p.length>1&&LIBMAP[p[1]]) return "m:"+p[1];
-  return "u:"+uid;
+  var c=_M.mov[uid]; if(c!==undefined) return c;
+  var r=null;
+  for(var i=0;i<plan.length&&!r;i++) for(var j=0;j<plan[i].ex.length;j++)
+    if(plan[i].ex[j].uid===uid){ r=mkey(plan[i].ex[j]); break; }
+  if(!r){
+    var p=String(uid).split("_");         /* orphaned slot from an old program */
+    r=(p.length>1&&LIBMAP[p[1]])?("m:"+p[1]):("u:"+uid);
+  }
+  _M.mov[uid]=r; return r;
 }
 function movName(mv){
   if(mv.indexOf("m:")===0&&LIBMAP[mv.slice(2)]) return libN(LIBMAP[mv.slice(2)]);
@@ -1582,7 +1702,8 @@ function movHistory(mv){
 }
 /* the most recent time this movement was performed before the selected date */
 function lastSets(ex){
-  var mv=mkey(ex),best=null,bd="";
+  var mv=mkey(ex),ck=mv+"|"+dateStr,c=_M.last[ck]; if(c!==undefined) return c;
+  var best=null,bd="";
   for(var k in sessions){
     var d=k.split("|")[1]; if(d>=dateStr) continue;
     var s=sessions[k];
@@ -1593,7 +1714,8 @@ function lastSets(ex){
       if(d>bd){ bd=d; best=rows; }
     }
   }
-  return best?{d:bd,sets:best}:null;
+  _M.last[ck]=best?{d:bd,sets:best}:null;
+  return _M.last[ck];
 }
 /* same top weight for 3 sessions running = stalled */
 function stall(ex){
@@ -1654,6 +1776,10 @@ function startWeight(ex){
   return {w:roundW(v),est:true,per:!!PERDB[ex.ref]};
 }
 function suggest(ex){
+  var ck=mkey(ex)+"|"+ex.s+"|"+ex.r+"|"+dateStr,c=_M.sug[ck]; if(c!==undefined) return c;
+  var r=suggestCalc(ex); _M.sug[ck]=r; return r;
+}
+function suggestCalc(ex){
   var last=lastSets(ex);
   if(!last) return startWeight(ex);
   var done=last.sets.filter(function(x){return x&&x.w&&x.r;});
@@ -1746,6 +1872,7 @@ function bindWarm(root,after){
 
 /* ============ render ============ */
 function render(){
+  memoClear();
   $("tabs").innerHTML=plan.map(function(d){
     return '<button class="tab '+(d.id===dayId?"on":"")+'" data-d="'+d.id+'">'+esc(T(d.name))+'</button>';}).join("")+
     T('<button class="tab" id="mgd" title="إدارة الأيام">⚙ الأيام</button>');
@@ -1759,9 +1886,11 @@ function render(){
   else if(view==="prog") renderProg();
   else if(view==="body") renderBody();
   else renderSet();
+  bootDone();   /* last line: the splash comes down only after a real screen exists */
 }
 
 function renderLog(){
+  memoClear();
   var d=day(),s=cur(),prev=prevSession(),vol=volume(s),pv=prev?volume(prev):0;
   var h='<div class="strip"><div class="big">'+vol.toLocaleString("en-US")+'</div>'+
         T('<div class="lbl">كجم إجمالي حمل اليوم</div>');
@@ -2231,6 +2360,7 @@ $("rskip").onclick=function(){ stopRest(); };
 var psel=null,pmetric="w",vrange=7;
 var editMode=false;
 function renderProg(){
+  memoClear();
   var movs={},order=[];
   plan.forEach(function(d){ d.ex.forEach(function(e){
     var mv=mkey(e); if(!movs[mv]){ movs[mv]={mv:mv,n:exName(e),cur:true}; order.push(mv); } }); });
@@ -2565,6 +2695,8 @@ function renderSet(){
    T('<button class="btn ghostb" id="bimp">استيراد</button>')+
    T('<button class="btn ghostb" id="bcopy">نسخ</button>')+
    T('<textarea class="ta" id="bak" placeholder="بيانات النسخة الاحتياطية تظهر هنا…"></textarea>')+
+   '<div class="note" style="margin-top:0;text-align:center;font-family:var(--num);font-size:10.5px">'+
+     (window.APPV||'')+'</div>'+
    T('<h2 class="sec">خطة حسب هدفك</h2>')+
    T('<div class="note" style="margin-top:0">اختر الشكل اللي تبي توصله وعدد أيامك، ويبني لك البرنامج من مكتبته وبأجهزتك — ثم يراجعه معك كل أربعة أسابيع.</div>')+
    '<button class="btn" id="bgoal" style="width:100%;padding:13px">'+T('🎯 ابنِ خطة لهدفي')+'</button>'+
@@ -3204,6 +3336,7 @@ function loadFocusVals(){
   F.p=(v.p!=null)?parseFloat(v.p):null;   /* effort is never carried over from another set */
 }
 function drawFocus(){
+  memoClear();
   var d=day(),ex=d.ex[F.xi];
   if(F.done||!ex) return drawSummary();
   var m=meta(ex),n=fSets(ex);
@@ -3408,11 +3541,27 @@ function maybeOfferInstall(){
   if(lsGet("instSeen")) return;
   var phone=isIOS()||/Android/i.test(navigator.userAgent);
   if(!phone) return;
-  setTimeout(function(){ if(!isStandalone()&&!lsGet("instSeen")) showInst(); },1600);
+  /* never drop this sheet on top of something the person is already doing —
+     it would swallow the tap they just made */
+  var tries=0;
+  (function later(){
+    setTimeout(function(){
+      if(isStandalone()||lsGet("instSeen")) return;
+      var busy=($("modal")&&$("modal").innerHTML)||($("focus")&&$("focus").className.indexOf("on")>=0);
+      if(busy){ if(++tries<20) later(); return; }
+      showInst();
+    },tries?2500:1600);
+  })();
 }
 
 /* ============ PWA ============ */
 if("serviceWorker" in navigator){
+  /* a page already under a worker must reload once when a new worker takes over,
+     otherwise an updated index.html can run against a stale cached shell */
+  var hadCtrl=!!navigator.serviceWorker.controller, swReloaded=false;
+  navigator.serviceWorker.addEventListener("controllerchange",function(){
+    if(!hadCtrl||swReloaded) return; swReloaded=true; location.reload();
+  });
   window.addEventListener("load",function(){
     navigator.serviceWorker.register("sw.js").catch(function(e){ console.log("SW:",e); });
   });
