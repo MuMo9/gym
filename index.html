@@ -273,6 +273,13 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .ytchip i{font-style:normal;color:#C08585;font-size:12px}
 #ytzone{max-width:560px;margin:0 auto;width:100%;padding:0 14px}
 .ytwrap iframe{display:block;width:100%;height:190px;border:0}
+/* playlist strip — z-index above .ytshield so the lock never blocks skipping */
+.ytpl{position:absolute;inset-inline:0;bottom:0;z-index:5;display:flex;align-items:center;
+  justify-content:center;gap:12px;padding:5px 8px;background:linear-gradient(rgba(10,13,18,0),rgba(10,13,18,.88))}
+.ytpl button{background:rgba(17,21,27,.85);border:1px solid var(--line);color:var(--chalk);
+  border-radius:9px;padding:4px 12px;font-size:14px;cursor:pointer;line-height:1.2}
+.ytpl button:active{border-color:var(--brass);color:var(--brass)}
+.ytpl span{font-family:var(--num);font-size:11.5px;color:var(--chalk);min-width:44px;text-align:center}
 /* ---- three sizes inside focus mode ----
    full ⇄ small corner ⇄ audio only. All three are pure CSS on #focus: the iframe stays in the
    very same DOM node, so the clip never restarts and the audio never cuts. */
@@ -289,6 +296,12 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 #focus.fs2 .ytszb{position:static;flex:0 0 auto}
 #focus.fs2 .mnote{display:flex;flex:0 0 auto;width:40px;height:32px;font-size:17px}
 #focus.fs1 .ytlockb,#focus.fs2 .ytlockb,#focus.fs2 .ytshield{display:none}
+/* unreadable on a 150px thumbnail; in audio-only it flattens into the pill instead of hiding,
+   because skipping a clip is exactly what you want when you cannot see the picture */
+#focus.fs1 .ytpl,#focus.mini .ytpl{display:none!important}
+#focus.fs2 .ytpl{position:static;background:none;padding:0;gap:6px;flex:0 0 auto}
+#focus.fs2 .ytpl button{padding:4px 8px;font-size:12px}
+#focus.fs2 .ytpl span{font-size:10.5px;min-width:38px}
 #focus.fs1 .fbody{padding-bottom:120px}
 #focus.fs2 .fbody{padding-bottom:74px}
 /* mini player — #focus itself shrinks into a bar so the iframe never moves in the DOM.
@@ -490,7 +503,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v14";
+  var V="gymlog-v15";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -653,6 +666,8 @@ var UI={
 "رجوع لوضع التركيز":"Back to Focus mode",
 "إيقاف":"Stop",
 "يشتغل الآن":"Now playing",
+"التالي":"Next",
+"السابق":"Previous",
 "<h2 class=\"sec\">مشغّل يوتيوب</h2>":"<h2 class=\"sec\">YouTube player</h2>",
 "<div class=\"setrow\"><div class=\"l\">يكمل بعد الخروج من وضع التركيز<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">يصير شريطاً صغيراً فوق شريط التنقل بدل ما يختفي، ومعه أزرار رجوع وإيقاف.</div></div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Keep playing after leaving Focus mode<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">It shrinks to a small bar above the nav instead of disappearing, with back and stop buttons.</div></div><div class=\"c\"></div>",
 "<div class=\"setrow\"><div class=\"l\">صوت فقط في الشريط المصغّر<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">يصغّر الصورة لأدنى حد فينزل يوتيوب لأقل جودة ويوفّر البيانات. الصوت يبقى كما هو.</div></div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Audio only in the mini bar<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">Shrinks the picture to almost nothing, so YouTube drops to its lowest rung and saves data. The sound is unchanged.</div></div><div class=\"c\"></div>",
@@ -3355,14 +3370,23 @@ function ytId(u){
   if(/^[A-Za-z0-9_-]{11}$/.test(u)) return u;
   return "";
 }
+/* enablejsapi lets us drive the player with postMessage — next / previous without ever
+   rebuilding the iframe, which is the one thing that would restart playback. */
+function ytApi(){
+  var o=(location.protocol==="http:"||location.protocol==="https:")?location.origin:"";
+  return "&enablejsapi=1"+(o?"&origin="+encodeURIComponent(o):"");
+}
 /* accepts a video link, a playlist link, or a bare id */
 function ytParse(u){
   u=String(u||"").trim(); if(!u) return {};
   var pl=u.match(/[?&]list=([A-Za-z0-9_-]+)/);
   var v=ytId(u);
-  if(v) return {kind:"v",id:v,src:"https://www.youtube.com/embed/"+v+"?playsinline=1&rel=0"+(pl?"&list="+pl[1]:"")};
-  if(pl) return {kind:"l",id:pl[1],src:"https://www.youtube.com/embed/videoseries?list="+pl[1]+"&playsinline=1"};
-  if(/^PL[A-Za-z0-9_-]+$/.test(u)) return {kind:"l",id:u,src:"https://www.youtube.com/embed/videoseries?list="+u+"&playsinline=1"};
+  if(v) return {kind:"v",id:v,list:pl?pl[1]:"",
+    src:"https://www.youtube.com/embed/"+v+"?playsinline=1&rel=0"+(pl?"&list="+pl[1]:"")+ytApi()};
+  if(pl) return {kind:"l",id:pl[1],list:pl[1],
+    src:"https://www.youtube.com/embed/videoseries?list="+pl[1]+"&playsinline=1"+ytApi()};
+  if(/^PL[A-Za-z0-9_-]+$/.test(u)) return {kind:"l",id:u,list:u,
+    src:"https://www.youtube.com/embed/videoseries?list="+u+"&playsinline=1"+ytApi()};
   return {};
 }
 /* opened straight off the disk: no origin, so YouTube refuses to embed (error 153) */
@@ -3372,6 +3396,50 @@ function ytWatch(p){
   if(!p||!p.id) return "https://www.youtube.com/";
   return p.kind==="l" ? "https://www.youtube.com/playlist?list="+p.id
                       : "https://www.youtube.com/watch?v="+p.id;
+}
+/* ---- playlist control ----
+   The embedded player answers postMessage commands, so «next» and «previous» never touch the
+   iframe element itself. It also reports back where it is in the list once we say we are
+   listening — that is where the "3 / 24" and the clip title come from. There is no API key
+   and no external script: the app stays one offline file. */
+/* isList comes from the link itself, so the buttons appear even if the player never reports
+   back — commands travel one way and work regardless. idx/len/title are the extras. */
+var PL={isList:false,idx:-1,len:0,title:"",tick:0};
+function ytFrame(){ var w=$("ytwrap"); return w?w.querySelector("iframe"):null; }
+function ytPost(msg){
+  var f=ytFrame(); if(!f||!f.contentWindow) return;
+  try{ f.contentWindow.postMessage(JSON.stringify(msg),"https://www.youtube.com"); }catch(e){}
+}
+function ytCmd(fn){ ytPost({event:"command",func:fn,args:[]}); }
+/* the player stays silent until the parent announces itself; it may not be ready on the
+   first try, so we knock a few times and stop as soon as an answer arrives */
+function ytListen(){
+  clearInterval(PL._t);
+  PL.idx=-1; PL.len=0; PL.title=""; PL.tick=0;
+  PL._t=setInterval(function(){
+    if(!ytFrame()||PL.tick>14||PL.len){ clearInterval(PL._t); return; }
+    PL.tick++; ytPost({event:"listening",id:1,channel:"widget"});
+  },600);
+}
+window.addEventListener("message",function(e){
+  if(!/^https:\/\/(www\.)?youtube(-nocookie)?\.com$/.test(e.origin)) return;
+  var d; try{ d=JSON.parse(e.data); }catch(x){ return; }
+  var i=d&&d.info; if(!i) return;
+  var changed=false;
+  if(i.playlist&&i.playlist.length&&i.playlist.length!==PL.len){ PL.len=i.playlist.length; changed=true; }
+  if(typeof i.playlistIndex==="number"&&i.playlistIndex!==PL.idx){ PL.idx=i.playlistIndex; changed=true; }
+  if(i.videoData&&i.videoData.title&&i.videoData.title!==PL.title){ PL.title=i.videoData.title; changed=true; }
+  if(changed) paintPl();
+});
+/* repaints two small nodes — never the player */
+function paintPl(){
+  var s=$("ytpl");
+  if(s) s.style.display=PL.isList?"":"none";
+  var c=$("ytpos");
+  if(c) c.textContent=PL.len>1?((PL.idx>=0?PL.idx+1:1)+" / "+PL.len):"";
+  var l=$("ytwrap")&&$("ytwrap").querySelector(".mlab");
+  if(l) l.textContent=PL.title||T("يشتغل الآن");
+  var nx=$("mNext"); if(nx) nx.style.display=PL.isList?"":"none";
 }
 /* ---- youtube panel ----
    the iframe sits in #ytzone, outside the part of the screen that gets redrawn on every tap,
@@ -3417,10 +3485,19 @@ function drawYt(){
         '<button class="ytlockb" id="ytlock"></button>'+
         '<iframe src="'+want+'" referrerpolicy="strict-origin-when-cross-origin" '+
         'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'+
-        '<div class="ytshield" id="ytshield"></div>';
+        '<div class="ytshield" id="ytshield"></div>'+
+        /* sits above the lock shield on purpose: locked means YouTube's own controls are
+           out of reach, but skipping to the next clip in the list must still work */
+        '<div class="ytpl" id="ytpl" style="display:none">'+
+          '<button id="ytprev" title="'+T("السابق")+'">⏮</button>'+
+          '<span id="ytpos"></span>'+
+          '<button id="ytnext" title="'+T("التالي")+'">⏭</button>'+
+        '</div>';
+      ytListen();
     }
   }
-  paintLock(); applySize();
+  PL.isList=!!(want&&cu.list);
+  paintLock(); applySize(); paintPl();
   bindYt();
 }
 /* the lock repaints two elements and nothing else — the video keeps playing through it */
@@ -3458,6 +3535,8 @@ function bindYt(){
   if($("ytpaste")) $("ytpaste").onclick=ytPaste;
   if($("ytlock")) $("ytlock").onclick=function(){ cfg.ytLock=!cfg.ytLock; saveC(); paintLock(); };
   if($("ytsz")) $("ytsz").onclick=cycleSize;
+  if($("ytnext")) $("ytnext").onclick=function(){ ytCmd("nextVideo"); };
+  if($("ytprev")) $("ytprev").onclick=function(){ ytCmd("previousVideo"); };
   z.querySelectorAll("[data-ytp]").forEach(function(b){
     b.onclick=function(ev){
       if(ev.target&&ev.target.getAttribute("data-ytd")!=null) return;
@@ -3534,16 +3613,19 @@ function drawMini(){
     w.insertBefore(note,w.firstChild);
   }
   var d=document.createElement("div"); d.className="mbar mact";
-  d.innerHTML='<button id="mAud" class="'+(cfg.ytAudio?"on":"")+'" title="'+esc(T("صوت فقط"))+'">'+(cfg.ytAudio?"🔊":"🎬")+'</button>'+
+  d.innerHTML='<button id="mNext" style="display:none" title="'+esc(T("التالي"))+'">⏭</button>'+
+              '<button id="mAud" class="'+(cfg.ytAudio?"on":"")+'" title="'+esc(T("صوت فقط"))+'">'+(cfg.ytAudio?"🔊":"🎬")+'</button>'+
               '<button id="mBack" title="'+esc(T("رجوع لوضع التركيز"))+'">⤢</button>'+
               '<button id="mClose" title="'+esc(T("إيقاف"))+'">✕</button>';
   var lab=document.createElement("div"); lab.className="mlab"; lab.textContent=T("يشتغل الآن");
   w.appendChild(lab); w.appendChild(d);
   w.className="ytwrap"+(cfg.ytAudio?" aud":"");
+  $("mNext").onclick=function(){ ytCmd("nextVideo"); };
   $("mAud").onclick=function(){ cfg.ytAudio=!cfg.ytAudio; saveC(); drawMini(); };
   $("mBack").onclick=function(){ $("focus").classList.remove("mini"); startFocus(); };
   $("mClose").onclick=function(){ ytLoaded=""; $("ytwrap").innerHTML=""; $("ytwrap").style.display="none";
     $("focus").classList.remove("mini","on"); document.body.classList.remove("hasmini"); };
+  paintPl();   /* fills in the clip title and shows ⏭ only when it is really a list */
 }
 function loadFocusVals(){
   var d=day(),ex=d.ex[F.xi]; if(!ex) return;
