@@ -514,7 +514,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v17";
+  var V="gymlog-v18";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -3424,7 +3424,7 @@ function ytWatch(p){
    and no external script: the app stays one offline file. */
 /* isList comes from the link itself, so the buttons appear even if the player never reports
    back — commands travel one way and work regardless. idx/len/title are the extras. */
-var PL={isList:false,idx:-1,len:0,title:"",tick:0};
+var PL={isList:false,own:0,err:0,idx:-1,len:0,title:"",tick:0};
 function ytFrame(){ var w=$("ytwrap"); return w?w.querySelector("iframe"):null; }
 function ytPost(msg){
   var f=ytFrame(); if(!f||!f.contentWindow) return;
@@ -3478,8 +3478,13 @@ function paintErr(){
 function paintPl(){
   var s=$("ytpl");
   if(s) s.style.display=PL.isList?"":"none";
+  /* On a real YouTube playlist the player's own numbering is right, so show "3 / 24".
+     On a queue we stitched with `playlist=`, YouTube counts only the appended clips and not
+     the one in the URL path — so its position is off by one and would read as a lie.
+     We know the true total, so show that alone rather than a wrong position. */
   var c=$("ytpos");
-  if(c) c.textContent=PL.len>1?((PL.idx>=0?PL.idx+1:1)+" / "+PL.len):"";
+  if(c) c.textContent = PL.own ? ("☰ "+PL.own)
+        : (PL.len>1 ? ((PL.idx>=0?PL.idx+1:1)+" / "+PL.len) : "");
   var l=$("ytwrap")&&$("ytwrap").querySelector(".mlab");
   if(l) l.textContent=PL.title||T("يشتغل الآن");
   var nx=$("mNext"); if(nx) nx.style.display=PL.isList?"":"none";
@@ -3563,6 +3568,7 @@ function drawYt(){
     }
   }
   PL.isList=!!(want&&(cu.list||chain));
+  PL.own=(want&&chain)?(chain.split(",").length+1):0;
   paintLock(); applySize(); paintPl(); paintErr();
   bindYt();
 }
