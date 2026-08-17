@@ -1,6 +1,6 @@
 /* دفتر التمرين — service worker
    يخزّن هيكل التطبيق ليعمل بدون إنترنت، ويتجاهل أي طلب خارجي (يوتيوب مثلاً). */
-const VERSION = "gymlog-v15";
+const VERSION = "gymlog-v16";
 const SHELL = [
   "./",
   "./index.html",

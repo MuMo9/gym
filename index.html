@@ -274,8 +274,11 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 #ytzone{max-width:560px;margin:0 auto;width:100%;padding:0 14px}
 .ytwrap iframe{display:block;width:100%;height:190px;border:0}
 /* playlist strip — z-index above .ytshield so the lock never blocks skipping */
+/* direction:ltr on purpose — transport controls are never mirrored (⏮ left, ⏭ right, like
+   every player the person already uses), and it keeps "3 / 9" from reading as "9 / 3" */
 .ytpl{position:absolute;inset-inline:0;bottom:0;z-index:5;display:flex;align-items:center;
-  justify-content:center;gap:12px;padding:5px 8px;background:linear-gradient(rgba(10,13,18,0),rgba(10,13,18,.88))}
+  direction:ltr;justify-content:center;gap:12px;padding:5px 8px;
+  background:linear-gradient(rgba(10,13,18,0),rgba(10,13,18,.88))}
 .ytpl button{background:rgba(17,21,27,.85);border:1px solid var(--line);color:var(--chalk);
   border-radius:9px;padding:4px 12px;font-size:14px;cursor:pointer;line-height:1.2}
 .ytpl button:active{border-color:var(--brass);color:var(--brass)}
@@ -503,7 +506,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v15";
+  var V="gymlog-v16";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
