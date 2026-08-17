@@ -292,7 +292,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 /* mini player — #focus itself shrinks into a bar so the iframe never moves in the DOM.
    Reparenting or rebuilding it would restart the video, which is the whole point of this. */
 #focus.mini{inset:auto 0 58px 0;height:auto;display:block;background:transparent;overflow:visible;padding:0}
-#focus.mini .fbar,#focus.mini .fdots,#focus.mini .fbody,#focus.mini #ytctl,#focus.mini #ytfall{display:none}
+#focus.mini .fbar,#focus.mini .fdots,#focus.mini .fbody,#focus.mini #ytctl{display:none}
 #focus.mini #ytzone{padding:0 8px}
 #focus.mini .ytwrap{display:flex!important;align-items:center;gap:9px;margin:0;padding:6px 8px;
   position:static;width:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;
@@ -311,8 +311,6 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 #focus.mini .ytwrap.aud .mnote{display:flex}
 .mnote{display:none;align-items:center;justify-content:center;flex:0 0 96px;height:54px;
   background:var(--panel2);border:1px solid var(--line);border-radius:8px;font-size:20px}
-.ytfall{display:block;text-align:center;font-size:11.5px;color:var(--dim);text-decoration:none;padding:6px 0 2px}
-.ytfall:hover{color:var(--brass)}
 .ytbar{display:flex;gap:7px;margin:8px 0}
 .ytbar input{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:10px;
   color:var(--chalk);font-family:var(--ar);font-size:12px;padding:9px;outline:none}
@@ -490,7 +488,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v12";
+  var V="gymlog-v13";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -1118,9 +1116,10 @@ var UI={
 "<h2>الجلسات</h2>":"<h2>Sessions</h2>",
 " كجم)</span></div><table>":" kg)</span></div><table>",
 "<tr><th>التمرين</th><th>المجموعات (وزن × عدة)</th></tr>":"<tr><th>Exercise</th><th>Sets (weight × reps)</th></tr>",
-"<a class=\"ytfall\" id=\"ytfall\" target=\"_blank\" rel=\"noopener\" style=\"display:none\">ما ظهر المقطع؟ افتحه في يوتيوب</a>":"<a class=\"ytfall\" id=\"ytfall\" target=\"_blank\" rel=\"noopener\" style=\"display:none\">Video not showing? Open it on YouTube</a>",
 "<button id=\"ytpaste\" style=\"flex:1\">📋 لصق رابط منسوخ</button>":"<button id=\"ytpaste\" style=\"flex:1\">📋 Paste copied link</button>",
 "<button id=\"ytopen\">🔎 افتح يوتيوب</button>":"<button id=\"ytopen\">🔎 Open YouTube</button>",
+"<button id=\"ytopen\" style=\"flex:1\">▶ افتحه في يوتيوب</button>":"<button id=\"ytopen\" style=\"flex:1\">▶ Open it on YouTube</button>",
+"لصق رابط منسوخ":"Paste a copied link",
 "<button id=\"ythide\">إخفاء</button></div>":"<button id=\"ythide\">Hide</button></div>",
 "المشغّل المدمج ما يشتغل والملف مفتوح مباشرة من جهازك — يوتيوب يرفض التضمين بدون رابط موقع ":["The built-in player does not work while the file is opened straight from your device — YouTube blocks embedding without a site link ",1],
 "(الخطأ ١٥٣). ارفع التطبيق على GitHub Pages وافتحه من رابطه، وبيشتغل المقطع هنا داخل الشاشة.":["(error 153). Put the app on GitHub Pages and open it from that link, and the video will play right here inside the app.",1],
@@ -1146,7 +1145,6 @@ var UI={
 "بداية مقترحة: ":"Suggested start: ",
 "مقترح: ":"Suggested: ",
 " كجم</b>":" kg</b>",
-"سجّل مجموعتك":"Log your set",
 "<br>أكملت النطاق آخر مرة لكن بجهد أقصى — ثبّت الوزن وحسّن الأداء":["<br>Hit the range last time but at max effort — hold the weight and clean up the reps",1],
 "<br>أكملت النطاق بجهد مريح — تقدر تقفز قفزة أكبر":["<br>Hit the range and it felt easy — you can make a bigger jump",1],
 "<br>أكملت النطاق آخر مرة — زد الوزن لو الأداء نظيف":["<br>You finished the range last time — add weight if the form is clean",1],
@@ -3381,13 +3379,17 @@ var ytLoaded="";
 function drawYt(){
   var zone=$("ytzone"); if(!zone) return;
   if(!zone.firstChild)
-    zone.innerHTML='<div id="ytctl"></div><div class="ytwrap" id="ytwrap" style="display:none"></div>'+
-      T('<a class="ytfall" id="ytfall" target="_blank" rel="noopener" style="display:none">ما ظهر المقطع؟ افتحه في يوتيوب</a>');
+    zone.innerHTML='<div id="ytctl"></div><div class="ytwrap" id="ytwrap" style="display:none"></div>';
   var cu=ytParse(cfg.yt||""),c='';
   if(cfg.ytShow){
+    /* with a clip loaded, "open it on YouTube" IS the escape hatch — so it takes the wide slot
+       and paste shrinks to its icon. That keeps the row to one line and drops the old hint line. */
     c+='<div class="ytbar">'+
-       T('<button id="ytpaste" style="flex:1">📋 لصق رابط منسوخ</button>')+
-       T('<button id="ytopen">🔎 افتح يوتيوب</button>')+
+       (cu.src
+         ? T('<button id="ytopen" style="flex:1">▶ افتحه في يوتيوب</button>')+
+           '<button id="ytpaste" title="'+T("لصق رابط منسوخ")+'">📋</button>'
+         : T('<button id="ytpaste" style="flex:1">📋 لصق رابط منسوخ</button>')+
+           T('<button id="ytopen">🔎 افتح يوتيوب</button>'))+
        T('<button id="ythide">إخفاء</button></div>');
     var lst=cfg.ytList||[];
     if(lst.length) c+='<div class="ytchips">'+lst.map(function(v,i){
@@ -3417,8 +3419,6 @@ function drawYt(){
     }
   }
   paintLock(); applySize();
-  var fall=$("ytfall");
-  if(want){ fall.style.display=""; fall.href=ytWatch(cu); } else fall.style.display="none";
   bindYt();
 }
 /* the lock repaints two elements and nothing else — the video keeps playing through it */
@@ -3450,7 +3450,9 @@ function bindYt(){
   var z=$("ytzone");
   if($("ytshow")) $("ytshow").onclick=function(){ cfg.ytShow=true; saveC(); drawYt(); };
   if($("ythide")) $("ythide").onclick=function(){ cfg.ytShow=false; saveC(); drawYt(); };
-  if($("ytopen")) $("ytopen").onclick=function(){ window.open("https://m.youtube.com/","_blank","noopener"); };
+  if($("ytopen")) $("ytopen").onclick=function(){
+    var p=ytParse(cfg.yt||"");
+    window.open(p.src?ytWatch(p):"https://m.youtube.com/","_blank","noopener"); };
   if($("ytpaste")) $("ytpaste").onclick=ytPaste;
   if($("ytlock")) $("ytlock").onclick=function(){ cfg.ytLock=!cfg.ytLock; saveC(); paintLock(); };
   if($("ytsz")) $("ytsz").onclick=cycleSize;
@@ -3570,13 +3572,13 @@ function drawFocus(){
   var t='';
   if(p&&p.w) t+=T('آخر مرة في هذي المجموعة: <b>')+p.w+' × '+(p.r||"?")+'</b>';
   else if(sg&&sg.w) t+=(sg.est?T('بداية مقترحة: '):T('مقترح: '))+'<b>'+sg.w+T(' كجم</b>');
-  else t+=T('سجّل مجموعتك');
+  /* no history and no suggestion: say nothing rather than fill a line with "log your set" */
   if(sg&&sg.hold&&p) t+=T('<br>أكملت النطاق آخر مرة لكن بجهد أقصى — ثبّت الوزن وحسّن الأداء');
   else if(sg&&sg.big&&p) t+=T('<br>أكملت النطاق بجهد مريح — تقدر تقفز قفزة أكبر');
   else if(sg&&sg.up&&p) t+=T('<br>أكملت النطاق آخر مرة — زد الوزن لو الأداء نظيف');
 
   drawYt();
-  var h='<div class="ftarget">'+t+'</div>';
+  var h=t?'<div class="ftarget">'+t+'</div>':'';
   /* the ladder belongs before the first working set only */
   if(F.si===0){
     var fw=warmHtml(ex,"fwarm");
