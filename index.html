@@ -367,6 +367,24 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
   font-size:15px;font-weight:900;cursor:pointer;margin:12px 0 4px}
 .ighost{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--dim);
   border-radius:12px;padding:11px;font-size:12.5px;cursor:pointer;margin-top:8px}
+.startcard{background:linear-gradient(180deg,rgba(214,163,68,.12),rgba(214,163,68,.04));
+  border:1px solid rgba(214,163,68,.4);border-radius:16px;padding:16px;margin:12px 0}
+.startcard .h{font-size:17px;font-weight:900;margin-bottom:6px}
+.startcard .d{font-size:12.5px;color:var(--dim);line-height:1.8;margin-bottom:12px}
+.hintline{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 9px 8px}
+.hintline .sugg{display:inline-block;width:auto;margin:0;padding:6px 11px;font-size:11.5px}
+.hintline .wl{font-size:11px;color:var(--dim);font-weight:700;margin-inline-start:4px}
+.hintline .wchip{padding:5px 9px;font-size:11px}
+.dbtn{background:var(--panel);border:1px solid var(--line);color:var(--chalk);border-radius:10px;
+  padding:7px 12px;font-family:var(--ar);font-size:12.5px;font-weight:700;cursor:pointer}
+.dbtn.past{border-color:var(--brass);color:var(--brass)}
+.setnav{display:flex;align-items:center;gap:10px;width:100%;text-align:start;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:9px 0;color:var(--chalk)}
+.setnav .t{font-size:15px;font-weight:700}
+.setnav .d{font-size:11.5px;color:var(--dim);margin-top:3px;line-height:1.6}
+.setnav>div:first-child{flex:1}
+.setnav .ch{color:var(--dim);font-size:20px;transform:scaleX(-1)}
+html[dir=ltr] .setnav .ch{transform:none}
 .showall{width:100%;background:none;border:1px dashed var(--line);color:var(--dim);
   border-radius:10px;padding:9px;font-size:12px;cursor:pointer;margin-top:6px}
 
@@ -419,7 +437,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
     <div class="htop">
       <div class="brand" id="brand"></div>
       <div class="saved" id="saved"></div>
-      <div class="dateBox"><input type="date" id="date"></div>
+      <button class="dbtn" id="dbtn"></button><div class="dateBox" id="dbox" style="display:none"><input type="date" id="date"></div>
     </div>
     <div class="tabs" id="tabs"></div>
   </div>
@@ -454,7 +472,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v10";
+  var V="gymlog-v11";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -580,6 +598,36 @@ function storageLabel(){
 }
 
 var UI={
+"بداية ":"Start ",
+"ثبّت ":"Hold ",
+"اقفز ":"Jump ",
+"جرّب ":"Try ",
+"استمر ":"Stay ",
+" للدمبل":" per dumbbell",
+"مقدّر من تحليل جسمك":"Estimated from your body stats",
+"أكملت النطاق بجهد أقصى — ثبّت":"You hit the range at maximum effort — hold",
+"أكملت النطاق بجهد مريح":"You hit the range at an easy effort",
+"أكملت النطاق آخر مرة":"You hit the top of the range last time",
+"أكمل النطاق قبل الزيادة":"Finish the range before adding weight",
+"تسخين":"Warm-up",
+"ابدأ من هنا":"Start here",
+"<div class=\"d\">تقدر تبدأ بالجدول الجاهز على طول، أو تخلّي التطبيق يبني لك خطة حسب الشكل اللي تبيه.</div>":["<div class=\"d\">You can start with the ready-made schedule right away, or let the app build a plan for the shape you are after.</div>",1],
+"ابدأ بالجدول الجاهز":"Start with the ready-made schedule",
+"<div class=\"setrow\"><div class=\"l\">وضع مبسّط":"<div class=\"setrow\"><div class=\"l\">Simple mode",
+"<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">وزن وعدات فقط. يخفي التسخين والجهد وتحذير الثبات من شاشة السجل — تبقى الأرقام وحدها.</div></div>":"<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">Weight and reps only. Hides warm-ups, effort and the stall warning from the log screen — just the numbers.</div></div>",
+"<h2 class=\"sec\">إصلاح</h2>":"<h2 class=\"sec\">Repair</h2>",
+"<div class=\"note\" style=\"margin-top:0\">لو صار شيء غريب بعد تحديث: هذا يمسح ملفات التطبيق المخزّنة ويحمّل نسخة نظيفة. سجلك ما ينمسح.</div>":["<div class=\"note\" style=\"margin-top:0\">If something looks wrong after an update: this clears the cached app files and loads a clean copy. Your log is not deleted.</div>",1],
+"🔄 حمّل نسخة نظيفة":"🔄 Load a clean copy",
+"تحميل نسخة نظيفة؟ بياناتك ما تنمسح.":["Load a clean copy? Your data is not deleted.",1],
+"برنامجي":"My program",
+"المشغّل":"Player",
+"بياناتي":"My data",
+"التطبيق":"App",
+"المؤقت · التسخين · الجهد · الوضع المبسّط":"Timer · warm-ups · effort · simple mode",
+"خطة لهدفك · الجداول الجاهزة · أجهزتك":"Goal plan · ready-made schedules · your equipment",
+"سلوك مقطع يوتيوب بعد وضع التركيز":"What the YouTube clip does after Focus mode",
+"تصدير Excel و PDF · نسخة احتياطية":"Excel and PDF export · backup",
+"اللغة · التثبيت · إصلاح · رقم النسخة":"Language · install · repair · version",
 "صوت فقط":"Audio only",
 "رجوع لوضع التركيز":"Back to Focus mode",
 "إيقاف":"Stop",
@@ -1889,6 +1937,10 @@ function warmToggle(uid,i){
 function warmHtml(ex,cls){
   var ws=warmSets(ex); if(!ws.length) return "";
   var dn=warmDone(ex.uid);
+  if(cls==="inline")
+    return '<span class="wl">'+T("تسخين")+'</span>'+ws.map(function(x,i){
+      return '<button class="wchip '+(dn[i]?"on":"")+'" data-wu="'+ex.uid+'" data-wi="'+i+'">'+
+        (dn[i]?"✓ ":"")+x.w+' × '+x.r+'</button>';}).join("");
   return '<div class="'+(cls||"warmrow")+T('"><span class="wl">تسخين</span>')+
     ws.map(function(x,i){
       return '<button class="wchip '+(dn[i]?"on":"")+'" data-wu="'+ex.uid+'" data-wi="'+i+'">'+
@@ -1912,6 +1964,7 @@ function render(){
   $("tabs").style.display = view==="log" ? "flex" : "none";
   ["n1","n2","n3","n4"].forEach(function(id,i){
     $(id).className = (["log","prog","body","set"][i]===view)?"on":"";});
+  dateLabel();
   if(view==="log") renderLog();
   else if(view==="prog") renderProg();
   else if(view==="body") renderBody();
@@ -1919,6 +1972,13 @@ function render(){
   bootDone();   /* last line: the splash comes down only after a real screen exists */
 }
 
+/* a brand new phone: nothing logged, no goal chosen, nothing dismissed */
+function firstRun(){
+  if(lsGet("startSeen")||cfg.goal) return false;
+  for(var k in sessions){ for(var u in sessions[k]){
+    if((sessions[k][u]||[]).some(function(x){ return x&&x.w; })) return false; } }
+  return true;
+}
 function renderLog(){
   memoClear();
   var d=day(),s=cur(),prev=prevSession(),vol=volume(s),pv=prev?volume(prev):0;
@@ -1927,6 +1987,11 @@ function renderLog(){
   if(pv&&vol){var df=vol-pv,pc=Math.round(df/pv*100);
     h+='<div class="delta '+(df>=0?"up":"down")+'">'+(df>=0?"▲ ":"▼ ")+Math.abs(pc)+T('٪ عن آخر مرة</div>');}
   h+='</div>';
+  if(firstRun()&&!editMode)
+    h+='<div class="startcard"><div class="h">'+T("ابدأ من هنا")+'</div>'+
+       T('<div class="d">تقدر تبدأ بالجدول الجاهز على طول، أو تخلّي التطبيق يبني لك خطة حسب الشكل اللي تبيه.</div>')+
+       '<button class="btn" id="scGoal" style="width:100%;padding:13px">'+T("🎯 ابنِ خطة لهدفي")+'</button>'+
+       '<button class="btn ghostb" id="scGo" style="width:100%">'+T("ابدأ بالجدول الجاهز")+'</button></div>';
   if(reviewDue()&&!editMode)
     h+='<button class="repeat" id="rvopen" style="background:rgba(87,192,140,.10);border-color:rgba(87,192,140,.45);color:var(--up)">'+
        T("📋 مرّت أربعة أسابيع على خطتك — افتح المراجعة")+'</button>';
@@ -1943,26 +2008,25 @@ function renderLog(){
       var r=rows[i]||{},p=lp&&lp.sets[i];
       var g=(p&&p.w)?(p.w+" × "+(p.r||"?")):"—";
       var up=(p&&p.w&&r.w&&parseFloat(r.w)>parseFloat(p.w));
-      var pb=cfg.rpeOn?('<button class="pbtn '+(r.p!=null?"on":"")+'" data-p="'+ex.uid+'" data-i="'+i+
+      var pb=(cfg.rpeOn&&!cfg.simple)?('<button class="pbtn '+(r.p!=null?"on":"")+'" data-p="'+ex.uid+'" data-i="'+i+
         T('" title="الجهد">')+(r.p!=null?r.p:T("جهد"))+'</button>'):"";
-      body+='<div class="row'+(cfg.rpeOn?" rpe":"")+'">'+
+      body+='<div class="row'+((cfg.rpeOn&&!cfg.simple)?" rpe":"")+'">'+
         '<button class="chk '+(r.d?"on":"")+'" data-c="'+ex.uid+'" data-i="'+i+T('" title="علّم المجموعة">')+(r.d?"✓":(i+1))+'</button>'+
         '<div class="fld"><input type="number" inputmode="decimal" step="0.5" placeholder="—" value="'+(r.w!=null?r.w:"")+'" data-u="'+ex.uid+'" data-i="'+i+T('" data-f="w"><span class="unit">كجم</span></div>')+
         '<div class="fld"><input type="number" inputmode="numeric" placeholder="—" value="'+(r.r!=null?r.r:"")+'" data-u="'+ex.uid+'" data-i="'+i+T('" data-f="r"><span class="unit">عدة</span></div>')+
         pb+
         '<div class="ghost">'+(up?T('<span class="badge">▲ تقدم</span>'):T('سابق <b>')+g+'</b>')+'</div></div>';
     }
-    var stw=stall(ex),sth="";
+    var stw=cfg.simple?null:stall(ex),sth="";
     if(stw) sth=T('<div class="stall">ثابت على ')+stw+T(' كجم من ٣ جلسات. جرّب تنزل ١٠٪ وترجع تبني، أو زد مجموعة، أو بدّل التمرين ببديل من قائمة "؟".</div>');
     var sg=suggest(ex),sgh="";
     if(sg&&sg.bw) sgh=T('<button class="sugg" style="cursor:default">تمرين بوزن الجسم — سجّل العدات فقط</button>');
-    else if(sg) sgh='<button class="sugg" data-sg="'+xi+'" data-w="'+sg.w+'">'+
-      (sg.est?(T("بداية مقترحة من تحليل جسمك")+(bwAge()!=null&&bwAge()>60?T(" (قياس قديم)"):"")+": "):
-        (sg.hold?T("أكملت النطاق لكن بجهد أقصى — ثبّت على "):
-         sg.big?T("أكملت النطاق بجهد مريح — اقفز إلى "):
-         sg.up?T("أكملت النطاق آخر مرة — جرّب "):T("استمر على ")))+
-      sg.w+T(' كجم')+(sg.per?T(" للدمبل الواحد"):"")+T(' · اضغط للتعبئة</button>');
-    var wmh=editMode?"":warmHtml(ex);
+    else if(sg) sgh='<button class="sugg" data-sg="'+xi+'" data-w="'+sg.w+'" title="'+
+      esc(sg.est?T("مقدّر من تحليل جسمك"):sg.hold?T("أكملت النطاق بجهد أقصى — ثبّت"):
+          sg.big?T("أكملت النطاق بجهد مريح"):sg.up?T("أكملت النطاق آخر مرة"):T("أكمل النطاق قبل الزيادة"))+'">'+
+      (sg.est?T("بداية "):sg.hold?T("ثبّت "):sg.big?T("اقفز "):sg.up?T("جرّب "):T("استمر "))+
+      sg.w+T(' كجم')+(sg.per?T(" للدمبل"):"")+'</button>';
+    var wmh=(editMode||cfg.simple)?"":warmHtml(ex,"inline");
     var tools = editMode
       ? '<button class="icobtn" data-up="'+xi+T('" title="أعلى"')+(xi===0?' disabled style="opacity:.3"':'')+'>▲</button>'+
         '<button class="icobtn" data-dn="'+xi+T('" title="أسفل"')+(xi===d.ex.length-1?' disabled style="opacity:.3"':'')+'>▼</button>'+
@@ -1973,7 +2037,7 @@ function renderLog(){
     h+='<div class="card"><div class="chead"><div class="cname">'+esc(exName(ex))+'</div>'+
        '<div class="ctag'+(editMode?' tap" data-cfg="'+xi+'"':'"')+'>'+ex.s+' × '+esc(ex.r)+'</div>'+
        '<div class="sp"></div>'+tools+'</div>'+
-       sth+sgh+wmh+'<div class="sets">'+body+
+       sth+((sgh||wmh)?('<div class="hintline">'+sgh+wmh+'</div>'):'')+'<div class="sets">'+body+
        (editMode?'<div class="setbtns"><button class="addset" data-a="'+ex.uid+'" data-n="'+n+T('">+ مجموعة</button>')+
          (n>1?'<button class="addset del" data-rm="'+xi+'" data-n="'+n+T('">− حذف آخر مجموعة</button>'):'')+
          '</div>':'')+
@@ -2034,6 +2098,8 @@ function renderLog(){
     if(v.trim()) notes[key(dateStr,dayId)]=v; else delete notes[key(dateStr,dayId)];
     saveN();
   };
+  if($("scGoal")) $("scGoal").onclick=function(){ lsSet("startSeen","1"); goalSheet(); };
+  if($("scGo")) $("scGo").onclick=function(){ lsSet("startSeen","1"); renderLog(); };
   if($("rvopen")) $("rvopen").onclick=reviewSheet;
   if($("startf")) $("startf").onclick=startFocus;
   var repBtn=$("rep");
@@ -2668,35 +2734,39 @@ function readReport(file){
 
 /* ============ settings / backup ============ */
 function eqCount(){ var n=0; LIB.forEach(function(x){ if(eqOk(x)) n++; }); return n; }
-function renderSet(){
-  var h=T('<h2 class="sec">اللغة</h2>')+
-   '<div class="seg" id="lang">'+LANGS.map(function(L){
-     return '<button data-lg="'+L.k+'" class="'+((cfg.lang||"ar")===L.k?"on":"")+'">'+esc(L.n)+'</button>';}).join("")+
-   '</div>'+
-   T('<div class="note" style="margin-top:0">«EN + عربي» يعرض الأسماء والأزرار بالإنجليزي ويبقي الشرح وخطوات الحركة بالعربي.</div>')+
-   T('<h2 class="sec">مؤقت الراحة</h2>')+
-   T('<div class="setrow"><div class="l">مدة الراحة</div><div class="c"></div>')+
-     '<input class="num-s" type="number" id="crest" value="'+cfg.rest+T('"> <span style="font-size:12px;color:var(--dim)">ثانية</span></div>')+
+/* ============ settings: a five-row menu, not a four-screen scroll ============ */
+var SETSEC=[
+ {k:"train",n:"التمرين",d:"المؤقت · التسخين · الجهد · الوضع المبسّط"},
+ {k:"prog", n:"برنامجي",d:"خطة لهدفك · الجداول الجاهزة · أجهزتك"},
+ {k:"play", n:"المشغّل",d:"سلوك مقطع يوتيوب بعد وضع التركيز"},
+ {k:"data", n:"بياناتي",d:"تصدير Excel و PDF · نسخة احتياطية"},
+ {k:"app",  n:"التطبيق",d:"اللغة · التثبيت · إصلاح · رقم النسخة"}
+];
+var curSec=null;
+function secTrain(){
+  return T('<div class="setrow"><div class="l">مدة الراحة</div><div class="c"></div>')+
+   '<input class="num-s" type="number" id="crest" value="'+cfg.rest+T('"> <span style="font-size:12px;color:var(--dim)">ثانية</span></div>')+
    T('<div class="setrow"><div class="l">يبدأ تلقائياً بعد تسجيل العدات</div><div class="c"></div>')+
      '<button class="sw '+(cfg.autoRest?"on":"")+'" id="cauto"><i></i></button></div>'+
    T('<div class="setrow"><div class="l">انتقال تلقائي للمجموعة التالية بعد الراحة<div style="font-size:11px;color:var(--dim)">في وضع التركيز</div></div><div class="c"></div>')+
      '<button class="sw '+(cfg.autoNext?"on":"")+'" id="cnext"><i></i></button></div>'+
    T('<div class="setrow"><div class="l">صوت التنبيه</div><div class="c"></div>')+
      '<button class="sw '+(cfg.sound?"on":"")+'" id="csnd"><i></i></button></div>'+
-
-   T('<h2 class="sec">التسخين والجهد</h2>')+
-   T('<div class="setrow"><div class="l">مجموعات التسخين')+
+   T('<div class="setrow"><div class="l">وضع مبسّط')+
+     T('<div style="font-size:11px;color:var(--dim);line-height:1.6">وزن وعدات فقط. يخفي التسخين والجهد وتحذير الثبات من شاشة السجل — تبقى الأرقام وحدها.</div></div>')+
+     '<div class="c"></div><button class="sw '+(cfg.simple?"on":"")+'" id="csimp"><i></i></button></div>'+
+   (cfg.simple?'':
+     T('<div class="setrow"><div class="l">مجموعات التسخين')+
      T('<div style="font-size:11px;color:var(--dim);line-height:1.6">سلّم محسوب من وزن العمل، يظهر قبل المجموعة الأولى. لا يدخل في الحمل ولا في مجموعات العضلة.</div></div>')+
      '<div class="c"></div><button class="sw '+(cfg.warmOn?"on":"")+'" id="cwarm"><i></i></button></div>'+
-   T('<div class="setrow"><div class="l">تسجيل الجهد (RPE)')+
+     T('<div class="setrow"><div class="l">تسجيل الجهد (RPE)')+
      T('<div style="font-size:11px;color:var(--dim);line-height:1.6">رقم من ٦ إلى ١٠ لكل مجموعة يقيس كم عدة بقيت عندك. لو أكملت النطاق بجهد ٧ أو أقل يقترح قفزة أكبر، ولو ٩.٥ فأعلى ما يقترح زيادة.</div></div>')+
-     '<div class="c"></div><button class="sw '+(cfg.rpeOn?"on":"")+'" id="crpe"><i></i></button></div>'+
-
-   T('<h2 class="sec">مشغّل يوتيوب</h2>')+
-   T('<div class="setrow"><div class="l">يكمل بعد الخروج من وضع التركيز<div style="font-size:11px;color:var(--dim);line-height:1.6">يصير شريطاً صغيراً فوق شريط التنقل بدل ما يختفي، ومعه أزرار رجوع وإيقاف.</div></div><div class="c"></div>')+
-     '<button class="sw '+(cfg.ytKeep!==false?"on":"")+'" id="ckeep"><i></i></button></div>'+
-   T('<div class="setrow"><div class="l">صوت فقط في الشريط المصغّر<div style="font-size:11px;color:var(--dim);line-height:1.6">يصغّر الصورة لأدنى حد فينزل يوتيوب لأقل جودة ويوفّر البيانات. الصوت يبقى كما هو.</div></div><div class="c"></div>')+
-     '<button class="sw '+(cfg.ytAudio?"on":"")+'" id="caud"><i></i></button></div>'+
+     '<div class="c"></div><button class="sw '+(cfg.rpeOn?"on":"")+'" id="crpe"><i></i></button></div>');
+}
+function secProg(){
+  return T('<div class="note" style="margin-top:0">اختر الشكل اللي تبي توصله وعدد أيامك، ويبني لك البرنامج من مكتبته وبأجهزتك — ثم يراجعه معك كل أربعة أسابيع.</div>')+
+   '<button class="btn" id="bgoal" style="width:100%;padding:13px">'+T('🎯 ابنِ خطة لهدفي')+'</button>'+
+   (cfg.goal? '<div class="note" style="margin-top:6px">'+T('خطتك الحالية: ')+esc(T(goalById(cfg.goal).n))+' · '+(cfg.goalDays||4)+T(' أيام · بدأت ')+esc(cfg.goalAt||'—')+'</div>' : '')+
    T('<h2 class="sec">الأجهزة المتوفرة</h2>')+
    T('<div class="setrow"><div class="l">فلترة التمارين على المتوفر')+
      T('<div style="font-size:11px;color:var(--dim);line-height:1.6">يخفي من قوائم الإضافة والبدائل كل تمرين يحتاج جهازاً ما عندك. لا يمسّ تمارين برنامجك الحالية.</div></div>')+
@@ -2712,30 +2782,6 @@ function renderSet(){
        }).join("")+
        '<div class="note" style="margin-top:0">'+eqCount()+T(' تمرين من ')+LIB.length+T(' متاح بالأجهزة المختارة. تمارين وزن الجسم متاحة دائماً.</div>')
      : '')+
-   (isStandalone() ? '' :
-       T('<h2 class="sec">تثبيت التطبيق</h2>')+
-       T('<div class="note" style="margin-top:0">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>')+
-       T('<button class="btn" id="binst">⬇ تثبيت على الشاشة الرئيسية</button>')
-   )+
-   T('<h2 class="sec">تصدير السجل</h2>')+
-   T('<button class="btn" id="bxls">📊 ملف Excel</button>')+
-   T('<button class="btn" id="bpdf">📄 PDF / طباعة</button>')+
-   T('<div class="note" style="margin-top:2px">ملف Excel فيه أربع أوراق: الجلسات، قياسات الجسم، الأرقام القياسية، وحجم العضلات. زر PDF يفتح شاشة الطباعة — اختر «حفظ كـ PDF».</div>')+
-   T('<h2 class="sec">مكان حفظ بياناتك</h2>')+
-   T('<div class="warn">بياناتك محفوظة: <b>')+esc(storageLabel())+T('</b>.<br>ما تروح لأي خادم ولا يشوفها أحد غيرك. لو مسحت بيانات المتصفح أو غيّرت الجهاز، بتحتاج النسخة الاحتياطية تحت.</div>')+
-   T('<h2 class="sec">نسخة احتياطية</h2>')+
-   '<div class="empty" style="padding:2px 4px;text-align:right;line-height:1.7">'+
-     T('اضغط تصدير، انسخ النص واحفظه في ملاحظاتك أو أرسله لنفسك. للاستعادة الصقه هنا واضغط استيراد.</div>')+
-   T('<button class="btn" id="bexp">تصدير البيانات</button>')+
-   T('<button class="btn ghostb" id="bimp">استيراد</button>')+
-   T('<button class="btn ghostb" id="bcopy">نسخ</button>')+
-   T('<textarea class="ta" id="bak" placeholder="بيانات النسخة الاحتياطية تظهر هنا…"></textarea>')+
-   '<div class="note" style="margin-top:0;text-align:center;font-family:var(--num);font-size:10.5px">'+
-     (window.APPV||'')+'</div>'+
-   T('<h2 class="sec">خطة حسب هدفك</h2>')+
-   T('<div class="note" style="margin-top:0">اختر الشكل اللي تبي توصله وعدد أيامك، ويبني لك البرنامج من مكتبته وبأجهزتك — ثم يراجعه معك كل أربعة أسابيع.</div>')+
-   '<button class="btn" id="bgoal" style="width:100%;padding:13px">'+T('🎯 ابنِ خطة لهدفي')+'</button>'+
-   (cfg.goal? '<div class="note" style="margin-top:6px">'+T('خطتك الحالية: ')+esc(T(goalById(cfg.goal).n))+' · '+(cfg.goalDays||4)+T(' أيام · بدأت ')+esc(cfg.goalAt||'—')+'</div>' : '')+
    T('<h2 class="sec">تغيير الجدول</h2>')+
    T('<div class="note" style="margin-top:0">اختيار جدول جاهز يستبدل أيامك وتمارينك الحالية. سجلك القديم يبقى محفوظاً لكن ما يظهر مع الجدول الجديد — صدّر نسخة احتياطية أولاً.</div>')+
    TEMPLATES.map(function(t){
@@ -2743,45 +2789,106 @@ function renderSet(){
        '<div style="font-size:11px;color:var(--dim);line-height:1.6">'+esc(T(t.d))+'</div></div>'+
        '<div class="c"></div><button class="icobtn" data-tp="'+t.id+T('" style="color:var(--brass);border-color:#4A3B18">تطبيق</button></div>');
    }).join("");
-  $("main").innerHTML=h;
-
+}
+function secPlay(){
+  return T('<div class="setrow"><div class="l">يكمل بعد الخروج من وضع التركيز<div style="font-size:11px;color:var(--dim);line-height:1.6">يصير شريطاً صغيراً فوق شريط التنقل بدل ما يختفي، ومعه أزرار رجوع وإيقاف.</div></div><div class="c"></div>')+
+     '<button class="sw '+(cfg.ytKeep!==false?"on":"")+'" id="ckeep"><i></i></button></div>'+
+   T('<div class="setrow"><div class="l">صوت فقط في الشريط المصغّر<div style="font-size:11px;color:var(--dim);line-height:1.6">يصغّر الصورة لأدنى حد فينزل يوتيوب لأقل جودة ويوفّر البيانات. الصوت يبقى كما هو.</div></div><div class="c"></div>')+
+     '<button class="sw '+(cfg.ytAudio?"on":"")+'" id="caud"><i></i></button></div>';
+}
+function secData(){
+  return T('<button class="btn" id="bxls">📊 ملف Excel</button>')+
+   T('<button class="btn" id="bpdf">📄 PDF / طباعة</button>')+
+   T('<div class="note" style="margin-top:2px">ملف Excel فيه أربع أوراق: الجلسات، قياسات الجسم، الأرقام القياسية، وحجم العضلات. زر PDF يفتح شاشة الطباعة — اختر «حفظ كـ PDF».</div>')+
+   T('<h2 class="sec">مكان حفظ بياناتك</h2>')+
+   T('<div class="warn">بياناتك محفوظة: <b>')+esc(storageLabel())+T('</b>.<br>ما تروح لأي خادم ولا يشوفها أحد غيرك. لو مسحت بيانات المتصفح أو غيّرت الجهاز، بتحتاج النسخة الاحتياطية تحت.</div>')+
+   T('<h2 class="sec">نسخة احتياطية</h2>')+
+   '<div class="empty" style="padding:2px 4px;text-align:start;line-height:1.7">'+
+     T('اضغط تصدير، انسخ النص واحفظه في ملاحظاتك أو أرسله لنفسك. للاستعادة الصقه هنا واضغط استيراد.</div>')+
+   T('<button class="btn" id="bexp">تصدير البيانات</button>')+
+   T('<button class="btn ghostb" id="bimp">استيراد</button>')+
+   T('<button class="btn ghostb" id="bcopy">نسخ</button>')+
+   T('<textarea class="ta" id="bak" placeholder="بيانات النسخة الاحتياطية تظهر هنا…"></textarea>');
+}
+function secApp(){
+  return '<div class="seg" id="lang">'+LANGS.map(function(L){
+     return '<button data-lg="'+L.k+'" class="'+((cfg.lang||"ar")===L.k?"on":"")+'">'+esc(L.n)+'</button>';}).join("")+
+   '</div>'+
+   T('<div class="note" style="margin-top:0">«EN + عربي» يعرض الأسماء والأزرار بالإنجليزي ويبقي الشرح وخطوات الحركة بالعربي.</div>')+
+   (isStandalone() ? '' :
+       T('<h2 class="sec">تثبيت التطبيق</h2>')+
+       T('<div class="note" style="margin-top:0">ثبّته على الشاشة الرئيسية ليفتح بأيقونته الخاصة وبملء الشاشة، ويعمل بدون إنترنت.</div>')+
+       T('<button class="btn" id="binst">⬇ تثبيت على الشاشة الرئيسية</button>'))+
+   T('<h2 class="sec">إصلاح</h2>')+
+   T('<div class="note" style="margin-top:0">لو صار شيء غريب بعد تحديث: هذا يمسح ملفات التطبيق المخزّنة ويحمّل نسخة نظيفة. سجلك ما ينمسح.</div>')+
+   '<button class="btn ghostb" id="bfix" style="width:100%">'+T('🔄 حمّل نسخة نظيفة')+'</button>'+
+   '<div class="note" style="margin-top:8px;text-align:center;font-family:var(--num);font-size:10.5px">'+
+     (window.APPV||'')+'</div>';
+}
+function secHtml(k){
+  return k==="train"?secTrain():k==="prog"?secProg():k==="play"?secPlay():k==="data"?secData():secApp();
+}
+function renderSet(){
+  curSec=null;
+  $("main").innerHTML=SETSEC.map(function(s){
+    return '<button class="setnav" data-sec="'+s.k+'"><div><div class="t">'+esc(T(s.n))+'</div>'+
+      '<div class="d">'+esc(T(s.d))+'</div></div><span class="ch">›</span></button>';
+  }).join("")+
+  '<div class="note" style="text-align:center;font-family:var(--num);font-size:10.5px;margin-top:16px">'+
+    (window.APPV||'')+'</div>';
+  $("main").querySelectorAll("[data-sec]").forEach(function(b){
+    b.onclick=function(){ setSecSheet(b.getAttribute("data-sec")); };});
+}
+function setSecSheet(k){
+  curSec=k;
+  var s=null; SETSEC.forEach(function(x){ if(x.k===k) s=x; });
+  sheet(T(s.n),secHtml(k));
+  bindSet();
+}
+/* toggles inside a sheet refresh that sheet, not the menu behind it */
+function reSet(){ if(curSec) setSecSheet(curSec); else renderSet(); }
+function bindSet(){
+  var q=function(sel){ return document.querySelectorAll(sel); };
   if($("binst")) $("binst").onclick=showInst;
   if($("bgoal")) $("bgoal").onclick=goalSheet;
-  $("bxls").onclick=exportXls;
-  $("bpdf").onclick=exportPdf;
-  $("crest").onchange=function(){ cfg.rest=Math.max(15,parseInt($("crest").value,10)||90); saveC(); renderSet(); };
-  $("cauto").onclick=function(){ cfg.autoRest=!cfg.autoRest; saveC(); renderSet(); };
-  $("cnext").onclick=function(){ cfg.autoNext=!cfg.autoNext; saveC(); renderSet(); };
-  $("csnd").onclick=function(){ cfg.sound=!cfg.sound; saveC(); if(cfg.sound) beep(); renderSet(); };
-  $("lang").querySelectorAll("[data-lg]").forEach(function(b){
-    b.onclick=function(){ cfg.lang=b.getAttribute("data-lg"); saveC(); applyLang(); render(); window.scrollTo(0,0); };});
-  if($("ckeep")) $("ckeep").onclick=function(){ cfg.ytKeep=(cfg.ytKeep===false); saveC(); renderSet(); };
-  if($("caud")) $("caud").onclick=function(){ cfg.ytAudio=!cfg.ytAudio; saveC(); renderSet();
+  if($("bfix"))  $("bfix").onclick=function(){
+    if(confirm(T("تحميل نسخة نظيفة؟ بياناتك ما تنمسح."))){ var f=$("bootfix"); if(f) f.click(); } };
+  if($("bxls")) $("bxls").onclick=exportXls;
+  if($("bpdf")) $("bpdf").onclick=exportPdf;
+  if($("crest")) $("crest").onchange=function(){ cfg.rest=Math.max(15,parseInt($("crest").value,10)||90); saveC(); reSet(); };
+  if($("cauto")) $("cauto").onclick=function(){ cfg.autoRest=!cfg.autoRest; saveC(); reSet(); };
+  if($("cnext")) $("cnext").onclick=function(){ cfg.autoNext=!cfg.autoNext; saveC(); reSet(); };
+  if($("csnd"))  $("csnd").onclick=function(){ cfg.sound=!cfg.sound; saveC(); if(cfg.sound) beep(); reSet(); };
+  if($("csimp")) $("csimp").onclick=function(){ cfg.simple=!cfg.simple; saveC(); reSet(); };
+  if($("lang")) $("lang").querySelectorAll("[data-lg]").forEach(function(b){
+    b.onclick=function(){ cfg.lang=b.getAttribute("data-lg"); saveC(); applyLang(); closeModal(); render(); window.scrollTo(0,0); };});
+  if($("ckeep")) $("ckeep").onclick=function(){ cfg.ytKeep=(cfg.ytKeep===false); saveC(); reSet(); };
+  if($("caud"))  $("caud").onclick=function(){ cfg.ytAudio=!cfg.ytAudio; saveC(); reSet();
     if($("focus").className.indexOf("mini")>=0) drawMini(); };
-  $("cwarm").onclick=function(){ cfg.warmOn=!cfg.warmOn; saveC(); renderSet(); };
-  $("crpe").onclick=function(){ cfg.rpeOn=!cfg.rpeOn; saveC(); renderSet(); };
-  $("ceq").onclick=function(){ cfg.eqOn=!cfg.eqOn; saveC(); renderSet(); };
-  $("main").querySelectorAll("[data-eq]").forEach(function(b){
+  if($("cwarm")) $("cwarm").onclick=function(){ cfg.warmOn=!cfg.warmOn; saveC(); reSet(); };
+  if($("crpe"))  $("crpe").onclick=function(){ cfg.rpeOn=!cfg.rpeOn; saveC(); reSet(); };
+  if($("ceq"))   $("ceq").onclick=function(){ cfg.eqOn=!cfg.eqOn; saveC(); reSet(); };
+  q("[data-eq]").forEach(function(b){
     b.onclick=function(){ var k=b.getAttribute("data-eq");
       if(!cfg.eq) cfg.eq={};
       if(cfg.eq[k]) delete cfg.eq[k]; else cfg.eq[k]=true;
-      saveC(); renderSet(); };});
-  $("main").querySelectorAll("[data-pre]").forEach(function(b){
+      saveC(); reSet(); };});
+  q("[data-pre]").forEach(function(b){
     b.onclick=function(){ var p=EQPRESETS[+b.getAttribute("data-pre")];
       cfg.eq={}; p.k.forEach(function(k){ cfg.eq[k]=true; });
-      saveC(); renderSet(); };});
-  $("bexp").onclick=function(){
+      saveC(); reSet(); };});
+  if($("bexp")) $("bexp").onclick=function(){
     $("bak").value=JSON.stringify({v:4,plan:plan,sessions:sessions,bw:bw,notes:notes,warm:warm,cfg:cfg});
     $("bak").focus(); $("bak").select();
   };
-  $("bcopy").onclick=function(){
+  if($("bcopy")) $("bcopy").onclick=function(){
     if(!$("bak").value) $("bak").value=JSON.stringify({v:4,plan:plan,sessions:sessions,bw:bw,notes:notes,warm:warm,cfg:cfg});
     $("bak").select();
     if(navigator.clipboard) navigator.clipboard.writeText($("bak").value).then(function(){alert(T("تم النسخ"));},
       function(){document.execCommand("copy");});
     else { document.execCommand("copy"); alert(T("تم النسخ")); }
   };
-  $("bimp").onclick=function(){
+  if($("bimp")) $("bimp").onclick=function(){
     var t=$("bak").value.trim(); if(!t) return alert(T("الصق بيانات النسخة الاحتياطية أولاً."));
     var o; try{ o=JSON.parse(t); }catch(e){ return alert(T("النص غير صالح.")); }
     if(!o||!o.sessions) return alert(T("النص غير صالح."));
@@ -2790,13 +2897,11 @@ function renderSet(){
     cfg=Object.assign(cfg,o.cfg||{});
     if(!cfg.eq||typeof cfg.eq!=="object") cfg.eq={};
     for(var kk in bw){ if(typeof bw[kk]==="number") bw[kk]={w:bw[kk]}; }
-    saveP(); saveS(); saveB(); saveN(); saveW(); saveC(); alert(T("تم الاستيراد.")); render();
+    saveP(); saveS(); saveB(); saveN(); saveW(); saveC(); alert(T("تم الاستيراد.")); closeModal(); render();
   };
-  $("main").querySelectorAll("[data-tp]").forEach(function(b){
+  q("[data-tp]").forEach(function(b){
     b.onclick=function(){ applyTemplate(b.getAttribute("data-tp")); };});
 }
-
-
 function applyTemplate(tid){
   var t=null; TEMPLATES.forEach(function(x){ if(x.id===tid) t=x; });
   if(!t) return;
@@ -2811,7 +2916,7 @@ function applyTemplate(tid){
       })};
     });
   }
-  dayId=plan[0].id; saveP(); view="log"; render(); window.scrollTo(0,0);
+  dayId=plan[0].id; saveP(); closeModal(); view="log"; render(); window.scrollTo(0,0);
 }
 
 
@@ -3539,7 +3644,19 @@ $("fp30").onclick=function(){ addRest(30); };
 $("fskip").onclick=function(){ stopRest(); $("frest").classList.remove("on"); advance(true); };
 
 /* ============ nav ============ */
-$("date").onchange=function(){ dateStr=$("date").value||dateStr; render(); };
+function dateLabel(){
+  var b=$("dbtn"); if(!b) return;
+  var t=new Date(), td=t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());
+  var n=daysBetween(dateStr,td);
+  b.textContent = (dateStr===td)?T("اليوم") : (n===1?T("أمس") : dateStr.slice(5));
+  b.className="dbtn"+(dateStr===td?"":" past");
+}
+$("dbtn").onclick=function(){
+  var d=$("dbox"); var open=d.style.display!=="none";
+  d.style.display=open?"none":"block";
+  if(!open){ $("date").focus(); if($("date").showPicker) try{ $("date").showPicker(); }catch(e){} }
+};
+$("date").onchange=function(){ dateStr=$("date").value||dateStr; $("dbox").style.display="none"; render(); };
 $("n1").onclick=function(){view="log";render();window.scrollTo(0,0);};
 $("n2").onclick=function(){view="prog";render();window.scrollTo(0,0);};
 $("n3").onclick=function(){view="body";render();window.scrollTo(0,0);};
