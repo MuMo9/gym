@@ -273,6 +273,14 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .ytchip i{font-style:normal;color:#C08585;font-size:12px}
 #ytzone{max-width:560px;margin:0 auto;width:100%;padding:0 14px}
 .ytwrap iframe{display:block;width:100%;height:190px;border:0}
+/* refusal panel — covers the dead black box with the reason and a way out */
+.yterr{position:absolute;inset:0;z-index:7;background:rgba(12,16,22,.96);display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center}
+.yterr .t{font-size:12.5px;color:var(--chalk);line-height:1.9;max-width:340px}
+.yterr .b{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.yterr .b>*{background:var(--panel2);border:1px solid var(--line);color:var(--chalk);border-radius:11px;
+  padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none}
+.yterr .b>a{border-color:var(--brass);color:var(--brass)}
 /* playlist strip — z-index above .ytshield so the lock never blocks skipping */
 /* direction:ltr on purpose — transport controls are never mirrored (⏮ left, ⏭ right, like
    every player the person already uses), and it keeps "3 / 9" from reading as "9 / 3" */
@@ -506,7 +514,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v16";
+  var V="gymlog-v17";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -671,6 +679,12 @@ var UI={
 "يشتغل الآن":"Now playing",
 "التالي":"Next",
 "السابق":"Previous",
+"افتحه في يوتيوب":"Open it on YouTube",
+"المقطع التالي":"Next clip",
+"صاحب المقطع مانع تشغيله داخل التطبيقات. هذا قرار صاحب القناة — ما يقدر أي تطبيق يتجاوزه. افتحه في يوتيوب، أو اختر مقطعاً ثانياً.":"The owner of this clip has turned off playback inside other apps. That is the channel owner's choice and no app can get around it. Open it on YouTube, or pick another clip.",
+"المقطع محذوف أو خاص، فما عاد يشتغل.":"The clip was deleted or made private, so it no longer plays.",
+"الرابط غير صحيح. انسخ رابط المقطع من يوتيوب مرة ثانية.":"That link is not valid. Copy the clip link from YouTube again.",
+"ما قدر يوتيوب يشغّل هذا المقطع هنا.":"YouTube could not play this clip here.",
 "<h2 class=\"sec\">مشغّل يوتيوب</h2>":"<h2 class=\"sec\">YouTube player</h2>",
 "<div class=\"setrow\"><div class=\"l\">يكمل بعد الخروج من وضع التركيز<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">يصير شريطاً صغيراً فوق شريط التنقل بدل ما يختفي، ومعه أزرار رجوع وإيقاف.</div></div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Keep playing after leaving Focus mode<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">It shrinks to a small bar above the nav instead of disappearing, with back and stop buttons.</div></div><div class=\"c\"></div>",
 "<div class=\"setrow\"><div class=\"l\">صوت فقط في الشريط المصغّر<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">يصغّر الصورة لأدنى حد فينزل يوتيوب لأقل جودة ويوفّر البيانات. الصوت يبقى كما هو.</div></div><div class=\"c\"></div>":"<div class=\"setrow\"><div class=\"l\">Audio only in the mini bar<div style=\"font-size:11px;color:var(--dim);line-height:1.6\">Shrinks the picture to almost nothing, so YouTube drops to its lowest rung and saves data. The sound is unchanged.</div></div><div class=\"c\"></div>",
@@ -1705,7 +1719,7 @@ var TEMPLATES=[
 /* ============ state ============ */
 var plan=JSON.parse(JSON.stringify(DEFAULT)), sessions={}, bw={}, notes={}, warm={},
     cfg={rest:90,autoRest:true,sound:true,level:"beg",sex:"m",autoNext:true,ytShow:false,yt:"",ytList:[],ytLock:false,
-         warmOn:true,rpeOn:false,eqOn:false,eq:{},lang:"ar",ytKeep:true,ytAudio:false,ytSize:0,
+         warmOn:true,rpeOn:false,eqOn:false,eq:{},lang:"ar",ytKeep:true,ytAudio:false,ytSize:0,ytChain:true,
          goal:"",goalDays:4,goalWeak:[],goalAt:"",reviewHide:""};
 var dayId="d1", view="log";
 var pad=function(n){return n<10?"0"+n:""+n;};
@@ -2833,7 +2847,9 @@ function secPlay(){
   return T('<div class="setrow"><div class="l">يكمل بعد الخروج من وضع التركيز<div style="font-size:11px;color:var(--dim);line-height:1.6">يصير شريطاً صغيراً فوق شريط التنقل بدل ما يختفي، ومعه أزرار رجوع وإيقاف.</div></div><div class="c"></div>')+
      '<button class="sw '+(cfg.ytKeep!==false?"on":"")+'" id="ckeep"><i></i></button></div>'+
    T('<div class="setrow"><div class="l">صوت فقط في الشريط المصغّر<div style="font-size:11px;color:var(--dim);line-height:1.6">يصغّر الصورة لأدنى حد فينزل يوتيوب لأقل جودة ويوفّر البيانات. الصوت يبقى كما هو.</div></div><div class="c"></div>')+
-     '<button class="sw '+(cfg.ytAudio?"on":"")+'" id="caud"><i></i></button></div>';
+     '<button class="sw '+(cfg.ytAudio?"on":"")+'" id="caud"><i></i></button></div>'+
+   T('<div class="setrow"><div class="l">تشغيل متواصل<div style="font-size:11px;color:var(--dim);line-height:1.6">لما يخلص المقطع يشتغل اللي بعده من مقاطعك المحفوظة تلقائياً، ويظهر ⏮ ⏭ تحت المقطع. روابط قوائم التشغيل تشتغل متواصلة على أي حال.</div></div><div class="c"></div>')+
+     '<button class="sw '+(cfg.ytChain!==false?"on":"")+'" id="cchain"><i></i></button></div>';
 }
 function secData(){
   return T('<button class="btn" id="bxls">📊 ملف Excel</button>')+
@@ -2902,6 +2918,7 @@ function bindSet(){
   if($("lang")) $("lang").querySelectorAll("[data-lg]").forEach(function(b){
     b.onclick=function(){ cfg.lang=b.getAttribute("data-lg"); saveC(); applyLang(); closeModal(); render(); window.scrollTo(0,0); };});
   if($("ckeep")) $("ckeep").onclick=function(){ cfg.ytKeep=(cfg.ytKeep===false); saveC(); reSet(); };
+  if($("cchain")) $("cchain").onclick=function(){ cfg.ytChain=(cfg.ytChain===false); saveC(); reSet(); };
   if($("caud"))  $("caud").onclick=function(){ cfg.ytAudio=!cfg.ytAudio; saveC(); reSet();
     if($("focus").className.indexOf("mini")>=0) drawMini(); };
   if($("cwarm")) $("cwarm").onclick=function(){ cfg.warmOn=!cfg.warmOn; saveC(); reSet(); };
@@ -3427,6 +3444,9 @@ function ytListen(){
 window.addEventListener("message",function(e){
   if(!/^https:\/\/(www\.)?youtube(-nocookie)?\.com$/.test(e.origin)) return;
   var d; try{ d=JSON.parse(e.data); }catch(x){ return; }
+  /* the player refuses some clips outright — say why instead of leaving a dead black box */
+  if(d&&d.event==="onError"){ PL.err=+d.info||0; paintErr(); return; }
+  if(d&&d.event==="onStateChange"&&(d.info===1||d.info===3)&&PL.err){ PL.err=0; paintErr(); }
   var i=d&&d.info; if(!i) return;
   var changed=false;
   if(i.playlist&&i.playlist.length&&i.playlist.length!==PL.len){ PL.len=i.playlist.length; changed=true; }
@@ -3434,6 +3454,26 @@ window.addEventListener("message",function(e){
   if(i.videoData&&i.videoData.title&&i.videoData.title!==PL.title){ PL.title=i.videoData.title; changed=true; }
   if(changed) paintPl();
 });
+/* 101 and 150 both mean "the owner switched embedding off for this clip" — nothing any app
+   can do about it, so the honest move is to name it and hand over a working way out */
+function errText(c){
+  if(c===101||c===150) return T("صاحب المقطع مانع تشغيله داخل التطبيقات. هذا قرار صاحب القناة — ما يقدر أي تطبيق يتجاوزه. افتحه في يوتيوب، أو اختر مقطعاً ثانياً.");
+  if(c===100||c===105) return T("المقطع محذوف أو خاص، فما عاد يشتغل.");
+  if(c===2) return T("الرابط غير صحيح. انسخ رابط المقطع من يوتيوب مرة ثانية.");
+  return T("ما قدر يوتيوب يشغّل هذا المقطع هنا.");
+}
+function paintErr(){
+  var w=$("ytwrap"); if(!w) return;
+  var old=w.querySelector(".yterr"); if(old) old.remove();
+  if(!PL.err) return;
+  var cu=ytParse(cfg.yt||"");
+  var d=document.createElement("div"); d.className="yterr";
+  d.innerHTML='<div class="t">'+esc(errText(PL.err))+'</div><div class="b">'+
+    '<a class="ytb" target="_blank" rel="noopener" href="'+esc(ytWatch(cu))+'">'+T("افتحه في يوتيوب")+'</a>'+
+    (PL.isList?'<button id="errNext">'+T("المقطع التالي")+'</button>':'')+'</div>';
+  w.appendChild(d);
+  if($("errNext")) $("errNext").onclick=function(){ PL.err=0; paintErr(); ytCmd("nextVideo"); };
+}
 /* repaints two small nodes — never the player */
 function paintPl(){
   var s=$("ytpl");
@@ -3443,6 +3483,23 @@ function paintPl(){
   var l=$("ytwrap")&&$("ytwrap").querySelector(".mlab");
   if(l) l.textContent=PL.title||T("يشتغل الآن");
   var nx=$("mNext"); if(nx) nx.style.display=PL.isList?"":"none";
+}
+/* the saved chips, in order, starting after the one playing — only plain clips, because the
+   parameter takes bare ids. Returns "" when there is nothing to queue. */
+function ytChain(cu){
+  if(cfg.ytChain===false||!cu||cu.kind!=="v"||cu.list) return "";
+  var l=cfg.ytList||[],ids=[],i,v;
+  for(i=0;i<l.length;i++){ v=ytParse(l[i].u); if(v.kind==="v"&&!v.list&&v.id!==cu.id&&ids.indexOf(v.id)<0) ids.push(v.id); }
+  var at=-1;
+  for(i=0;i<l.length;i++) if(l[i].u===cfg.yt){ at=i; break; }
+  if(at>0){ /* keep the person's own order, continuing from where they picked */
+    var after=[],before=[];
+    for(i=0;i<l.length;i++){ v=ytParse(l[i].u);
+      if(v.kind!=="v"||v.list||v.id===cu.id) continue;
+      (i>at?after:before).push(v.id); }
+    ids=after.concat(before);
+  }
+  return ids.slice(0,40).join(",");
 }
 /* ---- youtube panel ----
    the iframe sits in #ytzone, outside the part of the screen that gets redrawn on every tap,
@@ -3476,10 +3533,16 @@ function drawYt(){
   }else c+=T('<div class="frow"><button id="ytshow">▶ افتح مشغّل يوتيوب داخل الشاشة</button></div>');
   $("ytctl").innerHTML=c;
 
-  var want=(cfg.ytShow&&cu.src&&!isFileUrl())?cu.src:"";
+  /* continuous play: a lone clip becomes the head of a queue made of the clips already saved
+     as chips, using the player's own `playlist=` parameter. YouTube then rolls straight into
+     the next one on its own and ⏮/⏭ start working — no key, no reload between clips.
+     (A YouTube "Mix" — list=RD… — would be the other way to keep going, but YouTube refuses
+      to embed mixes; it answers with "video unavailable". Tested, not guessed.) */
+  var chain=ytChain(cu);
+  var want=(cfg.ytShow&&cu.src&&!isFileUrl())?(cu.src+(chain?"&playlist="+chain:"")):"";
   var wrap=$("ytwrap");
   if(want!==ytLoaded){
-    ytLoaded=want;
+    ytLoaded=want; PL.err=0;
     if(!want){ wrap.innerHTML=""; wrap.style.display="none"; }
     else{
       wrap.style.display="";
@@ -3499,8 +3562,8 @@ function drawYt(){
       ytListen();
     }
   }
-  PL.isList=!!(want&&cu.list);
-  paintLock(); applySize(); paintPl();
+  PL.isList=!!(want&&(cu.list||chain));
+  paintLock(); applySize(); paintPl(); paintErr();
   bindYt();
 }
 /* the lock repaints two elements and nothing else — the video keeps playing through it */
