@@ -132,7 +132,9 @@ h2.sec{font-size:13px;color:var(--dim);font-weight:700;margin:20px 0 4px;letter-
   font-family:var(--num);font-size:15px;font-weight:700;padding:7px;text-align:center;outline:none}
 
 /* modal */
-.modal{position:fixed;inset:0;z-index:60;background:rgba(6,9,13,.72);display:flex;align-items:flex-end;justify-content:center}
+/* above focus mode (70) and the rest overlay (75): a sheet opened from inside focus mode
+   used to render behind it, so the «؟» guide button looked completely dead */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(6,9,13,.72);display:flex;align-items:flex-end;justify-content:center}
 .sheet{background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:18px 18px 0 0;
   width:100%;max-width:700px;max-height:92vh;overflow-y:auto;padding:0 0 22px;animation:up .22s ease}
 @keyframes up{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
@@ -488,7 +490,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v13";
+  var V="gymlog-v14";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -3560,9 +3562,11 @@ function drawFocus(){
   memoClear();
   var d=day(),ex=d.ex[F.xi];
   if(F.done||!ex) return drawSummary();
-  var m=meta(ex),n=fSets(ex);
+  var n=fSets(ex);
   $("fname").textContent=exName(ex);
-  $("fst").textContent=T("مجموعة ")+(F.si+1)+T(" من ")+n+" · "+(m?libEq(m):"")+" · "+ex.r+T(" عدة");
+  /* the equipment name is what pushed this line onto a second row; it lives one tap away
+     under the «؟» guide, and you are standing at the machine anyway */
+  $("fst").textContent=T("مجموعة ")+(F.si+1)+T(" من ")+n+" · "+ex.r+T(" عدة");
   $("fdots").innerHTML=d.ex.map(function(e,i){
     var rows=cur()[e.uid]||[],dn=rows.filter(function(x){return x&&x.w&&x.r;}).length>=e.s;
     return '<div class="fdot '+(i===F.xi?"now":(dn?"done":""))+'"></div>';}).join("");
