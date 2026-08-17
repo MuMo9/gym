@@ -56,6 +56,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(17,21,27,.94);backdrop-f
 .delta.up{color:var(--up)} .delta.down{color:var(--down)}
 
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);margin:12px 0;overflow:hidden}
+.ordrow{display:flex;gap:6px;padding:0 12px 8px}
+.ordrow button{flex:1;background:var(--panel2);border:1px solid var(--line);color:var(--dim);
+  border-radius:10px;padding:8px 6px;font-size:11.5px;font-weight:700;cursor:pointer}
+.ordrow button:active{border-color:var(--brass);color:var(--brass)}
 .chead{display:flex;align-items:center;gap:7px;padding:11px 12px 8px}
 .cname{font-weight:700;font-size:15px}
 .ctag{font-size:11px;color:var(--dim);font-family:var(--num)}
@@ -249,6 +253,8 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .fprev span{background:var(--panel);border:1px solid var(--line);border-radius:99px;
   padding:4px 10px;font-family:var(--num);font-size:11px;color:var(--dim)}
 .fprev span.ok{color:var(--up);border-color:rgba(87,192,140,.4)}
+.fprev span.tap{cursor:pointer}
+.fprev span.now{border-color:var(--brass);color:var(--brass)}
 .frest{position:fixed;inset:0;z-index:75;background:rgba(10,13,18,.96);display:none;
   flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px}
 .frest.on{display:flex}
@@ -514,7 +520,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v18";
+  var V="gymlog-v19";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -1187,9 +1193,10 @@ var UI={
 "جهد ":"Effort ",
 "الجهد اختياري — اضغط رقماً لو تبي تسجله":["Effort is optional — tap a number if you want to log it",1],
 "<button class=\"fdone\" id=\"fdone\">✓ سجّل المجموعة وابدأ الراحة</button>":"<button class=\"fdone\" id=\"fdone\">✓ Log set and start rest</button>",
-"<div class=\"frow\"><button id=\"fdelset\">حذف هذه المجموعة</button>":"<div class=\"frow\"><button id=\"fdelset\">Delete this set</button>",
-"<button id=\"fskipset\">تخطي المجموعة</button>":"<button id=\"fskipset\">Skip set</button>",
-"<button id=\"fprevx\">التمرين السابق</button><button id=\"fnextx\">التمرين التالي</button></div>":"<button id=\"fprevx\">Previous exercise</button><button id=\"fnextx\">Next exercise</button></div>",
+"<div class=\"frow\"><button id=\"fprevx\">التمرين السابق</button><button id=\"fnextx\">التمرين التالي</button></div>":"<div class=\"frow\"><button id=\"fprevx\">Previous exercise</button><button id=\"fnextx\">Next exercise</button></div>",
+"انتقل لهذه المجموعة":"Go to this set",
+"⤒ أول التمرينات":"⤒ Move to first",
+"⤓ آخر التمرينات":"⤓ Move to last",
 "انتقال تلقائي بعد الراحة</button>":"Auto-advance after rest</button>",
 "<button id=\"frestlen\">راحة ":"<button id=\"frestlen\">Rest ",
 " ث</button></div>":" sec</button></div>",
@@ -2087,10 +2094,19 @@ function renderLog(){
         '<button class="icobtn" data-x="'+xi+T('" title="حذف التمرين" style="color:#C08585">✕</button>')
       : (meta(ex)?'<button class="icobtn info" data-g="'+xi+T('" title="الطريقة الصحيحة">؟</button>'):'')+
         T('<button class="icobtn" data-t="1" title="مؤقت راحة">⏱</button>');
+    /* ▲▼ shift one place, which is fine for four exercises and tedious for ten. These two
+       appear only when the jump is longer than a single step, so they never state the obvious. */
+    var jump="";
+    if(editMode&&d.ex.length>2){
+      var j=[];
+      if(xi>1) j.push('<button data-first="'+xi+'">'+T("⤒ أول التمرينات")+'</button>');
+      if(xi<d.ex.length-2) j.push('<button data-last="'+xi+'">'+T("⤓ آخر التمرينات")+'</button>');
+      if(j.length) jump='<div class="ordrow">'+j.join("")+'</div>';
+    }
     h+='<div class="card"><div class="chead"><div class="cname">'+esc(exName(ex))+'</div>'+
        '<div class="ctag'+(editMode?' tap" data-cfg="'+xi+'"':'"')+'>'+ex.s+' × '+esc(ex.r)+'</div>'+
        '<div class="sp"></div>'+tools+'</div>'+
-       sth+((sgh||wmh)?('<div class="hintline">'+sgh+wmh+'</div>'):'')+'<div class="sets">'+body+
+       jump+sth+((sgh||wmh)?('<div class="hintline">'+sgh+wmh+'</div>'):'')+'<div class="sets">'+body+
        (editMode?'<div class="setbtns"><button class="addset" data-a="'+ex.uid+'" data-n="'+n+T('">+ مجموعة</button>')+
          (n>1?'<button class="addset del" data-rm="'+xi+'" data-n="'+n+T('">− حذف آخر مجموعة</button>'):'')+
          '</div>':'')+
@@ -2186,6 +2202,12 @@ function renderLog(){
   $("main").querySelectorAll("[data-dn]").forEach(function(b){
     b.onclick=function(){ var i=+b.getAttribute("data-dn"),e=day().ex; if(i>=e.length-1) return;
       e.splice(i+1,0,e.splice(i,1)[0]); saveP(); renderLog(); };});
+  $("main").querySelectorAll("[data-first]").forEach(function(b){
+    b.onclick=function(){ var i=+b.getAttribute("data-first"),e=day().ex; if(i<1) return;
+      e.unshift(e.splice(i,1)[0]); saveP(); renderLog(); };});
+  $("main").querySelectorAll("[data-last]").forEach(function(b){
+    b.onclick=function(){ var i=+b.getAttribute("data-last"),e=day().ex; if(i>=e.length-1) return;
+      e.push(e.splice(i,1)[0]); saveP(); renderLog(); };});
   $("main").querySelectorAll("[data-cfg]").forEach(function(b){
     b.onclick=function(){
       var ex=day().ex[+b.getAttribute("data-cfg")];
@@ -2206,15 +2228,6 @@ function delSet(xi,i){
   if(rows.length){ ss[ex.uid]=rows; } else { delete ss[ex.uid]; }
   ex.s=Math.max(1,Math.min(ex.s,n-1));
   saveP(); saveS(); renderLog();
-}
-function delSetQuiet(xi,i){
-  var ex=day().ex[xi]; if(!ex) return;
-  var ss=cur(),rows=ss[ex.uid]||[],n=Math.max(ex.s,rows.length);
-  if(n<=1) return;
-  if(i<rows.length) rows.splice(i,1);
-  if(rows.length) ss[ex.uid]=rows; else delete ss[ex.uid];
-  ex.s=Math.max(1,Math.min(ex.s,n-1));
-  saveP(); saveS();
 }
 /* press and hold a set number to delete that specific set */
 var holdFired=false;
@@ -3754,16 +3767,17 @@ function drawFocus(){
       '<div class="rhint">'+(F.p!=null?(T("جهد ")+F.p+" — "+T(RPETXT[F.p]||"")):T("الجهد اختياري — اضغط رقماً لو تبي تسجله"))+'</div>';
   }
   h+=T('<button class="fdone" id="fdone">✓ سجّل المجموعة وابدأ الراحة</button>');
-  h+=T('<div class="frow"><button id="fdelset">حذف هذه المجموعة</button>')+
-     T('<button id="fskipset">تخطي المجموعة</button>')+
-     T('<button id="fprevx">التمرين السابق</button><button id="fnextx">التمرين التالي</button></div>');
+  /* focus mode is for training only — deleting and reshaping sets lives in the workout tab.
+     Moving between sets is navigation, not editing, so it moved onto the set chips below. */
+  h+=T('<div class="frow"><button id="fprevx">التمرين السابق</button><button id="fnextx">التمرين التالي</button></div>');
   h+='<div class="frow"><button id="fauto" class="'+(cfg.autoNext?"on":"")+'">'+
      (cfg.autoNext?"✓ ":"")+T('انتقال تلقائي بعد الراحة</button>')+
      T('<button id="frestlen">راحة ')+cfg.rest+T(' ث</button></div>');
   var rows=cur()[ex.uid]||[];
   h+='<div class="fprev">'+Array.apply(null,{length:n}).map(function(_,i){
     var v=rows[i]||{};
-    return '<span class="'+(v.w&&v.r?"ok":"")+'">'+(i+1)+': '+(v.w&&v.r?(v.w+"×"+v.r):"—")+'</span>';
+    return '<span class="'+(v.w&&v.r?"ok ":"")+(i===F.si?"now ":"")+'tap" data-jump="'+i+'" title="'+
+           esc(T("انتقل لهذه المجموعة"))+'">'+(i+1)+': '+(v.w&&v.r?(v.w+"×"+v.r):"—")+'</span>';
   }).join("")+'</div>';
   $("fbody").innerHTML=h;
 
@@ -3779,13 +3793,8 @@ function drawFocus(){
   $("wv").onclick=function(){ var v=prompt(T("الوزن بالكجم؟"),F.w); if(v!==null&&!isNaN(parseFloat(v))){F.w=parseFloat(v);drawFocus();} };
   $("rv").onclick=function(){ var v=prompt(T("عدد التكرارات؟"),F.r); if(v!==null&&!isNaN(parseInt(v,10))){F.r=parseInt(v,10);drawFocus();} };
   $("fdone").onclick=logFocusSet;
-  $("fdelset").onclick=function(){
-    var n2=fSets(ex); if(n2<=1) return alert(T("لازم تبقى مجموعة واحدة على الأقل."));
-    delSetQuiet(F.xi,F.si);
-    if(F.si>=fSets(ex)) F.si=Math.max(0,fSets(ex)-1);
-    loadFocusVals(); drawFocus();
-  };
-  $("fskipset").onclick=function(){ advance(false); };
+  $("fbody").querySelectorAll("[data-jump]").forEach(function(b){
+    b.onclick=function(){ F.si=+b.getAttribute("data-jump"); loadFocusVals(); drawFocus(); };});
   $("fnextx").onclick=function(){ if(F.xi<d.ex.length-1){F.xi++;F.si=0;loadFocusVals();drawFocus();} else {F.done=true;drawSummary();} };
   $("fprevx").onclick=function(){ if(F.xi>0){F.xi--;F.si=0;loadFocusVals();drawFocus();} };
   $("fauto").onclick=function(){ cfg.autoNext=!cfg.autoNext; saveC(); drawFocus(); };
