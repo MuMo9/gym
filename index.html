@@ -297,6 +297,8 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
   border-radius:9px;padding:4px 12px;font-size:14px;cursor:pointer;line-height:1.2}
 .ytpl button:active{border-color:var(--brass);color:var(--brass)}
 .ytpl span{font-family:var(--num);font-size:11.5px;color:var(--chalk);min-width:44px;text-align:center}
+.ytpl.lk button{pointer-events:none;opacity:.28}
+.ytpl.lk span{opacity:.45}
 /* ---- three sizes inside focus mode ----
    full ⇄ small corner ⇄ audio only. All three are pure CSS on #focus: the iframe stays in the
    very same DOM node, so the clip never restarts and the audio never cuts. */
@@ -312,7 +314,12 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 #focus.fs2 .ytwrap iframe{width:1px;height:1px;opacity:.01;pointer-events:none}
 #focus.fs2 .ytszb{position:static;flex:0 0 auto}
 #focus.fs2 .mnote{display:flex;flex:0 0 auto;width:40px;height:32px;font-size:17px}
-#focus.fs1 .ytlockb,#focus.fs2 .ytlockb,#focus.fs2 .ytshield{display:none}
+/* the lock button stays reachable at small size — hiding it while the shield is still armed
+   left no way to unlock. Audio-only has no picture to touch, so there the lock is moot. */
+#focus.fs2 .ytlockb,#focus.fs2 .ytshield{display:none}
+#focus.fs1 .ytlockb{top:4px;inset-inline-end:4px;padding:3px 6px;font-size:10px}
+#focus.fs2 .ytpl.lk button{pointer-events:auto;opacity:1}
+#focus.fs2 .ytpl.lk span{opacity:1}
 /* unreadable on a 150px thumbnail; in audio-only it flattens into the pill instead of hiding,
    because skipping a clip is exactly what you want when you cannot see the picture */
 #focus.fs1 .ytpl,#focus.mini .ytpl{display:none!important}
@@ -520,7 +527,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v19";
+  var V="gymlog-v20";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -3591,6 +3598,9 @@ function paintLock(){
   b.className="ytlockb"+(cfg.ytLock?" on":"");
   b.textContent=cfg.ytLock?T("🔒 مقفل"):T("🔓 قفل");
   sh.className="ytshield"+(cfg.ytLock?" on":"");
+  /* the lock covers ⏮ ⏭ too — one tap should freeze every control on the clip, not most of
+     them. Only the lock button itself stays live, otherwise there is no way back out. */
+  var s=$("ytpl"); if(s) s.className="ytpl"+(cfg.ytLock?" lk":"");
 }
 /* size cycle: 0 full · 1 small corner · 2 audio only.
    Only a class on #focus changes, so the iframe is untouched and playback carries on. */
@@ -3604,6 +3614,9 @@ function applySize(){
   b.title = s===0?T("صغّر المقطع"):s===1?T("صوت فقط — أقل جودة وأقل بيانات"):T("كبّر المقطع");
   b.className="ytszb"+(s?" on":"");
 }
+/* audio only: no picture to touch by accident, and the lock button is not on screen there —
+   so the lock does not apply and ⏭ stays alive rather than becoming un-unlockable */
+function isAudioOnly(){ return (cfg.ytSize|0)===2 && F.on; }
 function cycleSize(){
   cfg.ytSize=((cfg.ytSize|0)+1)%3;
   /* "audio only" is one idea, not two: choosing it here carries into the mini bar as well */
@@ -3620,8 +3633,9 @@ function bindYt(){
   if($("ytpaste")) $("ytpaste").onclick=ytPaste;
   if($("ytlock")) $("ytlock").onclick=function(){ cfg.ytLock=!cfg.ytLock; saveC(); paintLock(); };
   if($("ytsz")) $("ytsz").onclick=cycleSize;
-  if($("ytnext")) $("ytnext").onclick=function(){ ytCmd("nextVideo"); };
-  if($("ytprev")) $("ytprev").onclick=function(){ ytCmd("previousVideo"); };
+  /* CSS already swallows the tap; the guard makes the lock true no matter how the click arrives */
+  if($("ytnext")) $("ytnext").onclick=function(){ if(cfg.ytLock&&!isAudioOnly()) return; ytCmd("nextVideo"); };
+  if($("ytprev")) $("ytprev").onclick=function(){ if(cfg.ytLock&&!isAudioOnly()) return; ytCmd("previousVideo"); };
   z.querySelectorAll("[data-ytp]").forEach(function(b){
     b.onclick=function(ev){
       if(ev.target&&ev.target.getAttribute("data-ytd")!=null) return;
