@@ -27,6 +27,10 @@
   --ar:'Tajawal','Noto Kufi Arabic','Segoe UI',system-ui,sans-serif;
   --num:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
 }
+/* viewport-fit=cover lets the app paint under the iPhone status bar and notch. Everything
+   that sits at the very top must add this back, or the status bar covers it — and iOS also
+   swallows taps in that strip, so the buttons under it look broken rather than just misplaced. */
+:root{--sat:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{background:var(--ink);color:var(--chalk);font-family:var(--ar);line-height:1.55;padding:0 0 96px}
@@ -36,7 +40,7 @@ button{font-family:var(--ar)}
 :focus-visible{outline:2px solid var(--brass);outline-offset:2px}
 
 header{position:sticky;top:0;z-index:20;background:rgba(17,21,27,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.htop{display:flex;align-items:center;gap:10px;padding:12px 0 10px}
+.htop{display:flex;align-items:center;gap:10px;padding:calc(12px + var(--sat)) 0 10px}
 .brand{font-weight:900;font-size:19px;margin-inline-start:auto}
 .brand span{color:var(--brass)}
 .saved{font-size:11px;color:var(--up);opacity:0;transition:opacity .3s}
@@ -60,6 +64,11 @@ header{position:sticky;top:0;z-index:20;background:rgba(17,21,27,.94);backdrop-f
 .ordrow button{flex:1;background:var(--panel2);border:1px solid var(--line);color:var(--dim);
   border-radius:10px;padding:8px 6px;font-size:11.5px;font-weight:700;cursor:pointer}
 .ordrow button:active{border-color:var(--brass);color:var(--brass)}
+.ibar{display:flex;align-items:center;gap:4px;margin:10px 0 0;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ibar .t{flex:1;background:none;border:0;color:var(--brass);text-align:start;
+  padding:10px 12px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.5}
+.ibar .x{background:none;border:0;color:var(--dim);padding:10px 12px;font-size:13px;cursor:pointer}
 .chead{display:flex;align-items:center;gap:7px;padding:11px 12px 8px}
 .cname{font-weight:700;font-size:15px}
 .ctag{font-size:11px;color:var(--dim);font-family:var(--num)}
@@ -140,7 +149,7 @@ h2.sec{font-size:13px;color:var(--dim);font-weight:700;margin:20px 0 4px;letter-
    used to render behind it, so the «؟» guide button looked completely dead */
 .modal{position:fixed;inset:0;z-index:80;background:rgba(6,9,13,.72);display:flex;align-items:flex-end;justify-content:center}
 .sheet{background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:18px 18px 0 0;
-  width:100%;max-width:700px;max-height:92vh;overflow-y:auto;padding:0 0 22px;animation:up .22s ease}
+  width:100%;max-width:700px;max-height:calc(92vh - var(--sat));overflow-y:auto;padding:0 0 22px;animation:up .22s ease}
 @keyframes up{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
 .shead{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:10px;padding:14px 15px;z-index:2}
@@ -223,7 +232,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 #focus{position:fixed;inset:0;z-index:70;background:var(--ink);display:none;
   flex-direction:column;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom)}
 #focus.on{display:flex}
-.fbar{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);
+.fbar{display:flex;align-items:center;gap:8px;padding:calc(12px + var(--sat)) 14px 12px;border-bottom:1px solid var(--line);
   position:sticky;top:0;background:var(--ink);z-index:3}
 .fbar .nm{font-weight:900;font-size:16px;line-height:1.3}
 .fbar .st{font-size:11px;color:var(--dim);font-family:var(--num)}
@@ -256,7 +265,8 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 .fprev span.tap{cursor:pointer}
 .fprev span.now{border-color:var(--brass);color:var(--brass)}
 .frest{position:fixed;inset:0;z-index:75;background:rgba(10,13,18,.96);display:none;
-  flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px}
+  flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:calc(20px + var(--sat)) 20px calc(20px + env(safe-area-inset-bottom,0px))}
 .frest.on{display:flex}
 .frest .big{font-family:var(--num);font-size:74px;font-weight:700;letter-spacing:-3px;color:var(--brass)}
 .frest .lb{font-size:13px;color:var(--dim)}
@@ -402,7 +412,7 @@ nav button.on{color:var(--brass);border-top-color:var(--brass)}
 #inst{position:fixed;inset:0;z-index:90;background:rgba(6,9,13,.78);display:none;align-items:flex-end;justify-content:center}
 #inst.on{display:flex}
 #inst .sheet{background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:20px 20px 0 0;
-  width:100%;max-width:560px;max-height:92vh;overflow-y:auto;padding:0 0 26px;animation:up .24s ease}
+  width:100%;max-width:560px;max-height:calc(92vh - var(--sat));overflow-y:auto;padding:0 0 26px;animation:up .24s ease}
 #inst .ihead{display:flex;align-items:center;gap:10px;padding:16px 16px 6px}
 #inst .ihead .t{font-weight:900;font-size:17px}
 #inst .ihead .x{margin-inline-end:auto;background:var(--panel2);border:1px solid var(--line);color:var(--chalk);
@@ -444,7 +454,7 @@ html[dir=ltr] .setnav .ch{transform:none}
   border-radius:10px;padding:9px;font-size:12px;cursor:pointer;margin-top:6px}
 
 /* boot / failure screen — rendered with zero JavaScript so a crash is never a blank page */
-#boot{position:fixed;inset:0;z-index:200;background:#11151B;color:#E9ECF1;
+#boot{position:fixed;inset:0;z-index:200;background:#11151B;color:#E9ECF1;padding-top:var(--sat);
   display:flex;align-items:center;justify-content:center;padding:22px;
   font-family:'Tajawal','Noto Kufi Arabic','Segoe UI',system-ui,sans-serif}
 #boot .card{max-width:420px;width:100%;text-align:center}
@@ -527,7 +537,7 @@ html[dir=ltr] .setnav .ch{transform:none}
    Any thrown error, any rejected promise, or a boot that simply never finishes,
    all land here as readable text plus a way out. */
 (function(){
-  var V="gymlog-v20";
+  var V="gymlog-v22";
   window.APPV=V; window.__booted=false;
   var seen=false;
   function el(i){ return document.getElementById(i); }
@@ -1202,6 +1212,7 @@ var UI={
 "<button class=\"fdone\" id=\"fdone\">✓ سجّل المجموعة وابدأ الراحة</button>":"<button class=\"fdone\" id=\"fdone\">✓ Log set and start rest</button>",
 "<div class=\"frow\"><button id=\"fprevx\">التمرين السابق</button><button id=\"fnextx\">التمرين التالي</button></div>":"<div class=\"frow\"><button id=\"fprevx\">Previous exercise</button><button id=\"fnextx\">Next exercise</button></div>",
 "انتقل لهذه المجموعة":"Go to this set",
+"▸ ثبّته على الشاشة الرئيسية — يفتح بملء الشاشة بدون شريط العناوين":"▸ Add it to your home screen — opens full screen with no address bar",
 "⤒ أول التمرينات":"⤒ Move to first",
 "⤓ آخر التمرينات":"⤓ Move to last",
 "انتقال تلقائي بعد الراحة</button>":"Auto-advance after rest</button>",
@@ -2046,10 +2057,20 @@ function firstRun(){
     if((sessions[k][u]||[]).some(function(x){ return x&&x.w; })) return false; } }
   return true;
 }
+/* Safari's address bar is Apple's, not ours — no page can hide it. The only way to lose it is
+   Add to Home Screen, so the one thing worth doing is keeping that route in plain sight for the
+   people who are still browsing. One slim line, never on top of anything, gone once installed. */
+function installStrip(){
+  if(isStandalone()||inApp()||lsGet("instBar")) return "";
+  if(!isIOS()&&!/Android/i.test(navigator.userAgent)) return "";
+  return '<div class="ibar" id="ibar"><button class="t" id="ibarGo">'+
+    T('▸ ثبّته على الشاشة الرئيسية — يفتح بملء الشاشة بدون شريط العناوين')+
+    '</button><button class="x" id="ibarX" aria-label="'+T("إخفاء")+'">✕</button></div>';
+}
 function renderLog(){
   memoClear();
   var d=day(),s=cur(),prev=prevSession(),vol=volume(s),pv=prev?volume(prev):0;
-  var h='<div class="strip"><div class="big">'+vol.toLocaleString("en-US")+'</div>'+
+  var h=installStrip()+'<div class="strip"><div class="big">'+vol.toLocaleString("en-US")+'</div>'+
         T('<div class="lbl">كجم إجمالي حمل اليوم</div>');
   if(pv&&vol){var df=vol-pv,pc=Math.round(df/pv*100);
     h+='<div class="delta '+(df>=0?"up":"down")+'">'+(df>=0?"▲ ":"▼ ")+Math.abs(pc)+T('٪ عن آخر مرة</div>');}
@@ -2209,6 +2230,8 @@ function renderLog(){
   $("main").querySelectorAll("[data-dn]").forEach(function(b){
     b.onclick=function(){ var i=+b.getAttribute("data-dn"),e=day().ex; if(i>=e.length-1) return;
       e.splice(i+1,0,e.splice(i,1)[0]); saveP(); renderLog(); };});
+  if($("ibarGo")) $("ibarGo").onclick=showInst;
+  if($("ibarX")) $("ibarX").onclick=function(){ lsSet("instBar","1"); renderLog(); };
   $("main").querySelectorAll("[data-first]").forEach(function(b){
     b.onclick=function(){ var i=+b.getAttribute("data-first"),e=day().ex; if(i<1) return;
       e.unshift(e.splice(i,1)[0]); saveP(); renderLog(); };});
